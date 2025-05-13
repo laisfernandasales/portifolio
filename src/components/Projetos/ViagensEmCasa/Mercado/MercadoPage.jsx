@@ -1,6 +1,17 @@
 import React from "react";
-import MercadoVideo from "../../../../assets/ViagensEmCasa/Mercado.mp4";
-import { FaPlane } from "react-icons/fa";
+import MercadoVideo from "../../../../assets/ViagensEmCasa/Mercado/Mercado.mp4";
+import {
+  FaShoppingCart,
+  FaSearch,
+  FaPlusCircle,
+  FaCalculator,
+  FaTrashAlt,
+  FaBox,
+  FaMobileAlt,
+  FaPlane,
+} from "react-icons/fa";
+
+
 
 export default function MercadoPage() {
   return (
@@ -30,15 +41,37 @@ export default function MercadoPage() {
           A página apresenta uma simulação de loja virtual com foco em <strong>produtos alimentares regionais</strong>, oferecendo os seguintes recursos:
         </p>
 
-        <ul className="list-disc list-inside space-y-2">
-          <li>🛒 <strong>Catálogo de produtos regionais</strong> com imagens, nomes e preços.</li>
-          <li>🔍 <strong>Filtro por categoria de produto e ordenação de preço</strong> </li>
-          <li>➕ <strong>Adição de produtos ao carrinho</strong> com atualização em tempo real.</li>
-          <li>🧮 <strong>Cálculo automático</strong> do valor total da compra.</li>
-          <li>🧺 <strong>Gestão do carrinho</strong>: remover itens, alterar quantidades, etc.</li>
-          <li>📦 <strong>Simulação de envio</strong>: preenchimento de nome, morada e telefone.</li>
-          <li>🎨 <strong>Interface responsiva</strong> com suporte ao tema escuro e claro.</li>
-        </ul>
+       <ul className="space-y-3">
+  <li className="flex items-center gap-3">
+    <FaShoppingCart className="text-purple-600 dark:text-purple-400" />
+    <span><strong>Catálogo de produtos regionais</strong> com imagens, nomes e preços.</span>
+  </li>
+  <li className="flex items-center gap-3">
+    <FaSearch className="text-blue-600 dark:text-cyan-400" />
+    <span><strong>Filtro por categoria de produto</strong> e ordenação de preço.</span>
+  </li>
+  <li className="flex items-center gap-3">
+    <FaPlusCircle className="text-green-600" />
+    <span><strong>Adição de produtos ao carrinho</strong> com atualização em tempo real.</span>
+  </li>
+  <li className="flex items-center gap-3">
+    <FaCalculator className="text-yellow-500" />
+    <span><strong>Cálculo automático</strong> do valor total da compra.</span>
+  </li>
+  <li className="flex items-center gap-3">
+    <FaTrashAlt className="text-red-500" />
+    <span><strong>Gestão do carrinho</strong>: remover itens, alterar quantidades, etc.</span>
+  </li>
+  <li className="flex items-center gap-3">
+    <FaBox className="text-indigo-500" />
+    <span><strong>Simulação de envio</strong>: preenchimento de nome, morada e telefone.</span>
+  </li>
+  <li className="flex items-center gap-3">
+    <FaMobileAlt className="text-pink-500" />
+    <span><strong>Interface responsiva</strong> com suporte ao tema escuro e claro.</span>
+  </li>
+</ul>
+
 
        
 

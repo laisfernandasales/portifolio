@@ -2,7 +2,7 @@ import { FiDownload } from "react-icons/fi";
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGithub, FaLinkedin } from "react-icons/fa";
 import { SiTailwindcss, SiJavascript, SiTypescript, SiNextdotjs } from "react-icons/si";
 import FotoHome from "../../assets/FotoHome.jpg"; // Caminho da tua imagem
-import { Link } from "react-router-dom";
+
 function HomePage() {
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-center text-center px-4">
@@ -28,16 +28,17 @@ function HomePage() {
       </div>
 
       {/* Botão de download */}
-      <div className="w-full relative mt-6 mb-14 px-4">
-        <a
-          href="/CurriculoLaisMelo.pdf"
-          download
-          className="absolute bottom-0 right-4 flex items-center gap-2 bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-2 rounded-lg shadow-md transition hover:scale-105 active:scale-95"
-        >
-          <FiDownload className="w-5 h-5" />
-          Download CV
-        </a>
-      </div>
+<div className="flex justify-center mt-6 mb-10">
+  <a
+    href="/CurriculoLaisMelo.pdf"
+    download
+    className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium px-6 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
+  >
+    <FiDownload className="w-5 h-5" />
+    Download CV
+  </a>
+</div>
+
 
       {/* Seção de Links Sociais */}
       <div className="flex gap-6  items-start">

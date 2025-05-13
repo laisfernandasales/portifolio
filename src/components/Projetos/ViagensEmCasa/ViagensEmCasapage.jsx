@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 
 
+
 export default function ViagensEmCasa() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-start pt-28 px-4 text-center bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-500 ">
