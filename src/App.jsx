@@ -4,6 +4,8 @@ import ToggleTheme from './components/ToggleTheme/ToggleTheme';
 import HomePage from './components/Home/HomePage';
 import ProjetosPage from './components/Projetos/Projetospage';
 import ViagensEmCasa from "./components/Projetos/ViagensEmCasa/ViagensEmCasapage";
+import MercadoPage from "./components/Projetos/ViagensEmCasa/Mercado/MercadoPage";
+import Bilheteira from "./components/Projetos/ViagensEmCasa/Bilheteira/Bilheteira";
 import './App.css';
 
 function App() {
@@ -19,6 +21,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/projetos" element={<ProjetosPage />} />
           <Route path="/projetos/viagens" element={<ViagensEmCasa />} />
+          <Route path="/projetos/viagens/mercado" element={<MercadoPage />} />
+          <Route path="/projetos/viagens/bilheteira" element={<Bilheteira />} />
+          {/* Adicione mais rotas conforme necessário */}
 
          
         </Routes>
