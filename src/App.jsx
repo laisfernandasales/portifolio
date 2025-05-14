@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from './components/Navbar/NavbarPage';
-import ToggleTheme from './components/ToggleTheme/ToggleTheme';
-import HomePage from './components/Home/HomePage';
-import ProjetosPage from './components/Projetos/Projetospage';
+import Navbar from "./components/Navbar/NavbarPage";
+import ToggleTheme from "./components/ToggleTheme/ToggleTheme";
+import HomePage from "./components/Home/HomePage";
+import ProjetosPage from "./components/Projetos/Projetospage";
 import ViagensEmCasa from "./components/Projetos/ViagensEmCasa/ViagensEmCasapage";
 import MercadoPage from "./components/Projetos/ViagensEmCasa/Mercado/MercadoPage";
 import BilheteiraPage from "./components/Projetos/ViagensEmCasa/Bilheteira/Bilheteira";
-import './App.css';
+import "./App.css";
 
 function App() {
   return (
@@ -22,10 +22,11 @@ function App() {
           <Route path="/projetos" element={<ProjetosPage />} />
           <Route path="/projetos/viagens" element={<ViagensEmCasa />} />
           <Route path="/projetos/viagens/mercado" element={<MercadoPage />} />
-          <Route path="/projetos/viagens/bilheteira" element={<BilheteiraPage />} />
+          <Route
+            path="/projetos/viagens/bilheteira"
+            element={<BilheteiraPage />}
+          />
           {/* Adicione mais rotas conforme necessário */}
-
-         
         </Routes>
       </div>
     </Router>
