@@ -11,7 +11,6 @@ import {
 } from "react-icons/fi";
 import { FaPlane } from "react-icons/fa";
 
-
 export default function BilheteiraPage() {
   return (
     <div className="min-h-screen pt-20 bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-500">
@@ -22,16 +21,19 @@ export default function BilheteiraPage() {
             Viagens em Casa
           </h1>
         </div>
-        
+
         <div className="max-w-4xl mx-auto px-6 mt-2 text-center">
-  <h2 className="text-1.5xl font-semibold mb-8 text-blue-700 dark:text-cyan-400">
-    Bilheteira de Museus
-  </h2>
-</div>
+          <h2 className="text-1.5xl font-semibold mb-8 text-blue-700 dark:text-cyan-400">
+            Bilheteira de Museus
+          </h2>
+        </div>
 
         {/* Texto de introdução */}
         <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
-          O sistema de bilheteira do projeto <strong>Viagens em Casa</strong> permite a aquisição online de bilhetes para museus e eventos culturais. Ele combina usabilidade, responsividade e integração digital para oferecer uma experiência completa.
+          O sistema de bilheteira do projeto <strong>Viagens em Casa</strong>{" "}
+          permite a aquisição online de bilhetes para museus e eventos
+          culturais. Ele combina usabilidade, responsividade e integração
+          digital para oferecer uma experiência completa.
         </p>
 
         {/* Vídeo com bordas suaves */}
@@ -42,39 +44,38 @@ export default function BilheteiraPage() {
         />
 
         {/* Lista de funcionalidades com ícones */}
-<div className="flex justify-center mt-12">
-  <ul className="space-y-4 text-left text-gray-700 dark:text-gray-300 text-base">
-    <li className="flex items-center gap-2">
-      <FiImage className="text-purple-600 dark:text-purple-400" />
-      Catálogo com imagem, nome do evento, endereço e preço
-    </li>
-    <li className="flex items-center gap-2">
-      <FiFilter className="text-blue-600 dark:text-cyan-400" />
-      Filtro por categoria (castelos, museus, etc.)
-    </li>
-    <li className="flex items-center gap-2">
-      <FiClipboard className="text-green-600" />
-      Formulário de compra com validações (nome, email, NIF, etc.)
-    </li>
-    <li className="flex items-center gap-2">
-      <FiDollarSign className="text-yellow-500" />
-      Cálculo automático do valor total
-    </li>
-    <li className="flex items-center gap-2">
-      <FiCheckCircle className="text-emerald-500" />
-      Confirmação visual da compra
-    </li>
-    <li className="flex items-center gap-2">
-      <FiMail className="text-red-500" />
-      Envio de bilhete por email em PDF
-    </li>
-    <li className="flex items-center gap-2">
-      <FiLayout className="text-indigo-500" />
-      Layout responsivo com suporte ao tema claro/escuro
-    </li>
-  </ul>
-</div>
-
+        <div className="flex justify-center mt-12">
+          <ul className="space-y-4 text-left text-gray-700 dark:text-gray-300 text-base">
+            <li className="flex items-center gap-2">
+              <FiImage className="text-purple-600 dark:text-purple-400" />
+              Catálogo com imagem, nome do evento, endereço e preço
+            </li>
+            <li className="flex items-center gap-2">
+              <FiFilter className="text-blue-600 dark:text-cyan-400" />
+              Filtro por categoria (castelos, museus, etc.)
+            </li>
+            <li className="flex items-center gap-2">
+              <FiClipboard className="text-green-600" />
+              Formulário de compra com validações (nome, email, NIF, etc.)
+            </li>
+            <li className="flex items-center gap-2">
+              <FiDollarSign className="text-yellow-500" />
+              Cálculo automático do valor total
+            </li>
+            <li className="flex items-center gap-2">
+              <FiCheckCircle className="text-emerald-500" />
+              Confirmação visual da compra
+            </li>
+            <li className="flex items-center gap-2">
+              <FiMail className="text-red-500" />
+              Envio de bilhete por email em PDF
+            </li>
+            <li className="flex items-center gap-2">
+              <FiLayout className="text-indigo-500" />
+              Layout responsivo com suporte ao tema claro/escuro
+            </li>
+          </ul>
+        </div>
 
         {/* Rodapé */}
         <p className="mt-12 text-sm text-gray-500 dark:text-gray-400 italic">
@@ -84,4 +85,3 @@ export default function BilheteiraPage() {
     </div>
   );
 }
- 

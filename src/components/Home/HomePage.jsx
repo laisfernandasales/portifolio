@@ -1,12 +1,24 @@
 import { FiDownload } from "react-icons/fi";
-import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaGithub, FaLinkedin } from "react-icons/fa";
-import { SiTailwindcss, SiJavascript, SiTypescript, SiNextdotjs } from "react-icons/si";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+  FaLinkedin,
+} from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiJavascript,
+  SiTypescript,
+  SiNextdotjs,
+} from "react-icons/si";
 import FotoHome from "../../assets/FotoHome.jpg"; // Caminho da tua imagem
+import CurriculoPDF from "../../assets/CurriculoLaisMelo.pdf"; // Caminho do teu currículo
 
 function HomePage() {
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-center text-center px-4">
-
       {/* Conteúdo principal */}
       <div id="inicio" className="flex flex-col items-center justify-center">
         <div className="w-48 h-48">
@@ -16,29 +28,33 @@ function HomePage() {
             className="w-full h-full object-cover rounded-full shadow-lg"
           />
         </div>
-        <h1 className="text-4xl font-bold mb-4 mt-3 animate-pulse bg-clip-text text-transparent
+        <h1
+          className="text-4xl font-bold mb-4 mt-3 animate-pulse bg-clip-text text-transparent
   bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700
-  dark:from-cyan-400 dark:via-purple-400 dark:to-pink-500">
-  Olá, eu sou Lais Sales Desenvolvedora Web
-</h1>
+  dark:from-cyan-400 dark:via-purple-400 dark:to-pink-500"
+        >
+          Olá, eu sou Lais Sales Desenvolvedora Web
+        </h1>
 
         <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mb-4">
-          Sou apaixonada por tecnologia e desenvolvimento front-end. Gosto de criar interfaces modernas, interativas e funcionais que proporcionem uma ótima experiência ao utilizador. Sempre em busca de evoluir como desenvolvedora e transformar ideias em soluções reais.
+          Sou apaixonada por tecnologia e desenvolvimento front-end. Gosto de
+          criar interfaces modernas, interativas e funcionais que proporcionem
+          uma ótima experiência ao utilizador. Sempre em busca de evoluir como
+          desenvolvedora e transformar ideias em soluções reais.
         </p>
       </div>
 
       {/* Botão de download */}
-<div className="flex justify-center mt-6 mb-10">
-  <a
-    href="/CurriculoLaisMelo.pdf"
-    download
-    className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium px-6 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
-  >
-    <FiDownload className="w-5 h-5" />
-    Download CV
-  </a>
-</div>
-
+      <div className="flex justify-center mt-6 mb-10">
+        <a
+          href={CurriculoPDF} // Substitua pelo caminho correto do seu CV
+          download
+          className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium px-6 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95"
+        >
+          <FiDownload className="w-5 h-5" />
+          Download CV
+        </a>
+      </div>
 
       {/* Seção de Links Sociais */}
       <div className="flex gap-6  items-start">
@@ -62,11 +78,13 @@ function HomePage() {
 
       {/* Seção de Tecnologias */}
       <section className="w-full flex flex-col items-center mt-16">
-      <h2 className="text-3xl font-bold mb-8 bg-clip-text text-transparent
+        <h2
+          className="text-3xl font-bold mb-8 bg-clip-text text-transparent
   bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700
-  dark:from-cyan-400 dark:via-purple-400 dark:to-pink-500">
-  Habilidades e Tecnologias
-</h2>
+  dark:from-cyan-400 dark:via-purple-400 dark:to-pink-500"
+        >
+          Habilidades e Tecnologias
+        </h2>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
           <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
@@ -95,7 +113,9 @@ function HomePage() {
           </div>
           <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
             <SiTailwindcss className="text-4xl text-cyan-500" />
-            <p className="mt-2 text-gray-700 dark:text-gray-300">Tailwind CSS</p>
+            <p className="mt-2 text-gray-700 dark:text-gray-300">
+              Tailwind CSS
+            </p>
           </div>
           <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
             <FaNodeJs className="text-4xl text-green-500" />

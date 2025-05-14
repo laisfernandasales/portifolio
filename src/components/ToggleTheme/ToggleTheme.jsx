@@ -27,11 +27,11 @@ export default function ToggleTheme() {
 
   return (
     <button
-    onClick={toggleTheme}
-    className="fixed bottom-6 right-6 p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:scale-110 transition-transform shadow-lg"
-    aria-label="Alternar Tema"
-  >
-    {isDark ? <FaSun size={24} /> : <FaMoon size={24} />}
-  </button>
+      onClick={toggleTheme}
+      className="fixed bottom-6 right-6 p-3 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:scale-110 transition-transform shadow-lg"
+      aria-label="Alternar Tema"
+    >
+      {isDark ? <FaSun size={24} /> : <FaMoon size={24} />}
+    </button>
   );
 }
