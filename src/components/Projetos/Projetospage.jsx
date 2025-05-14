@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import MercadoHome from "../../assets/ViagensEmCasa/Mercado/Home.png";
+import HomeDark from "../../assets/ViagensEmCasa/Mercado/HomeDark.png";
+import HomeLight from "../../assets/ViagensEmCasa/Mercado/HomeLight.png";
+import { useEffect, useState,useMemo } from "react";
+
+
 import PfireLogin from "../../assets/Pfire/Login.png";
 import {
   FaReact,
@@ -18,25 +22,45 @@ import {
 } from "react-icons/si";
 
 export default function ProjetosPage() {
-  const projetos = [
-    {
-      titulo: "Viagens em Casa",
-      descricao:
-        "E-commerce de comidas regionais e bilheteira cultural, desenvolvido com Next.js.",
-      rota: "/projetos/viagens",
-      imagem: MercadoHome,
-      techs: ["Next.js", "Tailwind"],
-      icone: <FaPlane className="text-2xl text-blue-700 dark:text-cyan-400" />, // Aqui
-    },
-    {
-      titulo: "Pfire",
-      descricao:
-        "Aplicação de gestão e visualização de dados usando Tailwind e APIs externas.",
-      rota: "/projetos/pfire",
-      imagem: PfireLogin,
-    },
-    // Adicione mais projetos aqui
-  ];
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+useEffect(() => {
+  const checkTheme = () => {
+    const html = document.documentElement;
+    setIsDarkMode(html.classList.contains("dark"));
+  };
+
+  checkTheme(); // Verifica imediatamente
+
+  const observer = new MutationObserver(checkTheme);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+
+  return () => observer.disconnect();
+}, []);
+
+
+ const projetos = useMemo(() => [
+  {
+    titulo: "Viagens em Casa",
+    descricao:
+      "E-commerce de comidas regionais e bilheteira cultural, desenvolvido com Next.js.",
+    rota: "/projetos/viagens",
+    imagem: isDarkMode ? HomeDark : HomeLight,
+    techs: ["Next.js", "Tailwind"],
+    icone: <FaPlane className="text-2xl text-blue-700 dark:text-cyan-400" />,
+  },
+  {
+    titulo: "Pfire",
+    descricao:
+      "Aplicação de gestão e visualização de dados usando Tailwind e APIs externas.",
+    rota: "/projetos/pfire",
+    imagem: PfireLogin,
+  },
+], [isDarkMode]);
+
   const techIcons = {
     HTML5: <FaHtml5 className="text-orange-500" />,
     CSS3: <FaCss3Alt className="text-blue-500" />,
