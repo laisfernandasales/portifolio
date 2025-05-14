@@ -2,10 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import HomeDark from "../../assets/ViagensEmCasa/Mercado/HomeDark.png";
 import HomeLight from "../../assets/ViagensEmCasa/Mercado/HomeLight.png";
+import LoginLight from "../../assets/Pfire/LoginLight.png";
+import LoginDark from "../../assets/Pfire/LoginDark.png";
 import { useEffect, useState,useMemo } from "react";
 
 
-import PfireLogin from "../../assets/Pfire/Login.png";
+
 import {
   FaReact,
   FaNodeJs,
@@ -57,7 +59,7 @@ useEffect(() => {
     descricao:
       "Aplicação de gestão e visualização de dados usando Tailwind e APIs externas.",
     rota: "/projetos/pfire",
-    imagem: PfireLogin,
+    imagem: isDarkMode ? LoginDark : LoginLight,
   },
 ], [isDarkMode]);
 
