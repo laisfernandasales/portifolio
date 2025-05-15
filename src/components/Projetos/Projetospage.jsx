@@ -4,9 +4,7 @@ import HomeDark from "../../assets/ViagensEmCasa/Mercado/HomeDark.png";
 import HomeLight from "../../assets/ViagensEmCasa/Mercado/HomeLight.png";
 import LoginLight from "../../assets/Pfire/LoginLight.png";
 import LoginDark from "../../assets/Pfire/LoginDark.png";
-import { useEffect, useState,useMemo } from "react";
-
-
+import { useEffect, useState, useMemo } from "react";
 
 import {
   FaReact,
@@ -26,42 +24,46 @@ import {
 export default function ProjetosPage() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-useEffect(() => {
-  const checkTheme = () => {
-    const html = document.documentElement;
-    setIsDarkMode(html.classList.contains("dark"));
-  };
+  useEffect(() => {
+    const checkTheme = () => {
+      const html = document.documentElement;
+      setIsDarkMode(html.classList.contains("dark"));
+    };
 
-  checkTheme(); // Verifica imediatamente
+    checkTheme(); // Verifica imediatamente
 
-  const observer = new MutationObserver(checkTheme);
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["class"],
-  });
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
 
-  return () => observer.disconnect();
-}, []);
+    return () => observer.disconnect();
+  }, []);
 
-
- const projetos = useMemo(() => [
-  {
-    titulo: "Viagens em Casa",
-    descricao:
-      "E-commerce de comidas regionais e bilheteira cultural, desenvolvido com Next.js.",
-    rota: "/projetos/viagens",
-    imagem: isDarkMode ? HomeDark : HomeLight,
-    techs: ["Next.js", "Tailwind"],
-    icone: <FaPlane className="text-2xl text-blue-700 dark:text-cyan-400" />,
-  },
-  {
-    titulo: "Pfire",
-    descricao:
-      "Aplicação de gestão e visualização de dados usando Tailwind e APIs externas.",
-    rota: "/projetos/pfire",
-    imagem: isDarkMode ? LoginDark : LoginLight,
-  },
-], [isDarkMode]);
+  const projetos = useMemo(
+    () => [
+      {
+        titulo: "Viagens em Casa",
+        descricao:
+          "E-commerce de comidas regionais e bilheteira cultural, desenvolvido com Next.js.",
+        rota: "/projetos/viagens",
+        imagem: isDarkMode ? HomeDark : HomeLight,
+        techs: ["Next.js", "Tailwind"],
+        icone: (
+          <FaPlane className="text-2xl text-blue-700 dark:text-cyan-400" />
+        ),
+      },
+      {
+        titulo: "Pfire",
+        descricao:
+          "Aplicação de gestão e visualização de dados usando Tailwind e APIs externas.",
+        rota: "/projetos/pfire",
+        imagem: isDarkMode ? LoginDark : LoginLight,
+      },
+    ],
+    [isDarkMode],
+  );
 
   const techIcons = {
     HTML5: <FaHtml5 className="text-orange-500" />,
