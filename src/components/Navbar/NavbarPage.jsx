@@ -17,16 +17,6 @@ function NavbarPage() {
             Projetos
           </Link>
         </li>
-        <li>
-          <Link
-            to="contato"
-            smooth={true}
-            duration={500}
-            className="cursor-pointer hover:text-cyan-600 dark:hover:text-cyan-400"
-          >
-            Contato
-          </Link>
-        </li>
       </ul>
     </nav>
   );
