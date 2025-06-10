@@ -6,6 +6,10 @@ import LoginLight from "../../assets/Pfire/LoginLight.png";
 import LoginDark from "../../assets/Pfire/LoginDark.png";
 import { useEffect, useState, useMemo } from "react";
 
+import Sendgrid from "../../assets/ViagensEmCasa/sendgrid.png";
+import Recaptcha from "../../assets/ViagensEmCasa/recaptcha.png";
+import Auth from "../../assets/ViagensEmCasa/auth.png";
+
 import {
   FaReact,
   FaNodeJs,
@@ -61,8 +65,9 @@ export default function ProjetosPage() {
           "TypeScript",
           "Firebase",
           "Auth.js",
-          "reCAPTCHA v3",
           "SendGrid",
+          "reCAPTCHA v3",
+          "Node.js",
         ],
       },
       {
@@ -110,27 +115,14 @@ export default function ProjetosPage() {
         className="w-6 h-6"
       />
     ),
-    "Auth.js": (
-      <img
-        src="https://authjs.dev/img/logo/logo-sm.svg"
-        alt="Auth.js"
-        className="w-6 h-6"
-      />
+    "Auth.js": <img src={Auth} alt="Auth.js" className="w-6 h-6" />,
+    SendGrid: (
+      <img src={Sendgrid} alt="SendGrid" className="w-6 h-6 object-contain" />
     ),
     "reCAPTCHA v3": (
-      <img
-        src="https://www.gstatic.com/recaptcha/admin/images/recaptcha-logo.svg"
-        alt="reCAPTCHA"
-        className="w-6 h-6"
-      />
+      <img src={Recaptcha} alt="reCAPTCHA" className="w-6 h-6 object-contain" />
     ),
-    SendGrid: (
-      <img
-        src="https://seeklogo.com/images/S/sendgrid-logo-A4A5E2E0C3-seeklogo.com.png"
-        alt="SendGrid"
-        className="w-6 h-6"
-      />
-    ),
+
     GraphQL: (
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/1/17/GraphQL_Logo.svg"
@@ -216,7 +208,6 @@ export default function ProjetosPage() {
                 <Link
                   to={projeto.rota}
                   className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105"
-
                 >
                   Ver Projeto
                 </Link>
