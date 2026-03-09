@@ -17,6 +17,14 @@ function NavbarPage() {
             Projetos
           </Link>
         </li>
+        <li>
+          <Link
+            to="/contato"
+            className="hover:text-cyan-600 dark:hover:text-cyan-400"
+          >
+           Contato
+          </Link>
+        </li>
       </ul>
     </nav>
   );
