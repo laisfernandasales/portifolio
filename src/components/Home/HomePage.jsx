@@ -12,7 +12,7 @@ import {
   SiTypescript,
   SiNextdotjs,
 } from "react-icons/si";
-import FotoHome from "../../assets/FotoHome.JPEG"; // Caminho da tua foto de perfil
+import FotoHome from "../../assets/FotoHome.jpeg"; // Caminho da tua foto de perfil
 import CurriculoPDF from "../../assets/CurriculoLaisMelo.pdf"; // Caminho do teu currículo
 import { useState, useEffect } from "react";
 
