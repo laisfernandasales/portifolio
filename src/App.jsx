@@ -6,6 +6,8 @@ import ProjetosPage from "./components/Projetos/Projetospage";
 import ViagensEmCasa from "./components/Projetos/ViagensEmCasa/ViagensEmCasapage";
 import MercadoPage from "./components/Projetos/ViagensEmCasa/Mercado/MercadoPage";
 import BilheteiraPage from "./components/Projetos/ViagensEmCasa/Bilheteira/Bilheteira";
+import ContatoPage from "./components/Contato/ContatoPage";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 function App() {
@@ -26,8 +28,9 @@ function App() {
             path="/projetos/viagens/bilheteira"
             element={<BilheteiraPage />}
           />
-          {/* Adicione mais rotas conforme necessário */}
+          <Route path="/contato" element={<ContatoPage />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );
