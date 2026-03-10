@@ -25,26 +25,27 @@ const text3 = "Programadora FullStack";
 const texts = [text, tex2, text3];
 
 const [displayedLines, setDisplayedLines] = useState(["", "", ""]);
-const [lineIndex, setLineIndex] = useState(0);
-const [charIndex, setCharIndex] = useState(0);
-const [finishedAll, setFinishedAll] = useState(false);
+const [lineIndex, setLineIndex] = useState(0); // Índice da linha atual
+const [charIndex, setCharIndex] = useState(0); // Índice do caractere atual na linha
+const [finishedAll, setFinishedAll] = useState(false); // Indica se todas as linhas foram exibidas
 
 useEffect(() => {
-  const interval = setInterval(() => {
-    const current = texts[lineIndex];
+  const interval = setInterval(() => { // Acessa a linha atual
+    const current = texts[lineIndex]; // Verifica se ainda há caracteres para exibir na linha atual
 
-    if (charIndex < current.length) {
-      setDisplayedLines((prev) => {
-        const copy = [...prev];
-        copy[lineIndex] = copy[lineIndex] + current.charAt(charIndex);
-        return copy;
+    if (charIndex < current.length) { // Exibe o próximo caractere
+      setDisplayedLines((prev) => { // Atualiza a linha atual com o próximo caractere
+        const copy = [...prev]; // Cria uma cópia do estado atual
+        copy[lineIndex] = copy[lineIndex] + current.charAt(charIndex); // Adiciona o próximo caractere à linha atual
+        return copy; // Retorna o novo estado com a linha atualizada
       });
-      setCharIndex((prev) => prev + 1);
+      setCharIndex((prev) => prev + 1); // Incrementa o índice do caractere para a próxima iteração
     } else {
       // linha atual completa
-      if (lineIndex < texts.length - 1) {
-        setLineIndex((prev) => prev + 1);
-        setCharIndex(0);
+      if (lineIndex < texts.length - 1) { // Verifica se ainda há linhas para exibir
+        setLineIndex((prev) => prev + 1); // Passa para a próxima linha
+        setCharIndex(0); // Reinicia o índice do caractere
+
       } else {
         // todas as linhas completas
         setFinishedAll(true);
@@ -61,7 +62,7 @@ useEffect(() => {
 
   return () => clearInterval(interval);
 
-}, [charIndex, lineIndex]);
+}, [charIndex, lineIndex]); // O efeito depende dos índices de caractere e linha para atualizar corretamente o texto exibido
 
   return (
 
@@ -166,7 +167,9 @@ useEffect(() => {
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
 
     {/* Serviço 1 */}
-    <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+    <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-700
+backdrop-blur
+hover:border-cyan-400">
       <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
         Criação de Websites
       </h3>
@@ -281,8 +284,51 @@ useEffect(() => {
           </div>
         </div>
       </section>
-      
+       <section className="w-full flex justify-center mt-24 px-4">
+
+  <div className="max-w-5xl w-full bg-gradient-to-r from-cyan-500 via-blue-900 to-indigo-600 text-white rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
+
+    {/* camada de brilho suave */}
+    <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+
+    <div className="relative z-10">
+
+      <h2 className="text-4xl font-bold mb-6">
+        Vamos falar sobre o seu projeto
+      </h2>
+
+      <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 opacity-90">
+        Tem uma ideia ou precisa desenvolver um website ou aplicação web?
+        Posso ajudar a transformar essa ideia numa solução digital moderna,
+        funcional e profissional.
+      </p>
+
+      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+        <a
+          href="#contato"
+          className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300"
+        >
+          Entrar em contacto
+        </a>
+
+        <a
+          href="#projetos"
+          className="border border-white/70 text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-blue-600 transition-all duration-300"
+        >
+          Ver projetos
+        </a>
+
+      </div>
+
     </div>
+
+  </div>
+
+</section>
+    </div>
+
+   
     
 
 
