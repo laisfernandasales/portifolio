@@ -288,9 +288,7 @@ hover:border-cyan-400">
       </section>
        <section className="w-full flex justify-center mt-24 px-4">
 
-  <div className="max-w-screen-2xl w-full bg-cyan-100 dark:bg-cyan-700 text-gray-800 dark:text-white rounded-3xl p-12 md:p-20 text-center shadow-2xl relative overflow-hidden mt-6 mb-10">
-
-    {/* camada de brilho suave */}
+<div className="max-w-screen-2xl w-full bg-slate-100 dark:bg-cyan-700 text-gray-800 dark:text-white rounded-3xl p-12 md:p-20 text-center shadow-2xl relative overflow-hidden mt-6 mb-10">    {/* camada de brilho suave */}
     <div className="absolute inset-0 bg-white/20 dark:bg-white/5 backdrop-blur-sm"></div>
 
     <div className="relative z-10">
