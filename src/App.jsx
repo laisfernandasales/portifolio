@@ -28,7 +28,7 @@ function App() {
             path="/projetos/viagens/bilheteira"
             element={<BilheteiraPage />}
           />
-          <Route path="/contato" element={<ContatoPage />} />
+         {/* <Route path="/contato" element={<ContatoPage />} /> */}
         </Routes>
         <Footer />
       </div>
