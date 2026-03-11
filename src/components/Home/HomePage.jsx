@@ -169,9 +169,7 @@ useEffect(() => {
   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
 
     {/* Serviço 1 */}
-    <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-slate-700
-backdrop-blur
-hover:border-cyan-400">
+    <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
       <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
         Criação de Websites
       </h3>
