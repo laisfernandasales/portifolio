@@ -6,6 +6,8 @@ import {
   FaNodeJs,
 
 } from "react-icons/fa";
+
+import { FaWhatsapp } from "react-icons/fa";
 import {
   SiTailwindcss,
   SiJavascript,
@@ -286,15 +288,15 @@ hover:border-cyan-400">
       </section>
        <section className="w-full flex justify-center mt-24 px-4">
 
-  <div className="max-w-5xl w-full bg-gradient-to-r from-cyan-500 via-blue-900 to-indigo-600 text-white rounded-3xl p-12 text-center shadow-2xl relative overflow-hidden">
+  <div className="max-w-screen-2xl w-full bg-cyan-100 dark:bg-cyan-700 text-gray-800 dark:text-white rounded-3xl p-12 md:p-20 text-center shadow-2xl relative overflow-hidden mt-6 mb-10">
 
     {/* camada de brilho suave */}
-    <div className="absolute inset-0 bg-white/5 backdrop-blur-sm"></div>
+    <div className="absolute inset-0 bg-white/20 dark:bg-white/5 backdrop-blur-sm"></div>
 
     <div className="relative z-10">
 
-      <h2 className="text-4xl font-bold mb-6">
-        Vamos falar sobre o seu projeto
+      <h2 className="text-4xl font-bold mb-4">
+        Vamos falar sobre o seu projeto ? 
       </h2>
 
       <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 opacity-90">
@@ -306,18 +308,17 @@ hover:border-cyan-400">
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
 
         <a
-          href="#contato"
-          className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300"
+          href="https://wa.link/9cykam"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Abrir chat WhatsApp"
+          className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center"
         >
+          <FaWhatsapp className="inline-block w-5 h-5 text-green-600 mr-2" />
           Entrar em contacto
         </a>
 
-        <a
-          href="#projetos"
-          className="border border-white/70 text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-blue-600 transition-all duration-300"
-        >
-          Ver projetos
-        </a>
+     
 
       </div>
 
