@@ -70,7 +70,7 @@ export default function ProjetosPage() {
           "Node.js",
         ],
       },
-      {
+      /*{
         titulo: "Pfire",
         descricao:
           "Aplicação de gestão e visualização de dados usando Tailwind e APIs externas.",
@@ -86,7 +86,7 @@ export default function ProjetosPage() {
           "FastAPI",
           "MongoDB",
         ],
-      },
+      },*/
     ],
     [isDarkMode],
   );
