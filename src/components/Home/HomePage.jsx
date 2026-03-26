@@ -300,14 +300,7 @@ function HomePage() {
             Não hesites em entrar em contacto!
           </p>
 
-          <a
-            href="mailto:laismelo.dev@gmail.com"
-            style={{ display: "inline-block", fontFamily: "'Syne', sans-serif", fontSize: 20, fontWeight: 700, color: "var(--port-cyan)", textDecoration: "none", borderBottom: "1px solid var(--port-cyan)", paddingBottom: 2, marginBottom: 36, transition: "opacity 0.2s" }}
-            onMouseOver={(e) => (e.currentTarget.style.opacity = "0.7")}
-            onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
-          >
-            laismelo.dev@gmail.com
-          </a>
+          
 
           <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
             {[
