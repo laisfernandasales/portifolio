@@ -10,7 +10,7 @@ function NavbarPage() {
   return (
     <nav className="nav-port">
       <Link to="/" className="nav-logo-port">
-        Lais<span style={{ color: "var(--port-cyan)" }}>.</span>dev
+        Laismelo<span style={{ color: "var(--port-cyan)" }}>.</span>dev
       </Link>
 
       <ul className="nav-links-port">
