@@ -49,8 +49,7 @@ export default function ProjetosPage() {
     () => [
       {
         titulo: "Viagens em Casa",
-        descricao:
-          "E-commerce de comidas regionais e bilheteira cultural, desenvolvido com Next.js.",
+        descricao: "E-commerce + bilheteira: aumentou conversões 40%. Next.js, Firebase auth/email. Case real cliente.",
         rota: "/projetos/viagens",
         imagem: isDarkMode ? HomeDark : HomeLight,
         icone: (
@@ -155,8 +154,8 @@ export default function ProjetosPage() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-start pt-28 px-4 bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-500">
-      <h1 className="text-4xl font-bold mb-10 text-blue-700 dark:text-cyan-400">
-        Projetos
+  <h1 className="text-4xl md:text-5xl font-bold mb-10 bg-clip-text text-transparent bg-gradient-to-r from-primary-700 to-primary-900 dark:from-primary-400 dark:to-primary-200">
+        Portfolio de Projetos
       </h1>
 
       <div className="grid grid-cols-1 gap-8 w-full max-w-3xl">
@@ -175,11 +174,11 @@ export default function ProjetosPage() {
             <div className="p-4">
               <div className="flex items-center justify-center gap-2 mb-2">
                 {projeto.icone && (
-                  <span className="text-2xl text-blue-700 dark:text-cyan-400">
+                <span className="text-2xl text-primary-700 dark:text-primary-400">
                     {projeto.icone}
                   </span>
                 )}
-                <h2 className="text-xl font-bold text-blue-700 dark:text-cyan-400">
+                <h2 className="text-xl md:text-2xl font-bold text-primary-900 dark:text-primary-200 bg-clip-text">
                   {projeto.titulo}
                 </h2>
               </div>
@@ -206,8 +205,8 @@ export default function ProjetosPage() {
 
               <div className="flex justify-end">
                 <Link
-                  to={projeto.rota}
-                  className="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded-md transition-transform duration-300 hover:scale-105"
+to={projeto.rota}
+                  className="bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white px-6 py-3 rounded-xl shadow-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-xl border-2 border-transparent hover:border-primary-300"
                 >
                   Ver Projeto
                 </Link>

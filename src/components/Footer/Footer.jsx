@@ -27,36 +27,35 @@ function Footer() {
   }
 
   return (
-    <footer className="w-full bg-neutral text-neutral-content mt-4">
-      <div className="max-w-7xl mx-auto flex items-center gap-4 p-4">
-        <aside className="flex items-center gap-3">
-         
-          <p className="text-sm">Copyright © {new Date().getFullYear()} - All right reserved</p>
-        </aside>
+    <footer style={{ borderTop: "1px solid rgba(0,200,255,0.12)", padding: "28px 60px", display: "flex", justifyContent: "space-between", alignItems: "center", maxWidth: 1280, margin: "0 auto", width: "100%" }}>
+      <span style={{ color: "var(--port-muted)", fontSize: 12 }}>
+        © {new Date().getFullYear()} Lais Melo — All rights reserved
+      </span>
 
-        <nav className="flex items-center gap-4 ml-auto">
-         
-<a
+      <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+        <a
           href="https://github.com/laisfernandasales"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-700 dark:text-gray-300 hover:text-cyan-500 transition-transform transform hover:scale-110"
+          style={{ color: "var(--port-muted)", transition: "color 0.2s" }}
+          onMouseOver={(e) => (e.currentTarget.style.color = "var(--port-cyan)")}
+          onMouseOut={(e) => (e.currentTarget.style.color = "var(--port-muted)")}
         >
-          <FaGithub size={32} />
+          <FaGithub size={20} />
         </a>
         <a
           href="https://www.linkedin.com/in/lais-fernanda-sales-melo/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-gray-700 dark:text-gray-300 hover:text-cyan-500 transition-transform transform hover:scale-110"
+          style={{ color: "var(--port-muted)", transition: "color 0.2s" }}
+          onMouseOver={(e) => (e.currentTarget.style.color = "var(--port-cyan)")}
+          onMouseOut={(e) => (e.currentTarget.style.color = "var(--port-muted)")}
         >
-          <FaLinkedin size={32} />
+          <FaLinkedin size={20} />
         </a>
-         
-
-        
-          
-        </nav>
+        <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, color: "var(--port-cyan)", fontSize: 14 }}>
+          Lais<span style={{ color: "var(--port-muted)" }}>.dev</span>
+        </span>
       </div>
     </footer>
   );

@@ -1,336 +1,329 @@
-import { FiDownload } from "react-icons/fi";
-import {
-  FaHtml5,
-  FaCss3Alt,
-  FaReact,
-  FaNodeJs,
-
-} from "react-icons/fa";
-
-import { FaWhatsapp } from "react-icons/fa";
-import {
-  SiTailwindcss,
-  SiJavascript,
-  SiTypescript,
-  SiNextdotjs,
-} from "react-icons/si";
-import FotoHome from "../../assets/FotoHome.jpeg"; // Caminho da tua foto de perfil
-import CurriculoPDF from "../../assets/CurriculoLaisMelo.pdf"; // Caminho do teu currículo
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs } from "react-icons/fa";
+import {
+  SiTailwindcss, SiJavascript, SiTypescript, SiNextdotjs,
+  SiPrisma, SiMysql, SiMongodb, SiFirebase, SiFigma, SiGit,
+} from "react-icons/si";
+import FotoHome from "../../assets/FotoHome.jpeg";
+import CurriculoPDF from "../../assets/CurriculoLaisMelo.pdf";
+import "../../assets/styles/styles.css";
 
+/* ── Dados ── */
+const skillCategories = [
+  {
+    title: "Frontend & Backend",
+    skills: [
+      { icon: <FaHtml5       style={{ color: "#E44D26" }} />, name: "HTML5"      },
+      { icon: <FaCss3Alt     style={{ color: "#1572B6" }} />, name: "CSS3"       },
+      { icon: <SiJavascript  style={{ color: "#F7DF1E" }} />, name: "JavaScript" },
+      { icon: <SiTypescript  style={{ color: "#3178C6" }} />, name: "TypeScript" },
+      { icon: <FaReact       style={{ color: "#61DAFB" }} />, name: "React"      },
+      { icon: <SiNextdotjs   style={{ color: "#ffffff" }} />, name: "Next.js"    },
+      { icon: <SiTailwindcss style={{ color: "#06B6D4" }} />, name: "Tailwind"   },
+      { icon: <FaNodeJs      style={{ color: "#339933" }} />, name: "Node.js"    },
+     
+    ],
+  },
+  {
+    title: "Base de Dados",
+    skills: [
+      { icon: <SiMysql    style={{ color: "#4479A1" }} />, name: "MySQL"    },
+      { icon: <SiMongodb  style={{ color: "#47A248" }} />, name: "MongoDB"  },
+      { icon: <SiFirebase style={{ color: "#FF6F00" }} />, name: "Firebase" },
+    ],
+  },
+  {
+    title: "Ferramentas",
+    skills: [
+      { icon: <SiFigma style={{ color: "#F24E1E" }} />, name: "Figma" },
+      { icon: <SiGit   style={{ color: "#F05032" }} />, name: "Git"   },
+    ],
+  },
+];
+
+const projects = [
+  {
+    num: "01",
+    tags: ["Next.js", "Firebase", "Tailwind"],
+    title: "Viagens em Casa",
+    desc: "E-commerce + bilheteira com auth, emails transacionais e painel admin. Caso real de cliente.",
+    route: "/projetos/viagens",
+    gradient: "linear-gradient(135deg, #0d2340, #091830)",
+  },
+  {
+    num: "02",
+    tags: ["React", "Node.js", "MongoDB"],
+    title: "Task Manager App",
+    desc: "Aplicação de gestão de tarefas com colaboração em tempo real e notificações push.",
+    route: "/projetos",
+    gradient: "linear-gradient(135deg, #0d2035, #061228)",
+  },
+  {
+    num: "03",
+    tags: ["FastAPI", "TypeScript"],
+    title: "Dashboard Analytics",
+    desc: "Dashboard de analytics com visualização de dados em tempo real e relatórios automatizados.",
+    route: "/projetos",
+    gradient: "linear-gradient(135deg, #0a1d38, #060f1e)",
+  },
+];
+
+const SECTIONS = ["inicio", "sobre", "stack", "projetos", "contato"];
+
+/* ── Componente ── */
 function HomePage() {
+  const [activeSection, setActiveSection] = useState(0);
 
-
-const text = "Hello, World! ";
-const tex2 = "Sou Lais Melo";
-const text3 = "Programadora FullStack";
-const texts = [text, tex2, text3];
-
-const [displayedLines, setDisplayedLines] = useState(["", "", ""]);
-const [lineIndex, setLineIndex] = useState(0); // Índice da linha atual
-const [charIndex, setCharIndex] = useState(0); // Índice do caractere atual na linha
-const [finishedAll, setFinishedAll] = useState(false); // Indica se todas as linhas foram exibidas
-
-useEffect(() => {
-  const interval = setInterval(() => { // Acessa a linha atual
-    const current = texts[lineIndex]; // Verifica se ainda há caracteres para exibir na linha atual
-
-    if (charIndex < current.length) { // Exibe o próximo caractere
-      setDisplayedLines((prev) => { // Atualiza a linha atual com o próximo caractere
-        const copy = [...prev]; // Cria uma cópia do estado atual
-        copy[lineIndex] = copy[lineIndex] + current.charAt(charIndex); // Adiciona o próximo caractere à linha atual
-        return copy; // Retorna o novo estado com a linha atualizada
+  useEffect(() => {
+    const onScroll = () => {
+      let current = 0;
+      SECTIONS.forEach((id, i) => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - window.innerHeight / 2) {
+          current = i;
+        }
       });
-      setCharIndex((prev) => prev + 1); // Incrementa o índice do caractere para a próxima iteração
-    } else {
-      // linha atual completa
-      if (lineIndex < texts.length - 1) { // Verifica se ainda há linhas para exibir
-        setLineIndex((prev) => prev + 1); // Passa para a próxima linha
-        setCharIndex(0); // Reinicia o índice do caractere
+      setActiveSection(current);
+    };
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
-      } else {
-        // todas as linhas completas
-        setFinishedAll(true);
-        clearInterval(interval);
-        setTimeout(() => {
-          setDisplayedLines(["", "", ""]);
-          setLineIndex(0);
-          setCharIndex(0);
-          setFinishedAll(false);
-        }, 2000);
-      }
-    }
-  }, 120);
-
-  return () => clearInterval(interval);
-
-}, [charIndex, lineIndex]); // O efeito depende dos índices de caractere e linha para atualizar corretamente o texto exibido
+  const scrollTo = (id) =>
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
+    <div className="w-full overflow-x-hidden">
+      {/* Noise overlay */}
+      <div className="noise-overlay" />
 
-    <div className="w-full min-h-screen flex flex-col items-center justify-center text-center px-4">
-      {/* Conteúdo principal */}
-      <div>
-      <div id="inicio" className="flex flex-col md:flex-row gap-8 md:gap-20 my-12 md:my-20 items-center">
-        <div className="w-32 h-32 md:w-48 md:h-48 flex-shrink-0">
-          <img
-            src={FotoHome}
-            alt="Foto de Perfil"
-            className="w-full h-full object-cover rounded-full"
-            loading="lazy"
-          />
-        
-        </div>
-        <div className="">
-          <h6
-          className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 mt-3 animate-pulse bg-clip-text text-transparent
-  bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700
-  dark:from-cyan-400 dark:via-purple-400 dark:to-pink-500 break-words max-w-md sm:max-w-lg"
-        >
-          <span className="block">{displayedLines[0]}</span>
-          <span className="block">{displayedLines[1]}</span>
-          <span className="block">{displayedLines[2]}{finishedAll || lineIndex === 2 ? <span className="animate-pulse">|</span> : null}</span>
-        </h6>
-
-        <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-2xl mb-4">
-          Sou  apaixonada por tecnologia e desenvolvimento web. Gosto de
-          criar interfaces modernas, interativas e funcionais .
-        </p>
-        </div>
-        
-        </div>
-
-       
-        </div>
-      
-
-
-      
-
-      {/* Botão de download */}
-      <div className="flex justify-center mt-6 mb-10 px-4 w-full">
-        <a
-          href={CurriculoPDF} // Substitua pelo caminho correto do seu CV
-          download
-          className="flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-medium px-6 py-3 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 w-full sm:w-auto justify-center"
-        >
-          <FiDownload className="w-5 h-5" />
-          Download CV
-        </a>
+      {/* Scroll dots */}
+      <div className="scroll-dots-nav hidden md:flex">
+        {SECTIONS.map((id, i) => (
+          <span key={id} style={{ display: "contents" }}>
+            {i > 0 && <div className="dot-line-nav" />}
+            <button
+              className={`dot-nav${activeSection === i ? " active" : ""}`}
+              onClick={() => scrollTo(id)}
+              aria-label={`Ir para ${id}`}
+            />
+          </span>
+        ))}
       </div>
-      
-      
-      <div className="w-full min-h-[50vh] md:h-[60vh] flex items-center justify-center bg-gray-100 dark:bg-gray-800 px-4 md:px-6 mx-2 md:mx-9">
-  <div className="max-w-4xl w-full transition-colors duration-300">
-    <h2 className="text-2xl md:text-3xl font-bold mb-6 text-center bg-clip-text text-transparent
-      bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700
-      dark:from-cyan-400 dark:via-purple-400 dark:to-pink-500">
-      Sobre Mim
-    </h2>
 
-    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-base md:text-lg">
-      Sou  Engenheira de Software e programadora , com foco na criação de aplicações modernas,
-      funcionais e fáceis de utilizar. Gosto de transformar ideias em
-      soluções digitais que ajudam empresas e pessoas a melhorar a sua
-      presença online e os seus processos.
-    </p>
+      {/* ── HERO ── */}
+      <section id="inicio" className="hero-port">
+        {/* Glow bg */}
+        <div
+          className="glow-port"
+          style={{
+            top: "-200px", left: "-200px",
+            width: 500, height: 500,
+            background: "radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 70%)",
+          }}
+        />
 
-    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg mt-4">
-      Trabalho tanto no desenvolvimento de interfaces modernas e responsivas
-      como na parte técnica por trás das aplicações, integrando sistemas,
-      bases de dados e funcionalidades como autenticação e gestão de
-      utilizadores. Dessa forma consigo desenvolver soluções completas,
-      desde a interface que o utilizador vê até à lógica que faz tudo
-      funcionar.
-    </p>
-
-    <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-lg mt-4">
-      Já participei no desenvolvimento de projetos reais para clientes,
-      como o MabCloud e o PFire, aplicando estes conhecimentos em cenários
-      práticos.
-    </p>
-  </div>
-</div>
-
-
-
-{/* Seção Serviços */}
-<section className="w-full flex flex-col items-center mt-16 px-4">
-
-  <h2 className="text-2xl md:text-3xl font-bold mb-10 flex items-center justify-center">
-    <span className="mr-3 text-3xl">🚀</span>
-    <span className="bg-clip-text text-transparent
-      bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700
-      dark:from-cyan-400 dark:via-purple-400 dark:to-pink-500">
-      Serviços e soluções personalizados para seu negócio
-    </span>
-  </h2>
-
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl">
-
-    {/* Serviço 1 */}
-    <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
-        Criação de Websites
-      </h3>
-      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
-        Desenvolvimento de websites profissionais, modernos e responsivos para
-        empresas, projetos e negócios que querem melhorar a sua presença
-        digital.
-      </p>
-    </div>
-
- 
-
-    {/* Serviço 3 */}
-    <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
-        Integração de APIs e Bases de Dados
-      </h3>
-      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
-        Integração de sistemas com APIs e bases de dados , garantindo comunicação eficiente entre aplicações
-        e gestão segura de dados.
-      </p>
-    </div>
-
-    {/* Serviço 4 */}
-    <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-      <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
-        Sistemas de Login e Autenticação
-      </h3>
-      <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
-        Implementação de login, autenticação de utilizadores e gestão de
-        permissões para aplicações web, garantindo segurança e controlo de
-        acesso aos sistemas.
-      </p>
-    </div>
-    {/* Serviço 5 */}
-    <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-  <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
-    Landing Pages
-  </h3>
-  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
-    Criação de landing pages modernas e estratégicas para apresentar
-    produtos, serviços ou campanhas, focadas em gerar mais conversões
-    e captar clientes.
-  </p>
-</div>
-
-{/* Serviço 6 */}
-    <div className="bg-gray-100 dark:bg-gray-800 p-4 md:p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-
-  <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
-    Desenvolvimento de Sistemas
-  </h3>
-  <p className="text-sm md:text-base text-gray-600 dark:text-gray-400">
-    Desenvolvimento de sistemas web personalizados como dashboards,
-    plataformas administrativas e ferramentas digitais adaptadas às
-    necessidades do negócio.
-  </p>
-</div>
-
-  </div>
-
-
-
-</section>
-
-     
-
-      {/* Seção de Tecnologias */}
-      <section className="w-full flex flex-col items-center mt-16">
-        <h2
-          className="text-3xl font-bold mb-8 bg-clip-text text-transparent
-  bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700
-  dark:from-cyan-400 dark:via-purple-400 dark:to-pink-500"
-        >
-          Habilidades e Tecnologias
-        </h2>
-
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
-          <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
-            <FaHtml5 className="text-4xl text-orange-500" />
-            <p className="mt-2 text-gray-700 dark:text-gray-300">HTML5</p>
+        {/* Texto */}
+        <div>
+          <div className="hero-badge-port fade-up-1">
+            <span className="badge-pulse-dot" />
+            Disponível para projetos
           </div>
-          <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
-            <FaCss3Alt className="text-4xl text-blue-500" />
-            <p className="mt-2 text-gray-700 dark:text-gray-300">CSS3</p>
+
+          <p className="fade-up-2" style={{ fontSize: 12, fontWeight: 500, letterSpacing: "3px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 12 }}>
+            Me chamo
+          </p>
+
+          <h3 className="fade-up-3 font-syne" style={{ fontSize: "clamp(48px, 6vw, 76px)", fontWeight: 800, color: "#fff", lineHeight: 1, letterSpacing: "-2px", marginBottom: 8 }}>
+            Lais Melo
+          </h3>
+
+          <p className="fade-up-4 font-syne" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", fontWeight: 600, color: "var(--port-cyan)", marginBottom: 24, letterSpacing: "-0.5px" }}>
+            Fullstack Developer
+          </p>
+
+          <div
+            className="fade-up-4"
+            style={{ width: 48, height: 3, background: "linear-gradient(90deg, var(--port-cyan), transparent)", borderRadius: 2, marginBottom: 24 }}
+          />
+
+          <p className="fade-up-5" style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, maxWidth: 440, marginBottom: 40 }}>
+            Especialista no desenvolvimento de websites modernos, rápidos e com foco na experiência do utilizador.
+           
+          </p>
+
+          <div className="hero-actions-port fade-up-6">
+            <a href={CurriculoPDF} download className="btn-port-primary">
+              <FiDownload /> Download CV
+            </a>
+            <Link to="/projetos" className="btn-port-ghost">
+              Ver Projetos →
+            </Link>
           </div>
-          <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
-            <SiJavascript className="text-4xl text-yellow-400" />
-            <p className="mt-2 text-gray-700 dark:text-gray-300">JavaScript</p>
+
+          <div className="stats-row-port fade-up-7">
+            {[
+             
+              { val: "2+",  label: "Anos Exp." },
+              { val: "12+", label: "Tecnologias" },
+            ].map(({ val, label }) => (
+              <div key={label}>
+                <strong className="font-syne" style={{ display: "block", fontSize: 32, fontWeight: 800, color: "var(--port-cyan)", lineHeight: 1, marginBottom: 4 }}>
+                  {val}
+                </strong>
+                <span style={{ fontSize: 11, color: "var(--port-muted)", textTransform: "uppercase", letterSpacing: 1 }}>
+                  {label}
+                </span>
+              </div>
+            ))}
           </div>
-          <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
-            <SiTypescript className="text-4xl text-blue-600" />
-            <p className="mt-2 text-gray-700 dark:text-gray-300">TypeScript</p>
-          </div>
-          <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
-            <FaReact className="text-4xl text-cyan-400" />
-            <p className="mt-2 text-gray-700 dark:text-gray-300">React</p>
-          </div>
-          <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
-            <SiNextdotjs className="text-4xl text-black dark:text-white" />
-            <p className="mt-2 text-gray-700 dark:text-gray-300">Next.js</p>
-          </div>
-          <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
-            <SiTailwindcss className="text-4xl text-cyan-500" />
-            <p className="mt-2 text-gray-700 dark:text-gray-300">
-              Tailwind CSS
-            </p>
-          </div>
-          <div className="flex flex-col items-center transition-transform duration-300 hover:scale-110">
-            <FaNodeJs className="text-4xl text-green-500" />
-            <p className="mt-2 text-gray-700 dark:text-gray-300">Node.js</p>
+        </div>
+
+        {/* Foto */}
+        <div className="fade-up-photo flex justify-center items-center">
+          <div className="photo-frame-port">
+            <div className="photo-bg-shape-port animate-float" />
+            <img
+              src={FotoHome}
+              alt="Lais Melo — Desenvolvedora FullStack"
+              className="photo-img-port"
+              loading="lazy"
+            />
+
+           
+           
           </div>
         </div>
       </section>
-       <section className="w-full flex justify-center mt-24 px-4">
 
-<div className="max-w-screen-2xl w-full bg-slate-100 dark:bg-cyan-700 text-gray-800 dark:text-white rounded-3xl p-12 md:p-20 text-center shadow-2xl relative overflow-hidden mt-6 mb-10">    {/* camada de brilho suave */}
-    <div className="absolute inset-0 bg-white/20 dark:bg-white/5 backdrop-blur-sm"></div>
+      {/* ── SOBRE ── */}
+      <section id="sobre" className="section-port">
+        <p className="section-label-port">Sobre mim</p>
+        <h2 className="section-title-port">Engenheira de<br />Software FullStack</h2>
 
-    <div className="relative z-10">
+        <div className="about-grid-port">
+          <div>
+            <p style={{ color: "var(--port-muted)", lineHeight: 1.9, marginBottom: 20, fontSize: 15 }}>
+              Sou Engenheira de Software com foco no desenvolvimento FullStack, especializada
+              na criação de websites e aplicações web modernas, rápidas e intuitivas.
+              Trabalho tanto no frontend como no backend.
+            </p>
+            <p style={{ color: "var(--port-muted)", lineHeight: 1.9, marginBottom: 28, fontSize: 15 }}>
+              Tenho experiência com tecnologias como React.js, Next.js, Node.js, FastAPI e GraphQL.
+              No desenvolvimento de interfaces utilizo Tailwind CSS e Material UI, e trabalho
+              com MySQL, MongoDB e Firebase.
+            </p>
+           
+          </div>
 
-      <h2 className="text-4xl font-bold mb-4">
-        Vamos falar sobre o seu projeto ? 
-      </h2>
+         
+        </div>
+      </section>
 
-      <p className="text-lg md:text-xl max-w-2xl mx-auto mb-10 opacity-90">
-        Tem uma ideia ou precisa desenvolver um website ou aplicação web?
-        Posso ajudar a transformar essa ideia numa solução digital moderna,
-        funcional e profissional.
-      </p>
+      {/* ── STACK ── */}
+      <section id="stack" className="section-port" style={{ minHeight: "auto" }}>
+        <p className="section-label-port">Stack</p>
+        <h2 className="section-title-port">Stack Tecnológica</h2>
 
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        {skillCategories.map((cat) => (
+          <div key={cat.title} style={{ width: "100%" }}>
+            <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 14, marginTop: 32 }}>
+              {cat.title}
+            </p>
+            <div className="tech-grid-port">
+              {cat.skills.map(({ icon, name }) => (
+                <div key={name} className="tech-pill-port">
+                  <span style={{ fontSize: 22, display: "flex", alignItems: "center" }}>{icon}</span>
+                  <span style={{ fontSize: 12, fontWeight: 500, color: "var(--port-text)" }}>{name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
 
-        <a
-          href="https://wa.link/9cykam"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Abrir chat WhatsApp"
-          className="bg-white text-blue-600 font-semibold px-8 py-3 rounded-full shadow-lg hover:scale-105 hover:shadow-xl transition-all duration-300 inline-flex items-center justify-center"
-        >
-          <FaWhatsapp className="inline-block w-5 h-5 text-green-600 mr-2" />
-          Entrar em contacto
-        </a>
+      {/* ── PROJETOS ── */}
+      <section id="projetos" className="section-port" style={{ minHeight: "auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", width: "100%", flexWrap: "wrap", gap: 16 }}>
+          <div>
+            <p className="section-label-port">Portfólio</p>
+            <h2 className="section-title-port" style={{ marginBottom: 0 }}>Projetos em Destaque</h2>
+          </div>
+          <Link to="/projetos" className="btn-port-ghost">Ver todos →</Link>
+        </div>
 
-     
+        <div className="projects-grid-port">
+          {projects.map((p) => (
+            <Link to={p.route} key={p.num} className="project-card-port">
+              <div style={{ height: 180, background: p.gradient, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
+                <span className="font-syne" style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "rgba(0,200,255,0.4)", textTransform: "uppercase" }}>
+                  Projeto {p.num}
+                </span>
+                <div className="project-arrow-port">↗</div>
+              </div>
+              <div style={{ padding: 20 }}>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+                  {p.tags.map((t) => (
+                    <span key={t} style={{ fontSize: 9, fontWeight: 600, letterSpacing: "1.5px", color: "var(--port-cyan)", background: "var(--port-cyan-dim)", padding: "3px 9px", borderRadius: 100, textTransform: "uppercase" }}>
+                      {t}
+                    </span>
+                  ))}
+                </div>
+                <h3 className="font-syne" style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 6 }}>{p.title}</h3>
+                <p style={{ fontSize: 12, color: "var(--port-muted)", lineHeight: 1.6 }}>{p.desc}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
 
-      </div>
+      {/* ── CONTATO ── */}
+      <section id="contato" className="section-port" style={{ minHeight: "60vh", alignItems: "center", textAlign: "center" }}>
+        <div
+          className="glow-port"
+          style={{
+            bottom: "-100px", right: 0,
+            width: 400, height: 400,
+            background: "radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 70%)",
+          }}
+        />
 
+        <div style={{ maxWidth: 600, width: "100%", position: "relative", zIndex: 1 }}>
+          <p className="section-label-port">Contacto</p>
+          <h2 className="font-syne" style={{ fontSize: "clamp(40px, 5vw, 60px)", fontWeight: 800, color: "#fff", letterSpacing: "-1.5px", lineHeight: 1.05, marginBottom: 16 }}>
+            Vamos trabalhar<br />juntos?
+          </h2>
+          <p style={{ color: "var(--port-muted)", marginBottom: 40, fontSize: 16, lineHeight: 1.7 }}>
+            Estou disponível para novos projectos e oportunidades.<br />
+            Não hesites em entrar em contacto!
+          </p>
+
+          <a
+            href="mailto:laismelo.dev@gmail.com"
+            style={{ display: "inline-block", fontFamily: "'Syne', sans-serif", fontSize: 20, fontWeight: 700, color: "var(--port-cyan)", textDecoration: "none", borderBottom: "1px solid var(--port-cyan)", paddingBottom: 2, marginBottom: 36, transition: "opacity 0.2s" }}
+            onMouseOver={(e) => (e.currentTarget.style.opacity = "0.7")}
+            onMouseOut={(e) => (e.currentTarget.style.opacity = "1")}
+          >
+            laismelo.dev@gmail.com
+          </a>
+
+          <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
+            {[
+              { href: "https://github.com/laismelo",           label: "GitHub",   icon: <FiGithub   size={18} /> },
+              { href: "https://linkedin.com/in/laismelo",      label: "LinkedIn", icon: <FiLinkedin size={18} /> },
+              { href: "mailto:laismelo.dev@gmail.com",         label: "Email",    icon: <FiMail     size={18} /> },
+            ].map(({ href, label, icon }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="social-btn-port" title={label}>
+                {icon}
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
-
-  </div>
-
-</section>
-    </div>
-
-   
-    
-
-
   );
-
 }
 
 export default HomePage;
