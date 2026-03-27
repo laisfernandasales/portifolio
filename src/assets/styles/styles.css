@@ -500,14 +500,14 @@
 
 .section-title-port {
   font-family: 'Syne', sans-serif;
-  font-size: clamp(32px, 4vw, 48px);
-  font-weight: 800;
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 700;
   color: #fff;
-  letter-spacing: -1.5px;
-  line-height: 1.05;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
   margin-bottom: 20px;
+  max-width: 520px;
 }
-
 /* ── Hero ── */
 .hero-port {
   min-height: 100vh;
