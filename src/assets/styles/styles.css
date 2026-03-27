@@ -456,6 +456,54 @@ html:not(.dark) .skill-name        { color: #334155; }
 /* Footer */
 html:not(.dark) footer { border-top-color: rgba(15,30,80,0.12); }
 
+/* ── Footer responsivo ── */
+.footer-port {
+  border-top: 1px solid var(--port-border);
+  padding: 28px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .footer-port {
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 20px;
+    text-align: center;
+  }
+}
+
+/* ── Scroll dots — ocultar em mobile ── */
+@media (max-width: 768px) {
+  .scroll-dots-nav { display: none; }
+}
+
+/* ── Navbar mobile / desktop visibility ── */
+.mobile-navbar-port {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  background: rgba(8, 13, 20, 0.85);
+  border-bottom: 1px solid var(--port-border);
+  padding: 0 16px;
+}
+
+html:not(.dark) .mobile-navbar-port {
+  background: rgba(221, 230, 242, 0.92);
+}
+
+@media (max-width: 768px) {
+  .desktop-nav-port { display: none !important; }
+  .mobile-navbar-port { display: flex; }
+}
+
 /* ── Noise overlay ── */
 .noise-overlay {
   position: fixed;

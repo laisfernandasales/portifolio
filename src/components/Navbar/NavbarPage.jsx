@@ -1,4 +1,5 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import MobileMenu from "./MobileMenu";
 import "../../assets/styles/styles.css";
 
 function NavbarPage() {
@@ -16,21 +17,25 @@ function NavbarPage() {
   };
 
   return (
-    <nav className="nav-port">
-      <Link to="/" className="nav-logo-port">
-        Laismelo<span style={{ color: "var(--port-cyan)" }}>.</span>dev
-      </Link>
+    <>
+      {/* ── Desktop navbar ── */}
+      <nav className="nav-port desktop-nav-port">
+        <Link to="/" className="nav-logo-port">
+          Laismelo<span style={{ color: "var(--port-cyan)" }}>.</span>dev
+        </Link>
 
-      <ul className="nav-links-port">
-        <li><a href="/#inicio"  className="nav-link-port" onClick={(e) => handleSectionClick(e, "inicio")}>Início</a></li>
-        <li><a href="/#sobre"   className="nav-link-port" onClick={(e) => handleSectionClick(e, "sobre")}>Sobre</a></li>
-        <li><a href="/#stack"   className="nav-link-port" onClick={(e) => handleSectionClick(e, "stack")}>Stack</a></li>
-        <li><a href="/#projetos" className="nav-link-port" onClick={(e) => handleSectionClick(e, "projetos")}>Projetos</a></li>
-        <li><a href="/#contato"  className="nav-link-port" onClick={(e) => handleSectionClick(e, "contato")}>Contacto</a></li>
-      </ul>
+        <ul className="nav-links-port">
+          <li><a href="/#inicio"   className="nav-link-port" onClick={(e) => handleSectionClick(e, "inicio")}>Início</a></li>
+          <li><a href="/#sobre"    className="nav-link-port" onClick={(e) => handleSectionClick(e, "sobre")}>Sobre</a></li>
+          <li><a href="/#stack"    className="nav-link-port" onClick={(e) => handleSectionClick(e, "stack")}>Stack</a></li>
+          <li><a href="/#projetos" className="nav-link-port" onClick={(e) => handleSectionClick(e, "projetos")}>Projetos</a></li>
+          <li><a href="/#contato"  className="nav-link-port" onClick={(e) => handleSectionClick(e, "contato")}>Contacto</a></li>
+        </ul>
+      </nav>
 
-     
-    </nav>
+      {/* ── Mobile navbar ── */}
+      <MobileMenu />
+    </>
   );
 }
 
