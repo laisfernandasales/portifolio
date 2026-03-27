@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/NavbarPage";
 import HomePage from "./components/Home/HomePage";
-import ProjetosPage from "./components/Projetos/Projetospage";
+
 import ViagensEmCasa from "./components/Projetos/ViagensEmCasa/ViagensEmCasapage";
 import MercadoPage from "./components/Projetos/ViagensEmCasa/Mercado/MercadoPage";
 import BilheteiraPage from "./components/Projetos/ViagensEmCasa/Bilheteira/Bilheteira";
@@ -20,14 +20,14 @@ function App() {
   <HomePage />
  
 </>} />
-          <Route path="/projetos" element={<ProjetosPage />} />
+          
           <Route path="/projetos/viagens" element={<ViagensEmCasa />} />
           <Route path="/projetos/viagens/mercado" element={<MercadoPage />} />
           <Route
             path="/projetos/viagens/bilheteira"
             element={<BilheteiraPage />}
           />
-         {/* <Route path="/contato" element={<ContatoPage />} /> */}
+          <Route path="/contato" element={<ContatoPage />} />
         </Routes>
         <Footer />
       </div>

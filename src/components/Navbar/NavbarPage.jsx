@@ -25,8 +25,8 @@ function NavbarPage() {
         <li><a href="/#inicio"  className="nav-link-port" onClick={(e) => handleSectionClick(e, "inicio")}>Início</a></li>
         <li><a href="/#sobre"   className="nav-link-port" onClick={(e) => handleSectionClick(e, "sobre")}>Sobre</a></li>
         <li><a href="/#stack"   className="nav-link-port" onClick={(e) => handleSectionClick(e, "stack")}>Stack</a></li>
-        <li><Link to="/projetos" className="nav-link-port">Projetos</Link></li>
-        <li><a href="/#contato" className="nav-link-port" onClick={(e) => handleSectionClick(e, "contato")}>Contacto</a></li>
+        <li><a href="/#projetos" className="nav-link-port" onClick={(e) => handleSectionClick(e, "projetos")}>Projetos</a></li>
+        <li><a href="/#contato"  className="nav-link-port" onClick={(e) => handleSectionClick(e, "contato")}>Contacto</a></li>
       </ul>
 
      

@@ -8,6 +8,7 @@ import {
 } from "react-icons/si";
 import FotoHome from "../../assets/FotoHome.jpeg";
 import CurriculoPDF from "../../assets/CurriculoLaisMelo.pdf";
+import ViagensMercado from "../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
 import "../../assets/styles/styles.css";
 
 /* ── Dados ── */
@@ -51,6 +52,7 @@ const projects = [
     desc: "E-commerce + bilheteira com auth, emails transacionais e painel admin. Caso real de cliente.",
     route: "/projetos/viagens",
     gradient: "linear-gradient(135deg, #0d2340, #091830)",
+    image: ViagensMercado,
   },
   {
     num: "02",
@@ -262,9 +264,13 @@ function HomePage() {
           {projects.map((p) => (
             <Link to={p.route} key={p.num} className="project-card-port">
               <div style={{ height: 180, background: p.gradient, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
-                <span className="font-syne" style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "rgba(0,200,255,0.4)", textTransform: "uppercase" }}>
-                  Projeto {p.num}
-                </span>
+                {p.image ? (
+                  <img src={p.image} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                ) : (
+                  <span className="font-syne" style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "rgba(0,200,255,0.4)", textTransform: "uppercase" }}>
+                    Projeto {p.num}
+                  </span>
+                )}
                 <div className="project-arrow-port">↗</div>
               </div>
               <div style={{ padding: 20 }}>
@@ -296,15 +302,17 @@ function HomePage() {
 
         <div style={{ maxWidth: 600, width: "100%", position: "relative", zIndex: 1 }}>
           <p className="section-label-port">Contacto</p>
-          <h2 className="font-syne" style={{ fontSize: "clamp(40px, 5vw, 60px)", fontWeight: 800, color: "#fff", letterSpacing: "-1.5px", lineHeight: 1.05, marginBottom: 16 }}>
+          <h2 className="section-title-port" style={{ fontSize: "clamp(40px, 5vw, 60px)", letterSpacing: "-1.5px", lineHeight: 1.05, marginBottom: 16, maxWidth: "none" }}>
             Vamos trabalhar<br />juntos?
           </h2>
-          <p style={{ color: "var(--port-muted)", marginBottom: 40, fontSize: 16, lineHeight: 1.7 }}>
+          <p style={{ color: "var(--port-muted)", marginBottom: 32, fontSize: 16, lineHeight: 1.7 }}>
             Estou disponível para novos projectos e oportunidades.<br />
             Não hesites em entrar em contacto!
           </p>
 
-          
+          <Link to="/contato" className="btn-port-primary" style={{ display: "inline-flex", marginBottom: 40 }}>
+            Entre em contacto →
+          </Link>
 
           <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
             {[

@@ -1,85 +1,128 @@
-import React, { useEffect, useState } from "react";
-import { FaPlane, FaUtensils, FaTicketAlt, FaHome } from "react-icons/fa";
+import { FaPlane, FaUtensils, FaTicketAlt } from "react-icons/fa";
+import { SiNextdotjs, SiFirebase, SiTailwindcss } from "react-icons/si";
 import { Link } from "react-router-dom";
 import MercadoLight from "../../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
-import MercadoDark from "../../../assets/ViagensEmCasa/Mercado/MercadoDark.png";
 import BilheteiraLight from "../../../assets/ViagensEmCasa/Bilheteria/BilheteiraLight.png";
-import BilheteiraDark from "../../../assets/ViagensEmCasa/Bilheteria/BilheteiraDark.png";
+import "../../../assets/styles/styles.css";
+
+const stack = [
+  { icon: <SiNextdotjs size={18} />, name: "Next.js" },
+  { icon: <SiFirebase size={18} style={{ color: "#FF6F00" }} />, name: "Firebase" },
+  { icon: <SiTailwindcss size={18} style={{ color: "#06B6D4" }} />, name: "Tailwind CSS" },
+];
+
+const modules = [
+  {
+    to: "/projetos/viagens/mercado",
+    image: MercadoLight,
+    icon: <FaUtensils size={16} />,
+    tag: "E-commerce",
+    title: "Mercado Regional",
+    desc: "Produtos gastronómicos típicos de diversas regiões do país, com entrega directa ao consumidor. Carrinho, autenticação e painel de gestão.",
+  },
+  {
+    to: "/projetos/viagens/bilheteira",
+    image: BilheteiraLight,
+    icon: <FaTicketAlt size={16} />,
+    tag: "Bilheteira",
+    title: "Museus & Eventos",
+    desc: "Venda online de bilhetes para museus, exposições e eventos culturais com envio de bilhete por email via SendGrid.",
+  },
+];
 
 export default function ViagensEmCasa() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
-  useEffect(() => {
-    const html = document.documentElement;
-    setIsDarkMode(html.classList.contains("dark"));
-
-    const observer = new MutationObserver(() => {
-      setIsDarkMode(html.classList.contains("dark"));
-    });
-
-    observer.observe(html, { attributes: true, attributeFilter: ["class"] });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start pt-28 px-4 text-center bg-white dark:bg-gray-900 text-black dark:text-white transition-colors duration-500 ">
-      <h1 className="text-4xl font-bold mb-4 flex items-center gap-2 text-blue-700 dark:text-cyan-400">
-        <FaPlane />
-        Viagens em Casa
-      </h1>
+    <div style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
 
-      <p className="max-w-2xl text-lg text-gray-700 dark:text-gray-300 mb-6">
-        <strong>Viagens em Casa</strong> é um e-commerce desenvolvido com{" "}
-        <strong>Next.js</strong>, focado em experiências culturais no conforto
-        do lar. O site oferece um mercado digital com comidas regionais e uma
-        seção de bilheteira virtual com venda de entradas para museus e
-        atividades culturais.
-      </p>
+      {/* Glows */}
+      <div className="glow-port" style={{ top: -120, right: -120, width: 500, height: 500, background: "radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 70%)" }} />
+      <div className="glow-port" style={{ bottom: -80, left: -80, width: 360, height: 360, background: "radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 70%)" }} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl mt-8">
-        <Link
-          to="/projetos/viagens/mercado"
-          className="p-6 border rounded-lg shadow-md dark:border-gray-700 dark:bg-gray-800 hover:shadow-xl transition"
-        >
-          <img
-            src={isDarkMode ? MercadoDark : MercadoLight}
-            alt="Mercado"
-            className="w-full h-48 object-cover rounded mb-4"
-          />
-          <div className=" text-xl font-semibold mb-2 text-left flex items-center gap-2 text-blue-700 dark:text-cyan-400">
-            <FaUtensils />
-            Mercado de Comidas Regionais
-          </div>
-          <p className="text-gray-600 dark:text-gray-300 text-left">
-            Produtos gastronômicos típicos de diversas regiões do país, com
-            entrega direta ao consumidor.
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 60px" }}>
+
+        {/* ── Cabeçalho ── */}
+        <div style={{ marginBottom: 56 }}>
+          <Link
+            to="/projetos"
+            style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 500, letterSpacing: "1px", color: "var(--port-muted)", textDecoration: "none", textTransform: "uppercase", marginBottom: 24, transition: "color 0.2s" }}
+            onMouseEnter={e => e.currentTarget.style.color = "var(--port-cyan)"}
+            onMouseLeave={e => e.currentTarget.style.color = "var(--port-muted)"}
+          >
+            ← Todos os projectos
+          </Link>
+
+          <p className="section-label-port">Projecto 01</p>
+
+          <h1 className="section-title-port" style={{ fontSize: "clamp(32px, 4vw, 48px)", display: "flex", alignItems: "center", gap: 14, marginBottom: 16 }}>
+            <FaPlane style={{ color: "var(--port-cyan)", fontSize: "0.8em" }} />
+            Viagens em Casa
+          </h1>
+
+          <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, maxWidth: 580, marginBottom: 28 }}>
+            E-commerce desenvolvido com <span style={{ color: "var(--port-text)" }}>Next.js</span> focado em experiências culturais no conforto do lar — mercado de produtos regionais e bilheteira virtual para museus e eventos culturais.
           </p>
-        </Link>
 
-        <Link
-          to="/projetos/viagens/bilheteira"
-          className="p-6 border rounded-lg shadow-md dark:border-gray-700 dark:bg-gray-800 hover:shadow-xl transition"
-        >
-          <img
-            src={isDarkMode ? BilheteiraDark : BilheteiraLight}
-            alt="Bilheteira"
-            className="w-full h-48 object-cover rounded mb-4"
-          />
-          <div className="flex items-center gap-2 text-xl font-semibold mb-2 text-left flex items-center gap-2 text-blue-700 dark:text-cyan-400">
-            <FaTicketAlt />
-            Bilheteira de Museus
+          {/* Stack */}
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            {stack.map(({ icon, name }) => (
+              <div key={name} className="tech-pill-port" style={{ fontSize: 13 }}>
+                <span style={{ display: "flex", alignItems: "center", color: "var(--port-cyan)" }}>{icon}</span>
+                <span style={{ color: "var(--port-text)", fontWeight: 500 }}>{name}</span>
+              </div>
+            ))}
           </div>
-          <p className="text-gray-600 dark:text-gray-300 text-left">
-            Venda online de bilhetes para museus, exposições e eventos
-            culturais, incentivando o turismo virtual e físico.
-          </p>
-        </Link>
-      </div>
+        </div>
 
-      <div className="mt-10 text-gray-500 text-sm flex items-center gap-2">
-        <FaHome />
-        Projeto desenvolvido por Lais Sales e Carlos Afonso usando Next.js
+        {/* ── Módulos ── */}
+        <div>
+          <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 24 }}>
+            Módulos do projecto
+          </p>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
+            {modules.map(({ to, image, icon, tag, title, desc }) => (
+              <Link
+                key={to}
+                to={to}
+                className="project-card-port"
+                style={{ textDecoration: "none" }}
+              >
+                {/* Preview */}
+                <div style={{ height: 220, overflow: "hidden", position: "relative" }}>
+                  <img
+                    src={image}
+                    alt={title}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", transition: "transform 0.4s ease" }}
+                    onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
+                    onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+                  />
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 50%, rgba(8,13,20,0.7) 100%)" }} />
+                  <div className="project-arrow-port">↗</div>
+                </div>
+
+                {/* Conteúdo */}
+                <div style={{ padding: 24 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+                    <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 9, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--port-cyan)", background: "var(--port-cyan-dim)", padding: "4px 10px", borderRadius: 100 }}>
+                      {icon} {tag}
+                    </span>
+                  </div>
+                  <h3 className="font-syne" style={{ fontSize: 18, fontWeight: 700, color: "#fff", marginBottom: 8 }}>{title}</h3>
+                  <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7 }}>{desc}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Rodapé ── */}
+        <div style={{ marginTop: 60, paddingTop: 32, borderTop: "1px solid var(--port-border)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+          <p style={{ fontSize: 12, color: "var(--port-muted)" }}>
+            Desenvolvido por <span style={{ color: "var(--port-text)" }}>Lais Melo</span> & <span style={{ color: "var(--port-text)" }}>Carlos Afonso</span>
+          </p>
+          
+        </div>
+
       </div>
     </div>
   );
