@@ -12,7 +12,7 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#080d14] text-[#e8f0fe] transition-colors duration-500">
+      <div className="min-h-screen bg-[#080d14] text-[#e8f0fe] transition-colors duration-500 overflow-x-clip">
         <Navbar />
 
         <Routes>

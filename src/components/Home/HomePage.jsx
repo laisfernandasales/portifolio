@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs } from "react-icons/fa";
@@ -75,32 +75,36 @@ const SECTIONS = ["inicio", "sobre", "stack", "projetos", "contato"];
 /* ── Componente ── */
 function HomePage() {
   const [activeSection, setActiveSection] = useState(0);
+  const observerRef = useRef(null);
 
   useEffect(() => {
-    const onScroll = () => {
-      let current = 0;
-      SECTIONS.forEach((id, i) => {
-        const el = document.getElementById(id);
-        if (el && window.scrollY >= el.offsetTop - window.innerHeight / 2) {
-          current = i;
-        }
-      });
-      setActiveSection(current);
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = SECTIONS.indexOf(entry.target.id);
+            if (idx !== -1) setActiveSection(idx);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    SECTIONS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observerRef.current.observe(el);
+    });
+
+    return () => observerRef.current?.disconnect();
   }, []);
 
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <div className="w-full overflow-x-hidden">
-      {/* Noise overlay */}
-      <div className="noise-overlay" />
-
+    <div className="w-full">
       {/* Scroll dots */}
-      <div className="scroll-dots-nav hidden md:flex">
+      <div className=" md:flex">
         {SECTIONS.map((id, i) => (
           <span key={id} style={{ display: "contents" }}>
             {i > 0 && <div className="dot-line-nav" />}

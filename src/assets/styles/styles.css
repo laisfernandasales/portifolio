@@ -337,6 +337,12 @@
    PORTFOLIO DARK DESIGN — variáveis e componentes
 ═══════════════════════════════════════════════════════════ */
 
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+  touch-action: pan-y;
+}
+
 :root {
   --port-bg:        #080d14;
   --port-surface:   #0d1520;
@@ -479,16 +485,29 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 100px 60px 80px;
+  padding: 100px 0 80px;
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .section-port { padding: 80px 24px 60px; }
 }
+.container-port {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 60px;
+  width: 100%;
+}
 
+@media (max-width: 768px) {
+  .container-port {
+    padding: 0 24px;
+  }
+}
 .section-label-port {
   font-size: 11px;
   font-weight: 600;
@@ -517,8 +536,10 @@
   align-items: center;
   padding: 120px 60px 80px;
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -579,6 +600,7 @@
   border-radius: 24px;
   background: linear-gradient(135deg, rgba(0,200,255,0.2), rgba(0,200,255,0.02));
   border: 1px solid var(--port-border);
+  will-change: transform;
 }
 
 .photo-img-port {
