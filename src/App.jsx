@@ -1,19 +1,20 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/NavbarPage";
 import HomePage from "./components/Home/HomePage";
-
 import ViagensEmCasa from "./components/Projetos/ViagensEmCasa/ViagensEmCasapage";
 import MercadoPage from "./components/Projetos/ViagensEmCasa/Mercado/MercadoPage";
 import BilheteiraPage from "./components/Projetos/ViagensEmCasa/Bilheteira/Bilheteira";
 import ContatoPage from "./components/Contato/ContatoPage";
 import Footer from "./components/Footer/Footer";
+import ToggleTheme from "./components/ToggleTheme/ToggleTheme";
 import "./App.css";
 
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-[#080d14] text-[#e8f0fe] transition-colors duration-500 overflow-x-clip">
+      <div className="min-h-screen transition-colors duration-500 overflow-x-clip" style={{ background: "var(--port-bg)", color: "var(--port-text)" }}>
         <Navbar />
+        <ToggleTheme />
 
         <Routes>
  <Route path="/" element={<> 

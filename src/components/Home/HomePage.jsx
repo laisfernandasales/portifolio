@@ -142,7 +142,7 @@ function HomePage() {
             Me chamo
           </p>
 
-          <h3 className="fade-up-3 font-syne" style={{ fontSize: "clamp(28px, 4vw, 35px)", fontWeight: 800, color: "#fff", lineHeight: 1, letterSpacing: "-2px", marginBottom: 8 }}>
+          <h3 className="fade-up-3 section-title-port" style={{ fontSize: "clamp(28px, 4vw, 35px)", lineHeight: 1, letterSpacing: "-2px", marginBottom: 8 }}>
             Lais Melo
           </h3>
 

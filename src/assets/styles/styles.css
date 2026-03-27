@@ -355,6 +355,107 @@ html, body {
   --port-muted:     #6a7e99;
 }
 
+html:not(.dark) {
+  --port-bg:        #dde6f2;
+  --port-surface:   #ccd7e8;
+  --port-card:      #ffffff;
+  --port-border:    rgba(15, 30, 80, 0.13);
+  --port-cyan:      #0369a1;
+  --port-cyan-dim:  rgba(3, 105, 161, 0.1);
+  --port-cyan-glow: rgba(3, 105, 161, 0.05);
+  --port-text:      #0f172a;
+  --port-muted:     #475569;
+}
+
+/* Cards com sombra para destacar do fundo */
+html:not(.dark) .project-card-port,
+html:not(.dark) .skill-card-port,
+html:not(.dark) .tech-pill-port {
+  box-shadow: 0 2px 14px rgba(15, 30, 80, 0.10);
+}
+
+/* Navbar */
+html:not(.dark) .nav-port {
+  background: rgba(221, 230, 242, 0.90);
+  border-bottom-color: rgba(15, 30, 80, 0.10);
+  box-shadow: 0 1px 20px rgba(15, 30, 80, 0.07);
+}
+html:not(.dark) .nav-link-port       { color: #334155; }
+html:not(.dark) .nav-link-port:hover { color: #0f172a; }
+html:not(.dark) .nav-logo-port       { color: #0f172a; }
+html:not(.dark) .nav-cta-port        { border-color: #0369a1; color: #0369a1; }
+html:not(.dark) .nav-cta-port:hover  { background: #0369a1; color: #fff; }
+
+/* Inputs */
+html:not(.dark) input,
+html:not(.dark) textarea {
+  background: #f1f5fb !important;
+  border-color: rgba(15, 30, 80, 0.16) !important;
+  color: #0f172a !important;
+  box-shadow: inset 0 1px 3px rgba(15, 30, 80, 0.06) !important;
+}
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #7a8fa8 !important;
+}
+
+/* Botões */
+html:not(.dark) .btn-port-primary {
+  background: #0369a1;
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(3, 105, 161, 0.30);
+}
+html:not(.dark) .btn-port-primary:hover {
+  background: #025880;
+  box-shadow: 0 6px 24px rgba(3, 105, 161, 0.45);
+}
+html:not(.dark) .btn-port-ghost {
+  border-color: rgba(15, 30, 80, 0.25);
+  color: #334155;
+}
+html:not(.dark) .btn-port-ghost:hover {
+  border-color: #0369a1;
+  color: #0369a1;
+}
+
+/* Pills tech */
+html:not(.dark) .tech-pill-port {
+  background: #f1f5fb;
+  border-color: rgba(15, 30, 80, 0.13);
+}
+html:not(.dark) .tech-pill-port:hover {
+  border-color: #0369a1;
+  background: rgba(3, 105, 161, 0.06);
+  box-shadow: 0 4px 16px rgba(3, 105, 161, 0.10);
+}
+
+/* Scroll dots */
+html:not(.dark) .dot-nav         { background: #94a3b8; }
+html:not(.dark) .dot-nav.active  { background: #0369a1; box-shadow: 0 0 8px rgba(3,105,161,0.5); }
+html:not(.dark) .dot-line-nav    { background: rgba(15, 30, 80, 0.12); }
+
+html:not(.dark) .noise-overlay { opacity: 0.06; }
+
+/* Títulos de secção */
+html:not(.dark) .section-label-port { color: #0369a1; }
+
+/* Timeline */
+html:not(.dark) .timeline-item     { border-color: #94a3b8; }
+html:not(.dark) .timeline-dot      { background: #0369a1; border-color: #dde6f2; }
+html:not(.dark) .timeline-period   { color: #0369a1; }
+html:not(.dark) .timeline-role     { color: #0f172a; }
+html:not(.dark) .timeline-company  { color: #475569; }
+html:not(.dark) .timeline-description { color: #334155; }
+html:not(.dark) .timeline-tag      { background: rgba(3,105,161,0.1); color: #0369a1; }
+
+/* Skill cards */
+html:not(.dark) .skill-card-port   { background: #f1f5fb; border-color: rgba(15,30,80,0.13); }
+html:not(.dark) .skill-card-port:hover { border-color: #0369a1; background: rgba(3,105,161,0.06); }
+html:not(.dark) .skill-name        { color: #334155; }
+
+/* Footer */
+html:not(.dark) footer { border-top-color: rgba(15,30,80,0.12); }
+
 /* ── Noise overlay ── */
 .noise-overlay {
   position: fixed;
@@ -521,7 +622,7 @@ html, body {
   font-family: 'Syne', sans-serif;
   font-size: clamp(26px, 3vw, 34px);
   font-weight: 700;
-  color: #fff;
+  color: var(--port-text);
   letter-spacing: -0.5px;
   line-height: 1.15;
   margin-bottom: 20px;
@@ -599,7 +700,6 @@ html, body {
   inset: -12px;
   border-radius: 24px;
   background: linear-gradient(135deg, rgba(0,200,255,0.2), rgba(0,200,255,0.02));
-  border: 1px solid var(--port-border);
   will-change: transform;
 }
 
@@ -610,7 +710,6 @@ html, body {
   height: 100%;
   object-fit: cover;
   border-radius: 18px;
-  border: 1px solid rgba(0, 200, 255, 0.2);
   filter: grayscale(10%);
 }
 
@@ -810,7 +909,7 @@ html, body {
   font-family: 'Syne', sans-serif;
   font-weight: 800;
   font-size: 18px;
-  color: #fff;
+  color: var(--port-text);
   letter-spacing: -0.5px;
   text-decoration: none;
 }
@@ -835,7 +934,7 @@ html, body {
   text-transform: uppercase;
 }
 
-.nav-link-port:hover { color: #fff; }
+.nav-link-port:hover { color: var(--port-text); }
 
 .nav-cta-port {
   padding: 9px 22px;
