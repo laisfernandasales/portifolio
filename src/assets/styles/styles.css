@@ -485,7 +485,7 @@ html:not(.dark) footer { border-top-color: rgba(15,30,80,0.12); }
 
 /* ── Navbar mobile / desktop visibility ── */
 .mobile-navbar-port {
-  display: none;
+  display: none !important;
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
@@ -501,7 +501,7 @@ html:not(.dark) .mobile-navbar-port {
 
 @media (max-width: 768px) {
   .desktop-nav-port { display: none !important; }
-  .mobile-navbar-port { display: flex; }
+  .mobile-navbar-port { display: flex !important; }
 }
 
 /* ── Noise overlay ── */
