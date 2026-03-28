@@ -317,7 +317,7 @@ function HomePage() {
           <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
             {[
               { href: "https://github.com/laismelo",           label: "GitHub",   icon: <FiGithub   size={18} /> },
-              { href: "https://linkedin.com/in/laismelo",      label: "LinkedIn", icon: <FiLinkedin size={18} /> },
+              { href: "https://www.linkedin.com/in/lais-fernanda-sales-melo/", label: "LinkedIn", icon: <FiLinkedin size={18} /> },
               { href: "mailto:laismelo.dev@gmail.com",         label: "Email",    icon: <FiMail     size={18} /> },
             ].map(({ href, label, icon }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="social-btn-port" title={label}>
