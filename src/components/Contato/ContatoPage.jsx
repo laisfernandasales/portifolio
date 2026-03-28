@@ -1,13 +1,33 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
 import "../../assets/styles/styles.css";
 
+const EMAILJS_SERVICE_ID  = "service_zubrq4t";
+const EMAILJS_TEMPLATE_ID = "template_evhi4qv";
+const EMAILJS_PUBLIC_KEY  = "1WxriWuBAt52ByIdp";
+
 function ContatoPage() {
+  const formRef = useRef(null);
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSent(true);
+    setSending(true);
+    setError(null);
+
+    emailjs
+      .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, { publicKey: EMAILJS_PUBLIC_KEY })
+      .then(() => {
+        setSent(true);
+        setSending(false);
+      })
+      .catch(() => {
+        setError("Ocorreu um erro ao enviar. Tenta novamente ou contacta-me directamente.");
+        setSending(false);
+      });
   };
 
   return (
@@ -75,15 +95,15 @@ function ContatoPage() {
                 <p style={{ color: "var(--port-muted)", fontSize: 14 }}>Entrarei em contacto em breve.</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <form ref={formRef} onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
                 <div className="form-fields-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
                   {[
-                    { label: "Nome", type: "text", placeholder: "O teu nome" },
-                    { label: "Email", type: "email", placeholder: "teu@email.com" },
-                  ].map(({ label, type, placeholder }) => (
+                    { label: "Nome", name: "name", type: "text", placeholder: "O teu nome" },
+                    { label: "Email", name: "email", type: "email", placeholder: "teu@email.com" },
+                  ].map(({ label, name, type, placeholder }) => (
                     <div key={label}>
                       <label style={{ display: "block", fontSize: 10, fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "var(--port-muted)", marginBottom: 8 }}>{label}</label>
-                      <input type={type} placeholder={placeholder} required
+                      <input name={name} type={type} placeholder={placeholder} required
                         style={{ width: "100%", boxSizing: "border-box", background: "var(--port-surface)", border: "1px solid var(--port-border)", borderRadius: 8, padding: "12px 14px", fontSize: 14, color: "var(--port-text)", outline: "none", transition: "border-color 0.2s" }}
                         onFocus={e => e.target.style.borderColor = "var(--port-cyan)"}
                         onBlur={e => e.target.style.borderColor = "var(--port-border)"}
@@ -92,30 +112,30 @@ function ContatoPage() {
                   ))}
                 </div>
 
-                {[
-                  { label: "Assunto", type: "text", placeholder: "Do que se trata?" },
-                ].map(({ label, type, placeholder }) => (
-                  <div key={label}>
-                    <label style={{ display: "block", fontSize: 10, fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "var(--port-muted)", marginBottom: 8 }}>{label}</label>
-                    <input type={type} placeholder={placeholder} required
-                      style={{ width: "100%", boxSizing: "border-box", background: "var(--port-surface)", border: "1px solid var(--port-border)", borderRadius: 8, padding: "12px 14px", fontSize: 14, color: "var(--port-text)", outline: "none", transition: "border-color 0.2s" }}
-                      onFocus={e => e.target.style.borderColor = "var(--port-cyan)"}
-                      onBlur={e => e.target.style.borderColor = "var(--port-border)"}
-                    />
-                  </div>
-                ))}
+                <div>
+                  <label style={{ display: "block", fontSize: 10, fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "var(--port-muted)", marginBottom: 8 }}>Assunto</label>
+                  <input name="subject" type="text" placeholder="Do que se trata?" required
+                    style={{ width: "100%", boxSizing: "border-box", background: "var(--port-surface)", border: "1px solid var(--port-border)", borderRadius: 8, padding: "12px 14px", fontSize: 14, color: "var(--port-text)", outline: "none", transition: "border-color 0.2s" }}
+                    onFocus={e => e.target.style.borderColor = "var(--port-cyan)"}
+                    onBlur={e => e.target.style.borderColor = "var(--port-border)"}
+                  />
+                </div>
 
                 <div>
                   <label style={{ display: "block", fontSize: 10, fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "var(--port-muted)", marginBottom: 8 }}>Mensagem</label>
-                  <textarea rows={6} placeholder="Conta-me mais sobre o teu projecto..." required
+                  <textarea name="message" rows={6} placeholder="Conta-me mais sobre o teu projecto..." required
                     style={{ width: "100%", boxSizing: "border-box", background: "var(--port-surface)", border: "1px solid var(--port-border)", borderRadius: 8, padding: "12px 14px", fontSize: 14, color: "var(--port-text)", outline: "none", resize: "vertical", transition: "border-color 0.2s", fontFamily: "inherit" }}
                     onFocus={e => e.target.style.borderColor = "var(--port-cyan)"}
                     onBlur={e => e.target.style.borderColor = "var(--port-border)"}
                   />
                 </div>
 
-                <button type="submit" className="btn-port-primary" style={{ width: "100%", justifyContent: "center" }}>
-                  <FiSend size={15} /> Enviar mensagem
+                {error && (
+                  <p style={{ fontSize: 13, color: "#f87171", margin: 0 }}>{error}</p>
+                )}
+
+                <button type="submit" disabled={sending} className="btn-port-primary" style={{ width: "100%", justifyContent: "center", opacity: sending ? 0.6 : 1, cursor: sending ? "not-allowed" : "pointer" }}>
+                  <FiSend size={15} /> {sending ? "A enviar…" : "Enviar mensagem"}
                 </button>
               </form>
             )}
