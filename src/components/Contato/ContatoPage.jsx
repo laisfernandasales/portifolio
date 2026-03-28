@@ -3,10 +3,10 @@ import emailjs from "@emailjs/browser";
 import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
 import "../../assets/styles/styles.css";
 
-const EMAILJS_SERVICE_ID       = "service_zubrq4t";
-const EMAILJS_TEMPLATE_CONTACT = "template_evhi4qv"; // Contact Us → email para ti
-const EMAILJS_TEMPLATE_REPLY   = "template_chju4lv"; // Auto-Reply → email para o utilizador
-const EMAILJS_PUBLIC_KEY       = "1WxriWuBAt52ByIdp";
+const EMAILJS_SERVICE_ID       = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_CONTACT = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT;
+const EMAILJS_TEMPLATE_REPLY   = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY;
+const EMAILJS_PUBLIC_KEY       = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 function ContatoPage() {
   const formRef = useRef(null);
