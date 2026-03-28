@@ -4,11 +4,13 @@ import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs } from "react-icons/fa";
 import {
   SiTailwindcss, SiJavascript, SiTypescript, SiNextdotjs,
-  SiPrisma, SiMysql, SiMongodb, SiFirebase, SiFigma, SiGit,
+   SiMysql, SiMongodb, SiFirebase, SiFigma, SiGit,
 } from "react-icons/si";
 import FotoHome from "../../assets/FotoHome.jpeg";
 import CurriculoPDF from "../../assets/CurriculoLaisMelo.pdf";
 import ViagensMercado from "../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
+import PfireLogin from "../../assets/Pfire/LoginLight.png";
+import PsafeLogin from "../../assets/Psafe365Cloud/LoginDark.png"
 import "../../assets/styles/styles.css";
 
 /* ── Dados ── */
@@ -56,19 +58,21 @@ const projects = [
   },
   {
     num: "02",
-    tags: ["React", "Node.js", "MongoDB"],
-    title: "Task Manager App",
-    desc: "Aplicação de gestão de tarefas com colaboração em tempo real e notificações push.",
-    route: "/projetos",
+    tags: ["React", " FastAPI", "MongoDB"],
+    title: "Pfire",
+    desc: "Pfire é uma aplicação de geração de relatórios de inspeção de segurança ",
+    route: "/projetos/Pfire",
     gradient: "linear-gradient(135deg, #0d2035, #061228)",
+    image: PfireLogin,
   },
   {
     num: "03",
-    tags: ["FastAPI", "TypeScript"],
-    title: "Dashboard Analytics",
-    desc: "Dashboard de analytics com visualização de dados em tempo real e relatórios automatizados.",
-    route: "/projetos",
-    gradient: "linear-gradient(135deg, #0a1d38, #060f1e)",
+    tags: ["React", "PHP", "MySQL"],
+    title: "Psafe365 Cloud",
+    desc: "Plataforma de armazenamento em nuvem privada com gestão de pastas, ficheiros e controlo de acessos multi-utilizador.",
+    route: "/projetos/psafe365",
+    gradient: "linear-gradient(135deg, #0a1828, #060e1c)",
+    imageSrc: PsafeLogin,
   },
 ];
 
@@ -252,20 +256,13 @@ function HomePage() {
 
       {/* ── PROJETOS ── */}
       <section id="projetos" className="section-port" style={{ minHeight: "auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", width: "100%", flexWrap: "wrap", gap: 16 }}>
-          <div>
-            <p className="section-label-port">Portfólio</p>
-            <h2 className="section-title-port" style={{ marginBottom: 0 }}>Projetos em Destaque</h2>
-          </div>
-          <Link to="/projetos" className="btn-port-ghost">Ver todos →</Link>
-        </div>
-
+     
         <div className="projects-grid-port">
           {projects.map((p) => (
             <Link to={p.route} key={p.num} className="project-card-port">
               <div style={{ height: 180, background: p.gradient, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
-                {p.image ? (
-                  <img src={p.image} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                {(p.image || p.imageSrc) ? (
+                  <img src={p.image || p.imageSrc} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
                 ) : (
                   <span className="font-syne" style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "rgba(0,200,255,0.4)", textTransform: "uppercase" }}>
                     Projeto {p.num}
@@ -316,7 +313,7 @@ function HomePage() {
 
           <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
             {[
-              { href: "https://github.com/laismelo",           label: "GitHub",   icon: <FiGithub   size={18} /> },
+              { href: "https://github.com/laisfernandasales",           label: "GitHub",   icon: <FiGithub   size={18} /> },
               { href: "https://www.linkedin.com/in/lais-fernanda-sales-melo/", label: "LinkedIn", icon: <FiLinkedin size={18} /> },
               { href: "mailto:laismelo.dev@gmail.com",         label: "Email",    icon: <FiMail     size={18} /> },
             ].map(({ href, label, icon }) => (

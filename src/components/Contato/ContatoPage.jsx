@@ -63,7 +63,7 @@ function ContatoPage() {
               </p>
               {[
                 { icon: <FiMail size={18} />, label: "Email", value: "laismelo.dev@gmail.com", href: "mailto:laismelo.dev@gmail.com" },
-                { icon: <FiGithub size={18} />, label: "GitHub", value: "github.com/laismelo", href: "https://github.com/laismelo" },
+                { icon: <FiGithub size={18} />, label: "GitHub", value: "github.com/laisfernandasales", href: "https://github.com/laisfernandasales" },
                 { icon: <FiLinkedin size={18} />, label: "LinkedIn", value: "linkedin.com/in/lais-fernanda-sales-melo", href: "https://www.linkedin.com/in/lais-fernanda-sales-melo/" },
               ].map(({ icon, label, value, href }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer"

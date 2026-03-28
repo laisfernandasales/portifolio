@@ -1,36 +1,57 @@
-import { FaFire, FaShieldAlt, FaClipboardList, FaDatabase } from "react-icons/fa";
-import { SiReact, SiFastapi, SiMongodb, SiFirebase } from "react-icons/si";
+import { FaCloud, FaFolder, FaUsers, FaFileAlt, FaUserShield } from "react-icons/fa";
+import { SiReact, SiPhp, SiMysql } from "react-icons/si";
 import { Link } from "react-router-dom";
-import LoginLight from "../../../assets/Pfire/LoginLight.png";
+import LoginDark from "../../../assets/Psafe365Cloud/LoginDark.png";
+import HomeDark from "../../../assets/Psafe365Cloud/HomeDark.png";
 import "../../../assets/styles/styles.css";
 
 const stack = [
   { icon: <SiReact size={18} style={{ color: "#61DAFB" }} />, name: "React" },
-  { icon: <SiFastapi size={18} style={{ color: "#009688" }} />, name: "FastAPI" },
-  { icon: <SiMongodb size={18} style={{ color: "#47A248" }} />, name: "MongoDB" },
-  { icon: <SiFirebase size={18} style={{ color: "#FF6F00" }} />, name: "Firebase Auth" },
+  { icon: <SiPhp size={18} style={{ color: "#8892BF" }} />, name: "PHP Puro" },
+  { icon: <SiMysql size={18} style={{ color: "#4479A1" }} />, name: "MySQL" },
 ];
 
 const features = [
   {
-    icon: <FaClipboardList size={20} style={{ color: "var(--port-cyan)" }} />,
-    title: "Geração de Relatórios",
-    desc: "Criação automática de relatórios de inspeção de segurança detalhados, prontos a exportar.",
+    icon: <FaFolder size={20} style={{ color: "var(--port-cyan)" }} />,
+    title: "Gestão de Pastas",
+    desc: "Cria, renomeia e elimina pastas. Navega numa estrutura hierárquica tal como no explorador de ficheiros.",
   },
   {
-    icon: <FaShieldAlt size={20} style={{ color: "var(--port-cyan)" }} />,
-    title: "Dispositivos de Emergência",
-    desc: "Gestão e rastreio de dispositivos de emergência e socorro — extintores, saídas de emergência, entre outros.",
+    icon: <FaFileAlt size={20} style={{ color: "var(--port-cyan)" }} />,
+    title: "Submissão de Ficheiros",
+    desc: "Carrega ficheiros para dentro de qualquer pasta, renomeia-os ou elimina-os — à semelhança do Google Drive.",
   },
   {
-    icon: <FaDatabase size={20} style={{ color: "var(--port-cyan)" }} />,
-    title: "Base de Dados NoSQL",
-    desc: "Armazenamento flexível com MongoDB, adaptado à estrutura variável dos relatórios de inspeção.",
+    icon: <FaUsers size={20} style={{ color: "var(--port-cyan)" }} />,
+    title: "Multi-utilizador",
+    desc: "Três níveis de acesso: Admin, Gestor de pasta e Utilizador, cada um com permissões configuráveis.",
   },
   {
-    icon: <SiFirebase size={20} style={{ color: "#FF6F00" }} />,
-    title: "Autenticação Social",
-    desc: "Login via Google e Microsoft com Firebase Authentication — rápido, seguro e totalmente opcional.",
+    icon: <FaUserShield size={20} style={{ color: "var(--port-cyan)" }} />,
+    title: "Permissões Granulares",
+    desc: "O Gestor de pasta define exactamente o que cada utilizador pode fazer: criar, renomear, submeter ou eliminar.",
+  },
+];
+
+const userRoles = [
+  {
+    role: "Admin",
+    color: "#e74c3c",
+    bg: "#e74c3c18",
+    desc: "Controlo total da plataforma — adiciona utilizadores ilimitados, gere todas as pastas e define acessos.",
+  },
+  {
+    role: "Gestor de Pasta",
+    color: "var(--port-cyan)",
+    bg: "var(--port-cyan-dim)",
+    desc: "Acesso 100% à sua pasta. Pode adicionar novos utilizadores e definir as suas permissões individuais.",
+  },
+  {
+    role: "Utilizador",
+    color: "#f39c12",
+    bg: "#f39c1218",
+    desc: "Permissões definidas pelo Gestor — pode ter acesso de leitura, submissão, renomeação ou eliminação conforme configurado.",
   },
 ];
 
@@ -38,24 +59,24 @@ const architecture = [
   {
     label: "Frontend",
     tech: "React",
-    desc: "Interface de utilizador responsiva para criação e visualização dos relatórios.",
+    desc: "Interface responsiva para navegação de pastas, upload de ficheiros e gestão de utilizadores.",
     color: "#61DAFB",
   },
   {
     label: "Backend",
-    tech: "FastAPI",
-    desc: "API REST rápida em Python, separada do frontend, com validação automática de dados.",
-    color: "#009688",
+    tech: "PHP Puro",
+    desc: "API sem framework — PHP nativo a lidar com pedidos HTTP, sessões e lógica de negócio.",
+    color: "#8892BF",
   },
   {
     label: "Base de Dados",
-    tech: "MongoDB",
-    desc: "Documentos JSON flexíveis para armazenar relatórios com estruturas variáveis.",
-    color: "#47A248",
+    tech: "MySQL",
+    desc: "Modelação relacional para utilizadores, pastas, ficheiros e permissões com MySQL Workbench.",
+    color: "#4479A1",
   },
 ];
 
-export default function PfirePage() {
+export default function Psafe365CloudPage() {
   return (
     <div style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
 
@@ -75,16 +96,16 @@ export default function PfirePage() {
             ← Todos os projectos
           </Link>
 
-          <p className="section-label-port">Projecto 02</p>
+          <p className="section-label-port">Projecto 03</p>
           <h1
             className="section-title-port"
             style={{ fontSize: "clamp(26px, 4vw, 48px)", display: "flex", alignItems: "center", gap: 14, marginBottom: 16, flexWrap: "wrap" }}
           >
-            <FaFire style={{ color: "#FF6F00", fontSize: "0.8em", flexShrink: 0 }} />
-            Pfire
+            <FaCloud style={{ color: "#3b82f6", fontSize: "0.8em", flexShrink: 0 }} />
+            Psafe365 Cloud
           </h1>
-          <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, maxWidth: 620, marginBottom: 28 }}>
-            Aplicação <span style={{ color: "var(--port-text)" }}>FARM Stack</span> para geração de relatórios de inspeção de segurança de dispositivos de emergência e socorro — extintores, saídas de emergência e afins.
+          <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, maxWidth: 640, marginBottom: 28 }}>
+            Plataforma de armazenamento em nuvem privada — construída com <span style={{ color: "var(--port-text)" }}>React</span>, <span style={{ color: "var(--port-text)" }}>PHP puro</span> e <span style={{ color: "var(--port-text)" }}>MySQL</span>. Funciona como o Google Drive com gestão de pastas, ficheiros e controlo de acessos multi-utilizador.
           </p>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -97,21 +118,26 @@ export default function PfirePage() {
           </div>
         </div>
 
-        {/* Screenshot principal */}
-        <div style={{ marginBottom: 64, borderRadius: 16, overflow: "hidden", border: "1px solid var(--port-border)", position: "relative" }}>
-          <img
-            src={LoginLight}
-            alt="Pfire — Ecrã de login"
-            style={{ width: "100%", display: "block", objectFit: "cover", objectPosition: "top" }}
-          />
-          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 70%, var(--port-bg) 100%)" }} />
+        {/* Screenshots */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 64 }} className="psafe-screenshots-grid">
+          {[
+            { src: LoginDark, alt: "Psafe365 Cloud — Ecrã de login", label: "Login" },
+            { src: HomeDark,  alt: "Psafe365 Cloud — Explorador de ficheiros", label: "Explorador de Ficheiros" },
+          ].map(({ src, alt, label }) => (
+            <div key={label} style={{ borderRadius: 14, overflow: "hidden", border: "1px solid var(--port-border)", position: "relative" }}>
+              <img src={src} alt={alt} style={{ width: "100%", display: "block", objectFit: "cover", objectPosition: "top" }} />
+              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top, rgba(8,13,20,0.85) 0%, transparent 100%)", padding: "20px 16px 12px" }}>
+                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>{label}</span>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Funcionalidades */}
         <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 24 }}>
           Funcionalidades
         </p>
-        <div className="pfire-features-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 64 }}>
+        <div className="psafe-features-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginBottom: 64 }}>
           {features.map(({ icon, title, desc }) => (
             <div
               key={title}
@@ -126,9 +152,27 @@ export default function PfirePage() {
           ))}
         </div>
 
-        {/* Arquitetura FARM */}
+        {/* Tipos de utilizador */}
         <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 24 }}>
-          Arquitectura FARM Stack
+          Tipos de Utilizador
+        </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 64 }}>
+          {userRoles.map(({ role, color, bg, desc }) => (
+            <div
+              key={role}
+              style={{ display: "flex", alignItems: "flex-start", gap: 16, background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 14, padding: "18px 22px" }}
+            >
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", color, background: bg, padding: "4px 12px", borderRadius: 100, whiteSpace: "nowrap", flexShrink: 0, marginTop: 2 }}>
+                {role}
+              </span>
+              <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7, margin: 0 }}>{desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Arquitectura */}
+        <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 24 }}>
+          Arquitectura
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 64 }}>
           {architecture.map(({ label, tech, desc, color }, i) => (
@@ -168,7 +212,8 @@ export default function PfirePage() {
         .page-inner { padding: 0 60px; }
         @media (max-width: 768px) {
           .page-inner { padding: 0 20px; }
-          .pfire-features-grid { grid-template-columns: 1fr !important; }
+          .psafe-features-grid { grid-template-columns: 1fr !important; }
+          .psafe-screenshots-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>
