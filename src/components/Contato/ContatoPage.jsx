@@ -4,7 +4,7 @@ import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
 import "../../assets/styles/styles.css";
 
 const EMAILJS_SERVICE_ID  = "service_zubrq4t";
-const EMAILJS_TEMPLATE_ID = "template_evhi4qv";
+const EMAILJS_TEMPLATE_ID = "template_chju4lv";
 const EMAILJS_PUBLIC_KEY  = "1WxriWuBAt52ByIdp";
 
 function ContatoPage() {
