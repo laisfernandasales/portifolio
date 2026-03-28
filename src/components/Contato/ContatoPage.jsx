@@ -3,9 +3,10 @@ import emailjs from "@emailjs/browser";
 import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
 import "../../assets/styles/styles.css";
 
-const EMAILJS_SERVICE_ID  = "service_zubrq4t";
-const EMAILJS_TEMPLATE_ID = "template_chju4lv";
-const EMAILJS_PUBLIC_KEY  = "1WxriWuBAt52ByIdp";
+const EMAILJS_SERVICE_ID       = "service_zubrq4t";
+const EMAILJS_TEMPLATE_CONTACT = "template_evhi4qv"; // Contact Us → email para ti
+const EMAILJS_TEMPLATE_REPLY   = "template_chju4lv"; // Auto-Reply → email para o utilizador
+const EMAILJS_PUBLIC_KEY       = "1WxriWuBAt52ByIdp";
 
 function ContatoPage() {
   const formRef = useRef(null);
@@ -18,19 +19,22 @@ function ContatoPage() {
     setSending(true);
     setError(null);
 
-    emailjs
-      .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, { publicKey: EMAILJS_PUBLIC_KEY })
-      .then(
-        () => {
-          setSent(true);
-          setSending(false);
-        },
-        (error) => {
-          setError("Ocorreu um erro ao enviar. Tenta novamente ou contacta-me directamente.");
-          setSending(false);
-          console.error("EmailJS error:", error.text);
-        }
-      );
+    const opts = { publicKey: EMAILJS_PUBLIC_KEY };
+
+    Promise.all([
+      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONTACT, formRef.current, opts),
+      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_REPLY,   formRef.current, opts),
+    ]).then(
+      () => {
+        setSent(true);
+        setSending(false);
+      },
+      (err) => {
+        setError("Ocorreu um erro ao enviar. Tenta novamente ou contacta-me directamente.");
+        setSending(false);
+        console.error("EmailJS error:", err.text);
+      }
+    );
   };
 
   return (
