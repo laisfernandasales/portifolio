@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs } from "react-icons/fa";
+import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaPhp } from "react-icons/fa";
 import {
   SiTailwindcss, SiJavascript, SiTypescript, SiNextdotjs,
-   SiMysql, SiMongodb, SiFirebase, SiFigma, SiGit,
+  SiMysql, SiMongodb, SiFirebase, SiFigma, SiGit,
+  SiFastapi, SiJsonwebtokens, SiSendgrid,
 } from "react-icons/si";
 import FotoHome from "../../assets/FotoHome.jpeg";
 import CurriculoPDF from "../../assets/CurriculoLaisMelo.pdf";
@@ -16,7 +17,7 @@ import "../../assets/styles/styles.css";
 /* ── Dados ── */
 const skillCategories = [
   {
-    title: "Frontend & Backend",
+    title: "Frontend",
     skills: [
       { icon: <FaHtml5       style={{ color: "#E44D26" }} />, name: "HTML5"      },
       { icon: <FaCss3Alt     style={{ color: "#1572B6" }} />, name: "CSS3"       },
@@ -25,8 +26,14 @@ const skillCategories = [
       { icon: <FaReact       style={{ color: "#61DAFB" }} />, name: "React"      },
       { icon: <SiNextdotjs   style={{ color: "#ffffff" }} />, name: "Next.js"    },
       { icon: <SiTailwindcss style={{ color: "#06B6D4" }} />, name: "Tailwind"   },
-      { icon: <FaNodeJs      style={{ color: "#339933" }} />, name: "Node.js"    },
-     
+    ],
+  },
+  {
+    title: "Backend",
+    skills: [
+      { icon: <FaNodeJs   style={{ color: "#339933" }} />, name: "Node.js" },
+      { icon: <FaPhp      style={{ color: "#8892BF" }} />, name: "PHP"     },
+      { icon: <SiFastapi  style={{ color: "#009688" }} />, name: "FastAPI" },
     ],
   },
   {
@@ -38,10 +45,12 @@ const skillCategories = [
     ],
   },
   {
-    title: "Ferramentas",
+    title: "Serviços & Ferramentas",
     skills: [
-      { icon: <SiFigma style={{ color: "#F24E1E" }} />, name: "Figma" },
-      { icon: <SiGit   style={{ color: "#F05032" }} />, name: "Git"   },
+      { icon: <SiJsonwebtokens style={{ color: "#d63aff" }} />, name: "JWT"      },
+      { icon: <SiSendgrid      style={{ color: "#1A82E2" }} />, name: "SendGrid" },
+      { icon: <SiFigma         style={{ color: "#F24E1E" }} />, name: "Figma"    },
+      { icon: <SiGit           style={{ color: "#F05032" }} />, name: "Git"      },
     ],
   },
 ];
@@ -67,9 +76,9 @@ const projects = [
   },
   {
     num: "03",
-    tags: ["React", "PHP", "MySQL"],
+    tags: ["React", "PHP", "MySQL", "JWT"],
     title: "Psafe365 Cloud",
-    desc: "Plataforma de armazenamento em nuvem privada com gestão de pastas, ficheiros e controlo de acessos multi-utilizador.",
+    desc: "Gestor FTP web sobre servidor Linux — permissões hierárquicas, recuperação de senha com JWT e emails transacionais via SendGrid.",
     route: "/projetos/psafe365",
     gradient: "linear-gradient(135deg, #0a1828, #060e1c)",
     imageSrc: PsafeLogin,
