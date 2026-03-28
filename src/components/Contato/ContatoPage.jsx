@@ -20,14 +20,17 @@ function ContatoPage() {
 
     emailjs
       .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, { publicKey: EMAILJS_PUBLIC_KEY })
-      .then(() => {
-        setSent(true);
-        setSending(false);
-      })
-      .catch(() => {
-        setError("Ocorreu um erro ao enviar. Tenta novamente ou contacta-me directamente.");
-        setSending(false);
-      });
+      .then(
+        () => {
+          setSent(true);
+          setSending(false);
+        },
+        (error) => {
+          setError("Ocorreu um erro ao enviar. Tenta novamente ou contacta-me directamente.");
+          setSending(false);
+          console.error("EmailJS error:", error.text);
+        }
+      );
   };
 
   return (
