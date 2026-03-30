@@ -483,9 +483,8 @@ html:not(.dark) footer { border-top-color: rgba(15,30,80,0.12); }
   .scroll-dots-nav { display: none; }
 }
 
-/* ── Navbar mobile / desktop visibility ── */
+/* ── Navbar mobile ── */
 .mobile-navbar-port {
-  display: none !important;
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
@@ -499,10 +498,6 @@ html:not(.dark) .mobile-navbar-port {
   background: rgba(221, 230, 242, 0.92);
 }
 
-@media (max-width: 768px) {
-  .desktop-nav-port { display: none !important; }
-  .mobile-navbar-port { display: flex !important; }
-}
 
 /* ── Noise overlay ── */
 .noise-overlay {
@@ -940,7 +935,6 @@ html:not(.dark) .mobile-navbar-port {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px 60px;

@@ -177,9 +177,9 @@ function HomePage() {
             <a href={CurriculoPDF} download className="btn-port-primary">
               <FiDownload /> Download CV
             </a>
-            <Link to="/projetos" className="btn-port-ghost">
+            <button onClick={() => scrollTo("projetos")} className="btn-port-ghost">
               Ver Projetos →
-            </Link>
+            </button>
           </div>
 
           <div className="stats-row-port fade-up-7">

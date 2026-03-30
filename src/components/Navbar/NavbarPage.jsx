@@ -18,8 +18,8 @@ function NavbarPage() {
 
   return (
     <>
-      {/* ── Desktop navbar ── */}
-      <nav className="nav-port desktop-nav-port">
+      {/* Desktop — visível a partir de md (≥768px) */}
+      <nav className="nav-port hidden md:flex">
         <Link to="/" className="nav-logo-port">
           Laismelo<span style={{ color: "var(--port-cyan)" }}>.</span>dev
         </Link>
@@ -33,7 +33,7 @@ function NavbarPage() {
         </ul>
       </nav>
 
-      {/* ── Mobile navbar ── */}
+      {/* Mobile — visível abaixo de md (<768px) */}
       <MobileMenu />
     </>
   );
