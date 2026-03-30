@@ -1,18 +1,27 @@
 import {
   FiImage, FiFilter, FiCheckCircle,
-  FiDollarSign, FiMail, FiLayout, FiClipboard,
+  FiDollarSign, FiMail, FiLayout, FiClipboard, FiMapPin,
 } from "react-icons/fi";
+import { SiNextdotjs, SiFirebase, SiTailwindcss, SiSendgrid } from "react-icons/si";
 import { Link } from "react-router-dom";
 import "../../../../assets/styles/styles.css";
 
+const stack = [
+  { icon: <SiNextdotjs size={16} />, name: "Next.js" },
+  { icon: <SiFirebase size={16} style={{ color: "#FF6F00" }} />, name: "Firestore" },
+  { icon: <SiTailwindcss size={16} style={{ color: "#06B6D4" }} />, name: "Tailwind CSS" },
+  { icon: <SiSendgrid size={16} style={{ color: "#1A82E2" }} />, name: "SendGrid" },
+];
+
 const features = [
-  { icon: <FiImage />,       color: "#a78bfa", title: "Catálogo de eventos", desc: "Imagem, nome do evento, endereço e preço apresentados de forma clara e visual." },
-  { icon: <FiFilter />,      color: "var(--port-cyan)", title: "Filtro por categoria", desc: "Filtragem por tipo de evento: castelos, museus, galerias e actividades culturais." },
-  { icon: <FiClipboard />,   color: "#34d399", title: "Formulário validado", desc: "Compra com validações completas: nome, email, NIF, data e número de bilhetes." },
-  { icon: <FiDollarSign />,  color: "#fbbf24", title: "Cálculo automático", desc: "Valor total calculado dinamicamente conforme a quantidade de bilhetes seleccionados." },
-  { icon: <FiCheckCircle />, color: "#34d399", title: "Confirmação visual", desc: "Ecrã de sucesso após compra com resumo do pedido e próximos passos." },
+  { icon: <FiImage />,       color: "#a78bfa", title: "Catálogo de eventos", desc: "Imagem, nome, localização e preço de cada evento apresentados de forma visual e clara." },
+  { icon: <FiFilter />,      color: "var(--port-cyan)", title: "Filtro por categoria", desc: "Filtragem por tipo: castelos, museus, galerias de arte e actividades culturais." },
+  { icon: <FiMapPin />,      color: "#34d399", title: "Informação local", desc: "Endereço e detalhes de cada atracção para ajudar o visitante a planear a visita." },
+  { icon: <FiClipboard />,   color: "#fbbf24", title: "Formulário validado", desc: "Processo de compra com validações completas: nome, email, NIF, data e número de bilhetes." },
+  { icon: <FiDollarSign />,  color: "#818cf8", title: "Cálculo automático", desc: "Valor total calculado dinamicamente conforme a quantidade de bilhetes seleccionados." },
+  { icon: <FiCheckCircle />, color: "#34d399", title: "Confirmação visual", desc: "Ecrã de sucesso após compra com resumo detalhado do pedido e próximos passos." },
   { icon: <FiMail />,        color: "#f87171", title: "Bilhete por email", desc: "Envio automático do bilhete em PDF para o email do comprador via SendGrid." },
-  { icon: <FiLayout />,      color: "#818cf8", title: "Responsivo", desc: "Layout adaptado a todos os tamanhos de ecrã com suporte ao tema claro e escuro." },
+  { icon: <FiLayout />,      color: "#f472b6", title: "Responsivo", desc: "Layout adaptado a todos os tamanhos de ecrã com suporte ao tema claro e escuro." },
 ];
 
 export default function BilheteiraPage() {
@@ -35,13 +44,28 @@ export default function BilheteiraPage() {
           <span style={{ color: "var(--port-cyan)" }}>Bilheteira</span>
         </div>
 
-        <p className="section-label-port">Módulo 02</p>
-        <h1 className="section-title-port" style={{ fontSize: "clamp(22px, 3.5vw, 42px)", marginBottom: 14 }}>
-          Bilheteira de Museus & Eventos
-        </h1>
-        <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, maxWidth: 560, marginBottom: 40 }}>
-          Sistema de compra online de bilhetes para <span style={{ color: "var(--port-text)" }}>museus e eventos culturais</span> — catálogo filtrável, checkout validado e envio automático do bilhete em PDF por email.
-        </p>
+        {/* Cabeçalho */}
+        <div style={{ marginBottom: 40 }}>
+          <p className="section-label-port">Módulo 02</p>
+          <h1 className="section-title-port" style={{ fontSize: "clamp(22px, 3.5vw, 42px)", marginBottom: 18 }}>
+            Bilheteira de Museus & Eventos
+          </h1>
+          <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.85, maxWidth: 660, marginBottom: 14 }}>
+            Sistema de venda online de bilhetes para <span style={{ color: "var(--port-text)" }}>museus, exposições e eventos culturais regionais</span>, com o objectivo de promover o turismo local e facilitar o acesso a experiências culturais. O catálogo é filtrado por tipo de atracção e apresenta cada evento com imagem, localização e preço, tornando a descoberta simples e apelativa.
+          </p>
+          <p style={{ color: "var(--port-muted)", fontSize: 14, lineHeight: 1.8, maxWidth: 660, marginBottom: 24 }}>
+            Após a selecção do evento, o utilizador preenche um formulário validado com os dados da compra. Concluído o pagamento, o bilhete é gerado em <span style={{ color: "var(--port-text)" }}>PDF e enviado automaticamente por email</span> via SendGrid — eliminando a necessidade de bilheteiras físicas e aproximando organizadores de eventos ao mundo digital.
+          </p>
+
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            {stack.map(({ icon, name }) => (
+              <div key={name} className="tech-pill-port" style={{ fontSize: 12 }}>
+                <span style={{ display: "flex", alignItems: "center", color: "var(--port-cyan)" }}>{icon}</span>
+                <span style={{ color: "var(--port-text)", fontWeight: 500 }}>{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Vídeo */}
         <div style={{ marginBottom: 48, borderRadius: 16, overflow: "hidden", border: "1px solid var(--port-border)", boxShadow: "0 24px 60px rgba(0,0,0,0.4)" }}>
@@ -62,7 +86,7 @@ export default function BilheteiraPage() {
         <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 20 }}>
           Funcionalidades
         </p>
-        <div className="features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 16, marginBottom: 60 }}>
+        <div className="features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 16, marginBottom: 40 }}>
           {features.map(({ icon, color, title, desc }) => (
             <div key={title} style={{ background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 14, padding: 20, transition: "all 0.25s", cursor: "default" }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--port-cyan)"; e.currentTarget.style.background = "var(--port-cyan-glow)"; }}
@@ -75,6 +99,14 @@ export default function BilheteiraPage() {
               <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.6 }}>{desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* Desafio técnico */}
+        <div style={{ marginBottom: 48, padding: "20px 24px", borderRadius: 10, border: "1px solid var(--port-border)", background: "var(--port-card)" }}>
+          <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--port-cyan)", marginBottom: 8 }}>Desafio técnico</p>
+          <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.75, margin: 0 }}>
+            A integração com o SendGrid para geração e envio do bilhete em PDF foi o ponto mais exigente deste módulo. Foi necessário garantir que o documento chegasse correctamente formatado independentemente do cliente de email do utilizador, e que o processo de envio fosse fiável mesmo em cenários de falha de rede — com reenvio automático e feedback visual imediato ao comprador.
+          </p>
         </div>
 
         {/* Rodapé */}

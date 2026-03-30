@@ -1,5 +1,5 @@
-import { FaPlane, FaUtensils, FaTicketAlt } from "react-icons/fa";
-import { SiNextdotjs, SiFirebase, SiTailwindcss } from "react-icons/si";
+import { FaPlane, FaUtensils, FaTicketAlt, FaShieldAlt, FaBell, FaStar, FaUsers, FaGlobe } from "react-icons/fa";
+import { SiNextdotjs, SiFirebase, SiTailwindcss, SiGooglecloud, SiSendgrid, SiGithubactions } from "react-icons/si";
 import { Link } from "react-router-dom";
 import MercadoLight from "../../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
 import BilheteiraLight from "../../../assets/ViagensEmCasa/Bilheteria/BilheteiraLight.png";
@@ -9,6 +9,17 @@ const stack = [
   { icon: <SiNextdotjs size={18} />, name: "Next.js" },
   { icon: <SiFirebase size={18} style={{ color: "#FF6F00" }} />, name: "Firebase" },
   { icon: <SiTailwindcss size={18} style={{ color: "#06B6D4" }} />, name: "Tailwind CSS" },
+  { icon: <SiSendgrid size={18} style={{ color: "#1A82E2" }} />, name: "SendGrid" },
+  { icon: <SiGooglecloud size={18} style={{ color: "#4285F4" }} />, name: "Cloud Storage" },
+  { icon: <SiGithubactions size={18} style={{ color: "#2088FF" }} />, name: "GitHub Actions" },
+];
+
+const highlights = [
+  { icon: <FaGlobe size={15} />, label: "Internacionalização", desc: "Suporte a PT, ES e EN via i18next" },
+  { icon: <FaShieldAlt size={15} />, label: "Autenticação segura", desc: "Email, Google OAuth e reCAPTCHA v3" },
+  { icon: <FaBell size={15} />, label: "Notificações em tempo real", desc: "Actualizações automáticas via Firestore" },
+  { icon: <FaStar size={15} />, label: "Avaliações e comentários", desc: "Feedback de clientes em produtos e eventos" },
+  { icon: <FaUsers size={15} />, label: "Gestão de vendedores", desc: "Painel de estatísticas e moderação de conteúdos" },
 ];
 
 const modules = [
@@ -50,18 +61,40 @@ export default function ViagensEmCasa() {
           </Link>
 
           <p className="section-label-port">Projecto 01</p>
-          <h1 className="section-title-port" style={{ fontSize: "clamp(26px, 4vw, 48px)", display: "flex", alignItems: "center", gap: 14, marginBottom: 16, flexWrap: "wrap" }}>
+          <h1 className="section-title-port" style={{ fontSize: "clamp(26px, 4vw, 48px)", display: "flex", alignItems: "center", gap: 14, marginBottom: 20, flexWrap: "wrap" }}>
             <FaPlane style={{ color: "var(--port-cyan)", fontSize: "0.8em", flexShrink: 0 }} />
             Viagens em Casa
           </h1>
-          <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, maxWidth: 580, marginBottom: 28 }}>
-            E-commerce desenvolvido com <span style={{ color: "var(--port-text)" }}>Next.js</span> focado em experiências culturais no conforto do lar — mercado de produtos regionais e bilheteira virtual para museus e eventos culturais.
+
+          <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.85, maxWidth: 680, marginBottom: 16 }}>
+            Plataforma digital desenvolvida para <span style={{ color: "var(--port-text)" }}>fomentar a economia local</span> de regiões menos populosas, conectando pequenos produtores e comerciantes ao mercado online. Através de um marketplace de produtos regionais e de uma bilheteira virtual para eventos e atrações culturais, a plataforma apoia o turismo local e preserva a identidade cultural de cada região.
           </p>
+          <p style={{ color: "var(--port-muted)", fontSize: 14, lineHeight: 1.8, maxWidth: 680, marginBottom: 28 }}>
+            Desenhada para ser acessível a utilizadores com pouca experiência tecnológica, a interface suporta <span style={{ color: "var(--port-text)" }}>múltiplos idiomas</span> e alcança também emigrantes e turistas internacionais que desejam manter contacto com a cultura e economia da sua terra natal.
+          </p>
+
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             {stack.map(({ icon, name }) => (
               <div key={name} className="tech-pill-port" style={{ fontSize: 13 }}>
                 <span style={{ display: "flex", alignItems: "center", color: "var(--port-cyan)" }}>{icon}</span>
                 <span style={{ color: "var(--port-text)", fontWeight: 500 }}>{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Funcionalidades em destaque */}
+        <div style={{ marginBottom: 52 }}>
+          <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 20 }}>
+            Funcionalidades em destaque
+          </p>
+          <div className="viagens-highlights-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 16 }}>
+            {highlights.map(({ icon, label, desc }) => (
+              <div key={label} style={{ padding: "16px 18px", borderRadius: 10, border: "1px solid var(--port-border)", background: "var(--port-card)", display: "flex", flexDirection: "column", gap: 8 }}>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 7, color: "var(--port-cyan)", fontSize: 13, fontWeight: 600 }}>
+                  {icon} {label}
+                </span>
+                <p style={{ fontSize: 12, color: "var(--port-muted)", lineHeight: 1.6, margin: 0 }}>{desc}</p>
               </div>
             ))}
           </div>
@@ -96,8 +129,16 @@ export default function ViagensEmCasa() {
           ))}
         </div>
 
+        {/* Nota de contexto */}
+        <div style={{ marginTop: 40, padding: "20px 24px", borderRadius: 10, border: "1px solid var(--port-border)", background: "var(--port-card)" }}>
+          <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.75, margin: 0 }}>
+            <span style={{ color: "var(--port-cyan)", fontWeight: 600 }}>Contexto académico — </span>
+            A plataforma foi desenvolvida como projecto de demonstração, provando a viabilidade técnica de um marketplace dedicado ao comércio e turismo local. Embora não esteja em produção, representa uma solução concreta para a digitalização de regiões com menor desenvolvimento tecnológico, incentivando a adopção de tecnologia no sector turístico e comercial.
+          </p>
+        </div>
+
         {/* Rodapé */}
-        <div style={{ marginTop: 60, paddingTop: 32, borderTop: "1px solid var(--port-border)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
+        <div style={{ marginTop: 48, paddingTop: 32, borderTop: "1px solid var(--port-border)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <p style={{ fontSize: 12, color: "var(--port-muted)" }}>
             Desenvolvido por <span style={{ color: "var(--port-text)" }}>Lais Melo</span> & <span style={{ color: "var(--port-text)" }}>Carlos Afonso</span>
           </p>
@@ -109,6 +150,10 @@ export default function ViagensEmCasa() {
         @media (max-width: 768px) {
           .page-inner { padding: 0 20px; }
           .viagens-modules-grid { grid-template-columns: 1fr !important; }
+          .viagens-highlights-grid { grid-template-columns: 1fr 1fr !important; }
+        }
+        @media (max-width: 480px) {
+          .viagens-highlights-grid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>

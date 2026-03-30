@@ -1,18 +1,29 @@
 import {
   FaShoppingCart, FaSearch, FaPlusCircle,
   FaCalculator, FaTrashAlt, FaBox, FaMobileAlt,
+  FaStore,
 } from "react-icons/fa";
+import { SiNextdotjs, SiFirebase, SiTailwindcss } from "react-icons/si";
+import { MdAdminPanelSettings } from "react-icons/md";
 import { Link } from "react-router-dom";
 import "../../../../assets/styles/styles.css";
 
+const stack = [
+  { icon: <SiNextdotjs size={16} />, name: "Next.js" },
+  { icon: <SiFirebase size={16} style={{ color: "#FF6F00" }} />, name: "Firestore" },
+  { icon: <SiTailwindcss size={16} style={{ color: "#06B6D4" }} />, name: "Tailwind CSS" },
+  { icon: <MdAdminPanelSettings size={16} style={{ color: "#a78bfa" }} />, name: "Auth.js" },
+];
+
 const features = [
-  { icon: <FaShoppingCart />, color: "#a78bfa", title: "Catálogo", desc: "Produtos regionais com imagens, nomes e preços organizados por categoria." },
-  { icon: <FaSearch />,       color: "var(--port-cyan)", title: "Filtro & Ordenação", desc: "Filtro por categoria de produto e ordenação por preço ascendente/descendente." },
-  { icon: <FaPlusCircle />,   color: "#34d399", title: "Carrinho em tempo real", desc: "Adição de produtos ao carrinho com atualização instantânea do total." },
-  { icon: <FaCalculator />,   color: "#fbbf24", title: "Cálculo automático", desc: "Soma do valor total da compra calculada automaticamente a cada alteração." },
-  { icon: <FaTrashAlt />,     color: "#f87171", title: "Gestão do carrinho", desc: "Remover itens, ajustar quantidades e limpar o carrinho com um clique." },
-  { icon: <FaBox />,          color: "#818cf8", title: "Simulação de envio", desc: "Formulário de checkout com nome, morada e telefone do destinatário." },
-  { icon: <FaMobileAlt />,    color: "#f472b6", title: "Responsivo", desc: "Interface adaptada a todos os dispositivos com suporte ao tema claro e escuro." },
+  { icon: <FaShoppingCart />, color: "#a78bfa", title: "Catálogo regional", desc: "Produtos alimentares típicos de diversas regiões do país, com imagens, nomes e preços organizados por categoria." },
+  { icon: <FaSearch />,       color: "var(--port-cyan)", title: "Filtro & ordenação", desc: "Filtragem por categoria de produto e ordenação por preço ascendente ou descendente." },
+  { icon: <FaPlusCircle />,   color: "#34d399", title: "Carrinho em tempo real", desc: "Adição de produtos ao carrinho com actualização instantânea de quantidades e valor total." },
+  { icon: <FaCalculator />,   color: "#fbbf24", title: "Cálculo automático", desc: "Soma do valor total da compra recalculada automaticamente a cada alteração no carrinho." },
+  { icon: <FaTrashAlt />,     color: "#f87171", title: "Gestão do carrinho", desc: "Remover itens individuais, ajustar quantidades e limpar o carrinho por completo." },
+  { icon: <FaBox />,          color: "#818cf8", title: "Simulação de checkout", desc: "Formulário de envio completo com nome, morada e contacto do destinatário." },
+  { icon: <FaStore />,        color: "#34d399", title: "Painel de vendedor", desc: "Área reservada a vendedores para gerir produtos, consultar pedidos e acompanhar estatísticas de vendas." },
+  { icon: <FaMobileAlt />,    color: "#f472b6", title: "Responsivo", desc: "Interface adaptada a todos os tamanhos de ecrã com suporte ao tema claro e escuro." },
 ];
 
 export default function MercadoPage() {
@@ -35,13 +46,28 @@ export default function MercadoPage() {
           <span style={{ color: "var(--port-cyan)" }}>Mercado Regional</span>
         </div>
 
-        <p className="section-label-port">Módulo 01</p>
-        <h1 className="section-title-port" style={{ fontSize: "clamp(22px, 3.5vw, 42px)", marginBottom: 14 }}>
-          Mercado de Comidas Regionais
-        </h1>
-        <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, maxWidth: 560, marginBottom: 40 }}>
-          Loja virtual com foco em <span style={{ color: "var(--port-text)" }}>produtos alimentares regionais</span> — catálogo filtrável, carrinho em tempo real e simulação de checkout completa.
-        </p>
+        {/* Cabeçalho */}
+        <div style={{ marginBottom: 40 }}>
+          <p className="section-label-port">Módulo 01</p>
+          <h1 className="section-title-port" style={{ fontSize: "clamp(22px, 3.5vw, 42px)", marginBottom: 18 }}>
+            Mercado de Comidas Regionais
+          </h1>
+          <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.85, maxWidth: 660, marginBottom: 14 }}>
+            Loja virtual concebida para dar <span style={{ color: "var(--port-text)" }}>visibilidade digital a pequenos produtores locais</span>, permitindo-lhes listar e vender os seus produtos directamente ao consumidor final, sem intermediários. O catálogo reúne produtos alimentares típicos de diversas regiões do país, organizados por categoria e com filtros de pesquisa para facilitar a descoberta.
+          </p>
+          <p style={{ color: "var(--port-muted)", fontSize: 14, lineHeight: 1.8, maxWidth: 660, marginBottom: 24 }}>
+            O fluxo de compra é simples e intuitivo — pensado para utilizadores com pouca experiência tecnológica — desde a navegação no catálogo até ao preenchimento do formulário de envio, com carrinho em tempo real e cálculo automático do total.
+          </p>
+
+          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            {stack.map(({ icon, name }) => (
+              <div key={name} className="tech-pill-port" style={{ fontSize: 12 }}>
+                <span style={{ display: "flex", alignItems: "center", color: "var(--port-cyan)" }}>{icon}</span>
+                <span style={{ color: "var(--port-text)", fontWeight: 500 }}>{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
 
         {/* Vídeo */}
         <div style={{ marginBottom: 48, borderRadius: 16, overflow: "hidden", border: "1px solid var(--port-border)", boxShadow: "0 24px 60px rgba(0,0,0,0.4)" }}>
@@ -62,7 +88,7 @@ export default function MercadoPage() {
         <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 20 }}>
           Funcionalidades
         </p>
-        <div className="features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 16, marginBottom: 60 }}>
+        <div className="features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 16, marginBottom: 40 }}>
           {features.map(({ icon, color, title, desc }) => (
             <div key={title} style={{ background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 14, padding: 20, transition: "all 0.25s", cursor: "default" }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--port-cyan)"; e.currentTarget.style.background = "var(--port-cyan-glow)"; }}
@@ -75,6 +101,14 @@ export default function MercadoPage() {
               <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.6 }}>{desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* Desafio técnico */}
+        <div style={{ marginBottom: 48, padding: "20px 24px", borderRadius: 10, border: "1px solid var(--port-border)", background: "var(--port-card)" }}>
+          <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--port-cyan)", marginBottom: 8 }}>Desafio técnico</p>
+          <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.75, margin: 0 }}>
+            O principal desafio foi garantir que o fluxo de compra fosse acessível para utilizadores com pouca experiência digital — desde a descoberta do produto até à confirmação da encomenda — sem sacrificar robustez técnica. A sincronização do carrinho com o Firestore em tempo real exigiu um cuidado especial na gestão de estado para evitar inconsistências entre sessões.
+          </p>
         </div>
 
         {/* Rodapé */}
