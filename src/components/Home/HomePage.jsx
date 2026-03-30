@@ -1,5 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+// ── Imports de React ──────────────────────────────────────────────────────────
 import { Link } from "react-router-dom";
+
+// ── Ícones (react-icons) ──────────────────────────────────────────────────────
 import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaPhp } from "react-icons/fa";
 import {
@@ -7,14 +9,17 @@ import {
   SiMysql, SiMongodb, SiFirebase, SiFigma, SiGit,
   SiFastapi, SiJsonwebtokens, SiSendgrid,
 } from "react-icons/si";
+
+// ── Assets ────────────────────────────────────────────────────────────────────
 import FotoHome from "../../assets/FotoHome.jpeg";
 import CurriculoPDF from "../../assets/CurriculoLaisMelo.pdf";
 import ViagensMercado from "../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
 import PfireLogin from "../../assets/Pfire/LoginLight.png";
-import PsafeLogin from "../../assets/Psafe365Cloud/LoginDark.png"
+import PsafeLogin from "../../assets/Psafe365Cloud/LoginDark.png";
 import "../../assets/styles/styles.css";
 
-/* ── Dados ── */
+// ── Dados: categorias de tecnologias da stack ─────────────────────────────────
+// Cada categoria agrupa ícones e nomes das tecnologias usadas
 const skillCategories = [
   {
     title: "Frontend",
@@ -55,6 +60,7 @@ const skillCategories = [
   },
 ];
 
+// ── Dados: lista de projetos exibidos na secção #projetos ─────────────────────
 const projects = [
   {
     num: "01",
@@ -85,56 +91,22 @@ const projects = [
   },
 ];
 
-const SECTIONS = ["inicio", "sobre", "stack", "projetos", "contato"];
-
-/* ── Componente ── */
+// ── Componente principal ──────────────────────────────────────────────────────
 function HomePage() {
-  const [activeSection, setActiveSection] = useState(0);
-  const observerRef = useRef(null);
-
-  useEffect(() => {
-    observerRef.current = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const idx = SECTIONS.indexOf(entry.target.id);
-            if (idx !== -1) setActiveSection(idx);
-          }
-        });
-      },
-      { threshold: 0.4 }
-    );
-
-    SECTIONS.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observerRef.current.observe(el);
-    });
-
-    return () => observerRef.current?.disconnect();
-  }, []);
-
+  // Scroll suave até à secção com o id fornecido
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
     <div className="w-full">
-      {/* Scroll dots */}
-      <div className=" md:flex">
-        {SECTIONS.map((id, i) => (
-          <span key={id} style={{ display: "contents" }}>
-            {i > 0 && <div className="dot-line-nav" />}
-            <button
-              className={`dot-nav${activeSection === i ? " active" : ""}`}
-              onClick={() => scrollTo(id)}
-              aria-label={`Ir para ${id}`}
-            />
-          </span>
-        ))}
-      </div>
 
-      {/* ── HERO ── */}
+      {/* ════════════════════════════════════════════════════════════════════
+          SECÇÃO 1 — HERO
+          Apresentação principal: nome, título, CV, botão projetos e foto
+      ════════════════════════════════════════════════════════════════════ */}
       <section id="inicio" className="hero-port">
-        {/* Glow bg */}
+
+        {/* Efeito de glow no canto superior esquerdo */}
         <div
           className="glow-port"
           style={{
@@ -144,47 +116,54 @@ function HomePage() {
           }}
         />
 
-        {/* Texto */}
+        {/* Bloco de texto principal */}
         <div>
+          {/* Badge "Disponível para projetos" com ponto pulsante */}
           <div className="hero-badge-port fade-up-1">
             <span className="badge-pulse-dot" />
             Disponível para projetos
           </div>
 
+          {/* Subtítulo "Me chamo" */}
           <p className="fade-up-2" style={{ fontSize: 12, fontWeight: 500, letterSpacing: "3px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 12 }}>
             Me chamo
           </p>
 
+          {/* Nome */}
           <h3 className="fade-up-3 section-title-port" style={{ fontSize: "clamp(28px, 4vw, 35px)", lineHeight: 1, letterSpacing: "-2px", marginBottom: 8 }}>
             Lais Melo
           </h3>
 
+          {/* Título profissional */}
           <p className="fade-up-4 font-syne" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", fontWeight: 600, color: "var(--port-cyan)", marginBottom: 24, letterSpacing: "-0.5px" }}>
             Fullstack Developer
           </p>
 
+          {/* Linha decorativa ciano */}
           <div
             className="fade-up-4"
             style={{ width: 48, height: 3, background: "linear-gradient(90deg, var(--port-cyan), transparent)", borderRadius: 2, marginBottom: 24 }}
           />
 
+          {/* Descrição breve */}
           <p className="fade-up-5" style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, maxWidth: 440, marginBottom: 40 }}>
             Especialista no desenvolvimento de websites modernos, rápidos e com foco na experiência do utilizador.
-           
           </p>
 
+          {/* Botões de ação: download CV e scroll para projetos */}
           <div className="hero-actions-port fade-up-6">
             <a href={CurriculoPDF} download className="btn-port-primary">
               <FiDownload /> Download CV
             </a>
+            {/* Scroll suave até à secção #projetos na própria página */}
             <button onClick={() => scrollTo("projetos")} className="btn-port-ghost">
               Ver Projetos →
             </button>
           </div>
 
+          {/* Estatísticas: anos de experiência e nº de tecnologias */}
           <div className="stats-row-port fade-up-7">
             {[
-             
               { val: "2+",  label: "Anos Exp." },
               { val: "12+", label: "Tecnologias" },
             ].map(({ val, label }) => (
@@ -200,9 +179,10 @@ function HomePage() {
           </div>
         </div>
 
-        {/* Foto */}
+        {/* Foto de perfil com forma decorativa animada */}
         <div className="fade-up-photo flex justify-center items-center">
           <div className="photo-frame-port">
+            {/* Forma geométrica de fundo com animação float */}
             <div className="photo-bg-shape-port animate-float" />
             <img
               src={FotoHome}
@@ -210,14 +190,14 @@ function HomePage() {
               className="photo-img-port"
               loading="lazy"
             />
-
-           
-           
           </div>
         </div>
       </section>
 
-      {/* ── SOBRE ── */}
+      {/* ════════════════════════════════════════════════════════════════════
+          SECÇÃO 2 — SOBRE
+          Descrição pessoal e profissional
+      ════════════════════════════════════════════════════════════════════ */}
       <section id="sobre" className="section-port">
         <p className="section-label-port">Sobre mim</p>
         <h2 className="section-title-port">Engenheira de<br />Software FullStack</h2>
@@ -234,23 +214,26 @@ function HomePage() {
               No desenvolvimento de interfaces utilizo Tailwind CSS e Material UI, e trabalho
               com MySQL, MongoDB e Firebase.
             </p>
-           
           </div>
-
-         
         </div>
       </section>
 
-      {/* ── STACK ── */}
+      {/* ════════════════════════════════════════════════════════════════════
+          SECÇÃO 3 — STACK
+          Grelha de tecnologias agrupadas por categoria
+      ════════════════════════════════════════════════════════════════════ */}
       <section id="stack" className="section-port" style={{ minHeight: "auto" }}>
         <p className="section-label-port">Stack</p>
         <h2 className="section-title-port">Stack Tecnológica</h2>
 
+        {/* Itera sobre cada categoria (Frontend, Backend, etc.) */}
         {skillCategories.map((cat) => (
           <div key={cat.title} style={{ width: "100%" }}>
+            {/* Nome da categoria */}
             <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 14, marginTop: 32 }}>
               {cat.title}
             </p>
+            {/* Grelha de pills com ícone + nome de cada tecnologia */}
             <div className="tech-grid-port">
               {cat.skills.map(({ icon, name }) => (
                 <div key={name} className="tech-pill-port">
@@ -263,23 +246,33 @@ function HomePage() {
         ))}
       </section>
 
-      {/* ── PROJETOS ── */}
+      {/* ════════════════════════════════════════════════════════════════════
+          SECÇÃO 4 — PROJETOS
+          Cards clicáveis que redirecionam para a página de detalhe de cada projeto
+      ════════════════════════════════════════════════════════════════════ */}
       <section id="projetos" className="section-port" style={{ minHeight: "auto" }}>
-     
         <div className="projects-grid-port">
           {projects.map((p) => (
+            // Cada card é um Link para a rota de detalhe do projeto
             <Link to={p.route} key={p.num} className="project-card-port">
+
+              {/* Thumbnail: imagem do projeto ou fallback com gradiente */}
               <div style={{ height: 180, background: p.gradient, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
                 {(p.image || p.imageSrc) ? (
                   <img src={p.image || p.imageSrc} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
                 ) : (
+                  // Fallback textual quando não há imagem
                   <span className="font-syne" style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "rgba(0,200,255,0.4)", textTransform: "uppercase" }}>
                     Projeto {p.num}
                   </span>
                 )}
+                {/* Seta de acesso ao detalhe */}
                 <div className="project-arrow-port">↗</div>
               </div>
+
+              {/* Informação do projeto: tags, título e descrição */}
               <div style={{ padding: 20 }}>
+                {/* Tags de tecnologias usadas */}
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
                   {p.tags.map((t) => (
                     <span key={t} style={{ fontSize: 9, fontWeight: 600, letterSpacing: "1.5px", color: "var(--port-cyan)", background: "var(--port-cyan-dim)", padding: "3px 9px", borderRadius: 100, textTransform: "uppercase" }}>
@@ -295,8 +288,13 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ── CONTATO ── */}
+      {/* ════════════════════════════════════════════════════════════════════
+          SECÇÃO 5 — CONTATO
+          CTA final com link para página de contacto e redes sociais
+      ════════════════════════════════════════════════════════════════════ */}
       <section id="contato" className="section-port" style={{ minHeight: "60vh", alignItems: "center", textAlign: "center" }}>
+
+        {/* Efeito de glow no canto inferior direito */}
         <div
           className="glow-port"
           style={{
@@ -316,15 +314,17 @@ function HomePage() {
             Não hesites em entrar em contacto!
           </p>
 
+          {/* Botão que redireciona para a página de formulário de contacto */}
           <Link to="/contato" className="btn-port-primary" style={{ display: "inline-flex", marginBottom: 40 }}>
             Entre em contacto →
           </Link>
 
+          {/* Links para redes sociais e email */}
           <div style={{ display: "flex", gap: 16, justifyContent: "center" }}>
             {[
-              { href: "https://github.com/laisfernandasales",           label: "GitHub",   icon: <FiGithub   size={18} /> },
-              { href: "https://www.linkedin.com/in/lais-fernanda-sales-melo/", label: "LinkedIn", icon: <FiLinkedin size={18} /> },
-              { href: "mailto:laismelo.dev@gmail.com",         label: "Email",    icon: <FiMail     size={18} /> },
+              { href: "https://github.com/laisfernandasales",                    label: "GitHub",   icon: <FiGithub   size={18} /> },
+              { href: "https://www.linkedin.com/in/lais-fernanda-sales-melo/",   label: "LinkedIn", icon: <FiLinkedin size={18} /> },
+              { href: "mailto:laismelo.dev@gmail.com",                           label: "Email",    icon: <FiMail     size={18} /> },
             ].map(({ href, label, icon }) => (
               <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="social-btn-port" title={label}>
                 {icon}
@@ -333,6 +333,7 @@ function HomePage() {
           </div>
         </div>
       </section>
+
     </div>
   );
 }

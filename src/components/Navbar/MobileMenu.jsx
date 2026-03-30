@@ -28,7 +28,7 @@ export default function MobileMenu() {
   };
 
   return (
-    <div className="navbar mobile-navbar-port md:hidden">
+    <div className="navbar mobile-navbar-port">
       {/* Hambúrguer */}
       <div className="navbar-start">
         <details ref={detailsRef} className="dropdown">
