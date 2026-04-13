@@ -12,7 +12,7 @@ import {
 
 // ── Assets ────────────────────────────────────────────────────────────────────
 import FotoHome from "../../assets/FotoHome.jpeg";
-import CurriculoPDF from "../../assets/CurriculoLaisMelo.pdf";
+import CurriculoPDF from "../../assets/lais_melo_cv_final.pdf";
 import ViagensMercado from "../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
 import PfireLogin from "../../assets/Pfire/LoginLight.png";
 import PsafeLogin from "../../assets/Psafe365Cloud/LoginDark.png";
@@ -91,8 +91,8 @@ const projects = [
   },
 ];
 
-// ── Componente principal ──────────────────────────────────────────────────────
-function HomePage() {
+// ── Componente ───────────────────────────────────────────────────────────────
+export default function HomePage() {
   // Scroll suave até à secção com o id fornecido
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -136,7 +136,7 @@ function HomePage() {
 
           {/* Título profissional */}
           <p className="fade-up-4 font-syne" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", fontWeight: 600, color: "var(--port-cyan)", marginBottom: 24, letterSpacing: "-0.5px" }}>
-            Fullstack Developer
+            Frontend Developer
           </p>
 
           {/* Linha decorativa ciano */}
@@ -200,19 +200,22 @@ function HomePage() {
       ════════════════════════════════════════════════════════════════════ */}
       <section id="sobre" className="section-port">
         <p className="section-label-port">Sobre mim</p>
-        <h2 className="section-title-port">Engenheira de<br />Software FullStack</h2>
+        <h2 className="section-title-port">Desenvolvedora<br />Frontend</h2>
 
         <div className="about-grid-port">
           <div>
             <p style={{ color: "var(--port-muted)", lineHeight: 1.9, marginBottom: 20, fontSize: 15 }}>
-              Sou Engenheira de Software com foco no desenvolvimento FullStack, especializada
-              na criação de websites e aplicações web modernas, rápidas e intuitivas.
-              Trabalho tanto no frontend como no backend.
+              Sou Desenvolvedora de Software com especialização no desenvolvimento Frontend,
+              mas com conhecimentos e experiência que abrangem o stack completo. Ao longo dos anos
+              desenvolvi uma forte afinidade com o Frontend — foi onde mais trabalhei e onde me sinto
+              mais à vontade, tanto no meu projecto de fim de curso <span style={{ color: "var(--port-text)" }}>Viagens em Casa</span> como
+              no projecto profissional <span style={{ color: "var(--port-text)" }}>PRIFE</span>.
             </p>
             <p style={{ color: "var(--port-muted)", lineHeight: 1.9, marginBottom: 28, fontSize: 15 }}>
-              Tenho experiência com tecnologias como React.js, Next.js, Node.js, FastAPI e GraphQL.
-              No desenvolvimento de interfaces utilizo Tailwind CSS e Material UI, e trabalho
-              com MySQL, MongoDB e Firebase.
+              Actualmente venho a aprofundar os conhecimentos no Backend, consolidando
+              uma visão mais completa do desenvolvimento web. Trabalho com tecnologias como
+              React.js, Next.js, Node.js, FastAPI e GraphQL, e no design de interfaces utilizo
+              Tailwind CSS e Material UI, com bases de dados MySQL, MongoDB e Firebase.
             </p>
           </div>
         </div>
@@ -335,7 +338,6 @@ function HomePage() {
       </section>
 
     </div>
+
   );
 }
-
-export default HomePage;

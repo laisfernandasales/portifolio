@@ -1,5 +1,5 @@
 import { FaCloud, FaFolder, FaUsers, FaFileAlt, FaUserShield, FaServer, FaLinux, FaKey, FaEnvelope } from "react-icons/fa";
-import { SiReact, SiPhp, SiMysql, SiFilezilla, SiJsonwebtokens, SiSendgrid } from "react-icons/si";
+import { SiReact, SiPhp, SiMysql, SiFilezilla, SiJsonwebtokens } from "react-icons/si";
 import { Link } from "react-router-dom";
 import LoginDark from "../../../assets/Psafe365Cloud/LoginDark.png";
 import HomeDark from "../../../assets/Psafe365Cloud/HomeDark.png";
@@ -12,7 +12,7 @@ const stack = [
   { icon: <FaLinux size={18} style={{ color: "#FCC624" }} />, name: "Linux Server" },
   { icon: <SiFilezilla size={18} style={{ color: "#BF0000" }} />, name: "FileZilla FTP" },
   { icon: <SiJsonwebtokens size={18} style={{ color: "#d63aff" }} />, name: "JWT" },
-  { icon: <SiSendgrid size={18} style={{ color: "#1A82E2" }} />, name: "SendGrid" },
+  { icon: <FaEnvelope size={18} style={{ color: "#0B996E" }} />, name: "Brevo" },
 ];
 
 const features = [
@@ -39,12 +39,12 @@ const features = [
   {
     icon: <FaKey size={20} style={{ color: "#d63aff" }} />,
     title: "Recuperação de Senha via JWT",
-    desc: "O utilizador introduz o email — se estiver registado, é gerado um token JWT guardado na base de dados (MySQL) e enviado por email via SendGrid com link de recuperação.",
+    desc: "O utilizador introduz o email — se estiver registado, é gerado um token JWT guardado na base de dados (MySQL) e enviado por email via Brevo com link de recuperação.",
   },
   {
-    icon: <FaEnvelope size={20} style={{ color: "#1A82E2" }} />,
-    title: "Email Transacional — SendGrid",
-    desc: "Integração com SendGrid para envio do email de recuperação de senha. Apenas utilizadores com email registado recebem o link com o token JWT.",
+    icon: <FaEnvelope size={20} style={{ color: "#0B996E" }} />,
+    title: "Email Transacional — Brevo",
+    desc: "Integração com Brevo para envio do email de recuperação de senha. Apenas utilizadores com email registado recebem o link com o token JWT.",
   },
 ];
 
@@ -122,9 +122,9 @@ const architecture = [
   },
   {
     label: "Email Transacional",
-    tech: "SendGrid",
-    desc: "O email de recuperação de senha é enviado via SendGrid com o link contendo o JWT. Só é enviado se o email estiver registado na base de dados.",
-    color: "#1A82E2",
+    tech: "Brevo",
+    desc: "O email de recuperação de senha é enviado via Brevo com o link contendo o JWT. Só é enviado se o email estiver registado na base de dados.",
+    color: "#0B996E",
   },
 ];
 
@@ -157,7 +157,7 @@ export default function Psafe365CloudPage() {
             Psafe365 Cloud
           </h1>
           <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, maxWidth: 700, marginBottom: 28 }}>
-            Aplicação web de gestão de um <span style={{ color: "var(--port-text)" }}>servidor partilhado Linux</span> — os utilizadores acedem e gerem ficheiros consoante o seu perfil. Os ficheiros residem no servidor e são transferidos via <span style={{ color: "var(--port-text)" }}>FileZilla FTP</span>. O backend foi desenvolvido em <span style={{ color: "var(--port-text)" }}>PHP puro, sem qualquer framework</span>, com recuperação de senha via <span style={{ color: "var(--port-text)" }}>JWT</span> e envio de email transacional por <span style={{ color: "var(--port-text)" }}>SendGrid</span>.
+            Aplicação web de gestão de um <span style={{ color: "var(--port-text)" }}>servidor partilhado Linux</span> — os utilizadores acedem e gerem ficheiros consoante o seu perfil. Os ficheiros residem no servidor e são transferidos via <span style={{ color: "var(--port-text)" }}>FileZilla FTP</span>. O backend foi desenvolvido em <span style={{ color: "var(--port-text)" }}>PHP puro, sem qualquer framework</span>, com recuperação de senha via <span style={{ color: "var(--port-text)" }}>JWT</span> e envio de email transacional por <span style={{ color: "var(--port-text)" }}>Brevo</span>.
           </p>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
