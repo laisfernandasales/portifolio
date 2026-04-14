@@ -67,10 +67,10 @@ export default function ViagensEmCasa() {
           </h1>
 
           <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.85, maxWidth: 680, marginBottom: 16 }}>
-            Plataforma digital desenvolvida para <span style={{ color: "var(--port-text)" }}>fomentar a economia local</span> de regiões menos populosas, conectando pequenos produtores e comerciantes ao mercado online. Através de um marketplace de produtos regionais e de uma bilheteira virtual para eventos e atrações culturais, a plataforma apoia o turismo local e preserva a identidade cultural de cada região.
+            Este foi o meu projecto de fim de curso, uma plataforma digital que desenvolvi com o objectivo de fomentar a economia local de regiões menos populosas, conectando pequenos produtores e comerciantes ao mercado online. Inclui um marketplace de produtos regionais e uma bilheteira virtual para eventos e atrações culturais.
           </p>
           <p style={{ color: "var(--port-muted)", fontSize: 14, lineHeight: 1.8, maxWidth: 680, marginBottom: 28 }}>
-            Desenhada para ser acessível a utilizadores com pouca experiência tecnológica, a interface suporta <span style={{ color: "var(--port-text)" }}>múltiplos idiomas</span> e alcança também emigrantes e turistas internacionais que desejam manter contacto com a cultura e economia da sua terra natal.
+            Preocupei-me em tornar a interface acessível a utilizadores com pouca experiência tecnológica, com suporte a múltiplos idiomas via i18next para alcançar também emigrantes e turistas internacionais. O projecto foi construído com Next.js e Tailwind CSS no frontend, Firebase para autenticação, base de dados em tempo real e armazenamento de ficheiros via Cloud Storage, e SendGrid para o envio de bilhetes e notificações por email. O deploy é gerido através de GitHub Actions.
           </p>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>

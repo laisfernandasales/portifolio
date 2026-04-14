@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 // ── Ícones (react-icons) ──────────────────────────────────────────────────────
 import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaPhp } from "react-icons/fa";
+import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaPhp, FaEnvelope } from "react-icons/fa";
 import {
   SiTailwindcss, SiJavascript, SiTypescript, SiNextdotjs,
   SiMysql, SiMongodb, SiFirebase, SiFigma, SiGit,
-  SiFastapi, SiJsonwebtokens, SiSendgrid,
+  SiFastapi, SiJsonwebtokens,
 } from "react-icons/si";
 
 // ── Assets ────────────────────────────────────────────────────────────────────
@@ -53,7 +53,7 @@ const skillCategories = [
     title: "Serviços & Ferramentas",
     skills: [
       { icon: <SiJsonwebtokens style={{ color: "#d63aff" }} />, name: "JWT"      },
-      { icon: <SiSendgrid      style={{ color: "#1A82E2" }} />, name: "SendGrid" },
+      { icon: <FaEnvelope      style={{ color: "#0B996E" }} />, name: "Brevo"    },
       { icon: <SiFigma         style={{ color: "#F24E1E" }} />, name: "Figma"    },
       { icon: <SiGit           style={{ color: "#F05032" }} />, name: "Git"      },
     ],
@@ -84,7 +84,7 @@ const projects = [
     num: "03",
     tags: ["React", "PHP", "MySQL", "JWT"],
     title: "Psafe365 Cloud",
-    desc: "Gestor FTP web sobre servidor Linux — permissões hierárquicas, recuperação de senha com JWT e emails transacionais via SendGrid.",
+    desc: "Gestor FTP web sobre servidor Linux — permissões hierárquicas, recuperação de senha com JWT e emails transacionais via Brevo.",
     route: "/projetos/psafe365",
     gradient: "linear-gradient(135deg, #0a1828, #060e1c)",
     imageSrc: PsafeLogin,
@@ -118,12 +118,7 @@ export default function HomePage() {
 
         {/* Bloco de texto principal */}
         <div>
-          {/* Badge "Disponível para projetos" com ponto pulsante */}
-          <div className="hero-badge-port fade-up-1">
-            <span className="badge-pulse-dot" />
-            Disponível para projetos
-          </div>
-
+          
           {/* Subtítulo "Me chamo" */}
           <p className="fade-up-2" style={{ fontSize: 12, fontWeight: 500, letterSpacing: "3px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 12 }}>
             Me chamo
@@ -136,7 +131,7 @@ export default function HomePage() {
 
           {/* Título profissional */}
           <p className="fade-up-4 font-syne" style={{ fontSize: "clamp(20px, 2.5vw, 28px)", fontWeight: 600, color: "var(--port-cyan)", marginBottom: 24, letterSpacing: "-0.5px" }}>
-            Frontend Developer
+            Desenvolvedora Frontend
           </p>
 
           {/* Linha decorativa ciano */}
@@ -207,9 +202,9 @@ export default function HomePage() {
             <p style={{ color: "var(--port-muted)", lineHeight: 1.9, marginBottom: 20, fontSize: 15 }}>
               Sou Desenvolvedora de Software com especialização no desenvolvimento Frontend,
               mas com conhecimentos e experiência que abrangem o stack completo. Ao longo dos anos
-              desenvolvi uma forte afinidade com o Frontend — foi onde mais trabalhei e onde me sinto
+              desenvolvi uma forte afinidade com o Frontend , foi onde mais trabalhei e onde me sinto
               mais à vontade, tanto no meu projecto de fim de curso <span style={{ color: "var(--port-text)" }}>Viagens em Casa</span> como
-              no projecto profissional <span style={{ color: "var(--port-text)" }}>PRIFE</span>.
+              no projecto profissional <span style={{ color: "var(--port-text)" }}>PFIRE</span>.
             </p>
             <p style={{ color: "var(--port-muted)", lineHeight: 1.9, marginBottom: 28, fontSize: 15 }}>
               Actualmente venho a aprofundar os conhecimentos no Backend, consolidando
