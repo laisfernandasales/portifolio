@@ -17,6 +17,7 @@ export default function ToggleTheme() {
 
   const toggleTheme = () => {
     const html = document.documentElement;
+    const nextDark = !isDark;
     if (isDark) {
       html.classList.remove("dark");
       localStorage.setItem("theme", "light");
@@ -24,7 +25,8 @@ export default function ToggleTheme() {
       html.classList.add("dark");
       localStorage.setItem("theme", "dark");
     }
-    setIsDark(!isDark);
+    setIsDark(nextDark);
+    window.dispatchEvent(new CustomEvent("theme-change", { detail: { isDark: nextDark } }));
   };
 
   return (

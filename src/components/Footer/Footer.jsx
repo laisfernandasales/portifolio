@@ -22,7 +22,7 @@ function Footer() {
           <FaLinkedin size={20} />
         </a>
         <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, color: "var(--port-cyan)", fontSize: 14 }}>
-          Lais<span style={{ color: "var(--port-muted)" }}>.dev</span>
+          Laismelo.dev
         </span>
       </div>
     </footer>
