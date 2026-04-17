@@ -1,4 +1,5 @@
 // ── Imports de React ──────────────────────────────────────────────────────────
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 // ── Ícones (react-icons) ──────────────────────────────────────────────────────
@@ -13,9 +14,12 @@ import {
 // ── Assets ────────────────────────────────────────────────────────────────────
 import FotoHome from "../../assets/FotoHome.jpeg";
 import CurriculoPDF from "../../assets/lais_melo_cv_final.pdf";
-import ViagensMercado from "../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
-import PfireLogin from "../../assets/Pfire/LoginLight.png";
-import PsafeLogin from "../../assets/Psafe365Cloud/LoginDark.png";
+import ViagensMercadoLight from "../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
+import ViagensMercadoDark  from "../../assets/ViagensEmCasa/Mercado/MercadoDark.png";
+import PfireLoginLight from "../../assets/Pfire/LoginLight.png";
+import PfireLoginDark  from "../../assets/Pfire/LoginDark.png";
+import PsafeLoginDark  from "../../assets/Psafe365Cloud/LoginDark.png";
+import PsafeLoginLight from "../../assets/Psafe365Cloud/LoginLight.jpeg";
 import "../../assets/styles/styles.css";
 
 // ── Dados: categorias de tecnologias da stack ─────────────────────────────────
@@ -69,7 +73,8 @@ const projects = [
     desc: "E-commerce + bilheteira com auth, emails transacionais e painel admin. Caso real de cliente.",
     route: "/projetos/viagens",
     gradient: "linear-gradient(135deg, #0d2340, #091830)",
-    image: ViagensMercado,
+    image: ViagensMercadoLight,
+    imageDark: ViagensMercadoDark,
   },
   {
     num: "02",
@@ -78,7 +83,8 @@ const projects = [
     desc: "Pfire é uma aplicação de geração de relatórios de inspeção de segurança ",
     route: "/projetos/Pfire",
     gradient: "linear-gradient(135deg, #0d2035, #061228)",
-    image: PfireLogin,
+    image: PfireLoginLight,
+    imageDark: PfireLoginDark,
   },
   {
     num: "03",
@@ -87,12 +93,28 @@ const projects = [
     desc: "Gestor FTP web sobre servidor Linux — permissões hierárquicas, recuperação de senha com JWT e emails transacionais via Brevo.",
     route: "/projetos/psafe365",
     gradient: "linear-gradient(135deg, #0a1828, #060e1c)",
-    imageSrc: PsafeLogin,
+    image: PsafeLoginLight,
+    imageDark: PsafeLoginDark,
   },
 ];
 
+// ── Hook: detecta o tema activo (dark/light) ──────────────────────────────────
+function useDarkMode() {
+  const [isDark, setIsDark] = useState(
+    () => localStorage.getItem("theme") !== "light"
+  );
+  useEffect(() => {
+    const handler = (e) => setIsDark(e.detail.isDark);
+    window.addEventListener("theme-change", handler);
+    return () => window.removeEventListener("theme-change", handler);
+  }, []);
+  return isDark;
+}
+
 // ── Componente ───────────────────────────────────────────────────────────────
 export default function HomePage() {
+  const isDark = useDarkMode();
+
   // Scroll suave até à secção com o id fornecido
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -257,7 +279,7 @@ export default function HomePage() {
               {/* Thumbnail: imagem do projeto ou fallback com gradiente */}
               <div style={{ height: 180, background: p.gradient, display: "flex", alignItems: "center", justifyContent: "center", position: "relative", overflow: "hidden" }}>
                 {(p.image || p.imageSrc) ? (
-                  <img src={p.image || p.imageSrc} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                  <img src={isDark && p.imageDark ? p.imageDark : (p.image || p.imageSrc)} alt={p.title} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
                 ) : (
                   // Fallback textual quando não há imagem
                   <span className="font-syne" style={{ fontSize: 11, fontWeight: 700, letterSpacing: 2, color: "rgba(0,200,255,0.4)", textTransform: "uppercase" }}>
@@ -278,7 +300,7 @@ export default function HomePage() {
                     </span>
                   ))}
                 </div>
-                <h3 className="font-syne" style={{ fontSize: 16, fontWeight: 700, color: "#fff", marginBottom: 6 }}>{p.title}</h3>
+                <h3 className="font-syne" style={{ fontSize: 16, fontWeight: 700, color: "var(--port-text)", marginBottom: 6 }}>{p.title}</h3>
                 <p style={{ fontSize: 12, color: "var(--port-muted)", lineHeight: 1.6 }}>{p.desc}</p>
               </div>
             </Link>

@@ -1,9 +1,24 @@
+import { useEffect, useState } from "react";
 import { FaPlane, FaUtensils, FaTicketAlt, FaShieldAlt, FaBell, FaStar, FaUsers, FaGlobe } from "react-icons/fa";
 import { SiNextdotjs, SiFirebase, SiTailwindcss, SiGooglecloud, SiSendgrid, SiGithubactions } from "react-icons/si";
 import { Link } from "react-router-dom";
-import MercadoLight from "../../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
+import MercadoLight    from "../../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
+import MercadoDark     from "../../../assets/ViagensEmCasa/Mercado/MercadoDark.png";
 import BilheteiraLight from "../../../assets/ViagensEmCasa/Bilheteria/BilheteiraLight.png";
+import BilheteiraDark  from "../../../assets/ViagensEmCasa/Bilheteria/BilheteiraDark.png";
 import "../../../assets/styles/styles.css";
+
+function useDarkMode() {
+  const [isDark, setIsDark] = useState(
+    () => localStorage.getItem("theme") !== "light"
+  );
+  useEffect(() => {
+    const handler = (e) => setIsDark(e.detail.isDark);
+    window.addEventListener("theme-change", handler);
+    return () => window.removeEventListener("theme-change", handler);
+  }, []);
+  return isDark;
+}
 
 const stack = [
   { icon: <SiNextdotjs size={18} />, name: "Next.js" },
@@ -26,6 +41,7 @@ const modules = [
   {
     to: "/projetos/viagens/mercado",
     image: MercadoLight,
+    imageDark: MercadoDark,
     icon: <FaUtensils size={16} />,
     tag: "E-commerce",
     title: "Mercado Regional",
@@ -34,6 +50,7 @@ const modules = [
   {
     to: "/projetos/viagens/bilheteira",
     image: BilheteiraLight,
+    imageDark: BilheteiraDark,
     icon: <FaTicketAlt size={16} />,
     tag: "Bilheteira",
     title: "Museus & Eventos",
@@ -42,6 +59,8 @@ const modules = [
 ];
 
 export default function ViagensEmCasa() {
+  const isDark = useDarkMode();
+
   return (
     <div style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
 
@@ -105,10 +124,10 @@ export default function ViagensEmCasa() {
           Módulos do projecto
         </p>
         <div className="viagens-modules-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
-          {modules.map(({ to, image, icon, tag, title, desc }) => (
+          {modules.map(({ to, image, imageDark, icon, tag, title, desc }) => (
             <Link key={to} to={to} className="project-card-port" style={{ textDecoration: "none" }}>
               <div style={{ height: 200, overflow: "hidden", position: "relative" }}>
-                <img src={image} alt={title}
+                <img src={isDark && imageDark ? imageDark : image} alt={title}
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", transition: "transform 0.4s ease" }}
                   onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
                   onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
