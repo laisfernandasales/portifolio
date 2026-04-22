@@ -71,12 +71,12 @@ export default function ViagensEmCasa() {
 
         {/* Cabeçalho */}
         <div style={{ marginBottom: 48 }}>
-          <Link to="/projetos"
+          <Link to="/"
             style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 500, letterSpacing: "1px", color: "var(--port-muted)", textDecoration: "none", textTransform: "uppercase", marginBottom: 24, transition: "color 0.2s" }}
             onMouseEnter={e => e.currentTarget.style.color = "var(--port-cyan)"}
             onMouseLeave={e => e.currentTarget.style.color = "var(--port-muted)"}
           >
-            ← Todos os projectos
+            ← Voltar ao portfólio
           </Link>
 
           <p className="section-label-port">Projecto 01</p>
