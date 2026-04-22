@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import { FaFire, FaShieldAlt, FaClipboardList, FaDatabase, FaFilePdf, FaSlidersH, FaCopy, FaUserTie, FaToggleOn } from "react-icons/fa";
 import { SiReact, SiFastapi, SiMongodb, SiFirebase, SiPython, SiPydantic } from "react-icons/si";
 import { Link } from "react-router-dom";
-import LoginLight            from "../../../assets/Pfire/LoginLight.png";
-import LoginDark             from "../../../assets/Pfire/LoginDark.png";
-import PaginaModelosLight    from "../../../assets/Pfire/PaginaModelosLight.png";
-import PaginaModelosDark     from "../../../assets/Pfire/PaginaModelosDark.png";
-import PaginaCriarModeloLight from "../../../assets/Pfire/PaginaCriarModeloLight.png";
-import PaginaCriarModeloDark  from "../../../assets/Pfire/PaginaCriarModeloDark.png";
+import PfireVideo              from "../../../assets/Pfire/VideoPfire.mp4";
+import LoginLight              from "../../../assets/Pfire/LoginLight.png";
+import LoginDark               from "../../../assets/Pfire/LoginDark.png";
+import PaginaModelosLight      from "../../../assets/Pfire/PaginaModelosLight.png";
+import PaginaModelosDark       from "../../../assets/Pfire/PaginaModelosDark.png";
+import PaginaCriarModeloLight  from "../../../assets/Pfire/PaginaCriarModeloLight.png";
+import PaginaCriarModeloDark   from "../../../assets/Pfire/PaginaCriarModeloDark.png";
+import PaginaRelatoriosLight   from "../../../assets/Pfire/PaginaRelatoriosLight.png";
+import PaginaRelatoriosDark    from "../../../assets/Pfire/PaginaRelatoriosDark.png";
+import PDFRelatorio            from "../../../assets/Pfire/PDFRelatorio.png";
 import "../../../assets/styles/styles.css";
 
 const stack = [
@@ -113,9 +117,36 @@ function useDarkMode() {
 }
 
 const slides = [
-  { light: LoginLight,             dark: LoginDark,             alt: "Ecrã de Login" },
-  { light: PaginaModelosLight,     dark: PaginaModelosDark,     alt: "Lista de Modelos" },
-  { light: PaginaCriarModeloLight, dark: PaginaCriarModeloDark, alt: "Criar Modelo" },
+  {
+    light: LoginLight,
+    dark: LoginDark,
+    alt: "Tela de Login",
+    desc: "Autenticação via Google ou Microsoft com Firebase — acesso seguro e rápido sem necessidade de criar conta.",
+  },
+  {
+    light: PaginaModelosLight,
+    dark: PaginaModelosDark,
+    alt: "Dashboard — Lista de Modelos",
+    desc: "Painel principal com todos os modelos de inspeção criados. Cada cartão mostra o nome do modelo e permite editar, clonar ou aceder aos relatórios associados.",
+  },
+  {
+    light: PaginaCriarModeloLight,
+    dark: PaginaCriarModeloDark,
+    alt: "Criação de Modelo com Campos Personalizados",
+    desc: "Formulário para definir um novo modelo de inspeção: nome do template e campos personalizados que serão preenchidos em cada relatório gerado a partir dele.",
+  },
+  {
+    light: PaginaRelatoriosLight,
+    dark: PaginaRelatoriosDark,
+    alt: "Lista de Relatórios por Cliente",
+    desc: "Listagem de todos os relatórios gerados para um modelo. Cada entrada mostra o cliente (com NIF), data de criação e estado — com filtros e pesquisa integrados.",
+  },
+  {
+    light: PDFRelatorio,
+    dark: PDFRelatorio,
+    alt: "Exportação — Relatório Final em PDF",
+    desc: "Versão final do relatório exportada para PDF, com todos os campos preenchidos (incluindo campos personalizados do modelo), pronta para entrega formal ao cliente.",
+  },
 ];
 
 export default function PfirePage() {
@@ -172,6 +203,15 @@ export default function PfirePage() {
           </div>
         </div>
 
+        {/* Vídeo demonstração */}
+        <div style={{ marginBottom: 48 }}>
+          <video
+            src={PfireVideo}
+            controls
+            style={{ width: "100%", borderRadius: 16, border: "1px solid var(--port-border)", display: "block" }}
+          />
+        </div>
+
         {/* Carousel de screenshots */}
         <div style={{ marginBottom: 64 }}>
           {/* Imagem activa */}
@@ -197,14 +237,24 @@ export default function PfirePage() {
               aria-label="Próximo"
             >›</button>
 
-            {/* Label do slide */}
-            <div style={{ position: "absolute", bottom: 16, left: "50%", transform: "translateX(-50%)", background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)", borderRadius: 100, padding: "4px 14px", fontSize: 11, color: "rgba(255,255,255,0.8)", letterSpacing: "0.5px", zIndex: 10 }}>
-              {slides[current].alt}
+            {/* Badge com número do slide */}
+            <div style={{ position: "absolute", top: 14, right: 14, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)", borderRadius: 100, padding: "3px 10px", fontSize: 11, color: "rgba(255,255,255,0.7)", letterSpacing: "0.5px", zIndex: 10 }}>
+              {current + 1} / {slides.length}
             </div>
           </div>
 
+          {/* Legenda descritiva */}
+          <div style={{ marginTop: 20, padding: "16px 20px", background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 12 }}>
+            <p style={{ margin: 0, marginBottom: 4, fontSize: 13, fontWeight: 700, color: "var(--port-cyan)", fontFamily: "var(--font-syne, sans-serif)" }}>
+              {slides[current].alt}
+            </p>
+            <p style={{ margin: 0, fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7 }}>
+              {slides[current].desc}
+            </p>
+          </div>
+
           {/* Indicadores (dots) */}
-          <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 14 }}>
+          <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}>
             {slides.map((_, i) => (
               <button
                 key={i}
