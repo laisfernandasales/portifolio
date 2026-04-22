@@ -221,8 +221,6 @@ export default function PfirePage() {
               alt={`Pfire — ${slides[current].alt}`}
               style={{ width: "100%", display: "block", objectFit: "cover", objectPosition: "top", transition: "opacity 0.3s ease" }}
             />
-            <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, transparent 70%, var(--port-bg) 100%)" }} />
-
             {/* Seta esquerda */}
             <button
               onClick={() => setCurrent((current - 1 + slides.length) % slides.length)}
