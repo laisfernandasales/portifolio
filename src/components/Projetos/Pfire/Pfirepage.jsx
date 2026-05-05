@@ -169,7 +169,7 @@ export default function PfirePage() {
             onMouseEnter={e => e.currentTarget.style.color = "var(--port-cyan)"}
             onMouseLeave={e => e.currentTarget.style.color = "var(--port-muted)"}
           >
-            ← Todos os projectos
+            ← Voltar ao portfólio
           </Link>
 
           <p className="section-label-port">Projecto 02</p>

@@ -1,9 +1,55 @@
+import { useEffect, useState } from "react";
 import { FaCloud, FaFolder, FaUsers, FaFileAlt, FaUserShield, FaServer, FaLinux, FaKey, FaEnvelope } from "react-icons/fa";
 import { SiReact, SiPhp, SiMysql, SiFilezilla, SiJsonwebtokens } from "react-icons/si";
 import { Link } from "react-router-dom";
-import LoginDark from "../../../assets/Psafe365Cloud/LoginDark.png";
-import HomeDark from "../../../assets/Psafe365Cloud/HomeDark.png";
+import HomeDark            from "../../../assets/Psafe365Cloud/HomeDark.png";
+import HomeLight           from "../../../assets/Psafe365Cloud/HomeLight.png";
+import TransferenciaFeita  from "../../../assets/Psafe365Cloud/TransferenciaFeita.png";
+import UploadFeitoDark     from "../../../assets/Psafe365Cloud/UploadFeitoDark.png";
+import UploadFeitoLight    from "../../../assets/Psafe365Cloud/UploadFeitoLight.png";
+import UploadPastaDark     from "../../../assets/Psafe365Cloud/UploadPastaDark.png";
+import UploadPastaLight    from "../../../assets/Psafe365Cloud/UploadPastaLight.png";
+import VideoPsafeCloud     from "../../../assets/Psafe365Cloud/VideoPsafeCloud.mp4";
 import "../../../assets/styles/styles.css";
+
+function useDarkMode() {
+  const [isDark, setIsDark] = useState(
+    () => localStorage.getItem("theme") !== "light"
+  );
+  useEffect(() => {
+    const handler = (e) => setIsDark(e.detail.isDark);
+    window.addEventListener("theme-change", handler);
+    return () => window.removeEventListener("theme-change", handler);
+  }, []);
+  return isDark;
+}
+
+const slides = [
+  {
+    dark: HomeDark,
+    light: HomeLight,
+    alt: "Home — Explorador de Ficheiros",
+    desc: "Vista principal do explorador de ficheiros com a estrutura de pastas e ficheiros disponíveis para o utilizador autenticado.",
+  },
+  {
+    dark: UploadPastaDark,
+    light: UploadPastaLight,
+    alt: "Upload de Pasta",
+    desc: "Interface de upload de pasta — permite transferir directórios completos para o servidor Linux, respeitando os privilégios configurados para cada utilizador.",
+  },
+  {
+    dark: UploadFeitoDark,
+    light: UploadFeitoLight,
+    alt: "Upload Concluído",
+    desc: "Estado de confirmação após o carregamento de ficheiro para o servidor — reflecte a actualização em tempo real da estrutura de pastas.",
+  },
+  {
+    dark: TransferenciaFeita,
+    light: TransferenciaFeita,
+    alt: "Transferência Concluída",
+    desc: "Confirmação visual após a transferência de um ficheiro ser concluída com sucesso no servidor Linux via FTP.",
+  },
+];
 
 const stack = [
   { icon: <SiReact size={18} style={{ color: "#61DAFB" }} />, name: "React" },
@@ -129,6 +175,9 @@ const architecture = [
 ];
 
 export default function Psafe365CloudPage() {
+  const isDark = useDarkMode();
+  const [current, setCurrent] = useState(0);
+
   return (
     <div style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
 
@@ -170,19 +219,66 @@ export default function Psafe365CloudPage() {
           </div>
         </div>
 
-        {/* Screenshots */}
-        <div style={{ display: "flex", flexDirection: "column", gap: 24, marginBottom: 64 }}>
-          {[
-            { src: LoginDark, alt: "Psafe365 Cloud — Ecrã de login", label: "Login" },
-            { src: HomeDark,  alt: "Psafe365 Cloud — Explorador de ficheiros", label: "Explorador de Ficheiros" },
-          ].map(({ src, alt, label }) => (
-            <div key={label} style={{ borderRadius: 16, overflow: "hidden", border: "1px solid var(--port-border)", position: "relative" }}>
-              <img src={src} alt={alt} style={{ width: "100%", display: "block", objectFit: "contain" }} />
-              <div style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "linear-gradient(to top, rgba(8,13,20,0.85) 0%, transparent 100%)", padding: "24px 20px 14px" }}>
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "rgba(255,255,255,0.6)" }}>{label}</span>
-              </div>
+        {/* Vídeo demonstração */}
+        <div style={{ marginBottom: 48 }}>
+          <video
+            src={VideoPsafeCloud}
+            controls
+            playsInline
+            style={{ width: "100%", borderRadius: 16, border: "1px solid var(--port-border)", display: "block" }}
+          />
+        </div>
+
+        {/* Carousel de screenshots */}
+        <div style={{ marginBottom: 64 }}>
+          {/* Imagem activa */}
+          <div style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "1px solid var(--port-border)" }}>
+            <img
+              src={isDark ? slides[current].dark : slides[current].light}
+              alt={`Psafe365 Cloud — ${slides[current].alt}`}
+              style={{ width: "100%", display: "block", objectFit: "cover", objectPosition: "top", transition: "opacity 0.3s ease" }}
+            />
+            {/* Seta esquerda */}
+            <button
+              onClick={() => setCurrent((current - 1 + slides.length) % slides.length)}
+              style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", width: 36, height: 36, borderRadius: "50%", background: "rgba(0,0,0,0.45)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, zIndex: 10, backdropFilter: "blur(4px)" }}
+              aria-label="Anterior"
+            >‹</button>
+
+            {/* Seta direita */}
+            <button
+              onClick={() => setCurrent((current + 1) % slides.length)}
+              style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", width: 36, height: 36, borderRadius: "50%", background: "rgba(0,0,0,0.45)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, zIndex: 10, backdropFilter: "blur(4px)" }}
+              aria-label="Próximo"
+            >›</button>
+
+            {/* Badge com número do slide */}
+            <div style={{ position: "absolute", top: 14, right: 14, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)", borderRadius: 100, padding: "3px 10px", fontSize: 11, color: "rgba(255,255,255,0.7)", letterSpacing: "0.5px", zIndex: 10 }}>
+              {current + 1} / {slides.length}
             </div>
-          ))}
+          </div>
+
+          {/* Legenda descritiva */}
+          <div style={{ marginTop: 20, padding: "16px 20px", background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 12 }}>
+            <p style={{ margin: 0, marginBottom: 4, fontSize: 13, fontWeight: 700, color: "var(--port-cyan)", fontFamily: "var(--font-syne, sans-serif)" }}>
+              {slides[current].alt}
+            </p>
+            <p style={{ margin: 0, fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7 }}>
+              {slides[current].desc}
+            </p>
+          </div>
+
+          {/* Indicadores (dots) */}
+          <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}>
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                style={{ width: i === current ? 20 : 8, height: 8, borderRadius: 100, border: "none", cursor: "pointer", transition: "all 0.25s", background: i === current ? "var(--port-cyan)" : "var(--port-border)", padding: 0 }}
+                aria-label={`Slide ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Funcionalidades */}

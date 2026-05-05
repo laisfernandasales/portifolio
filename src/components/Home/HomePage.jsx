@@ -18,8 +18,8 @@ import ViagensMercadoLight from "../../assets/ViagensEmCasa/Mercado/MercadoLight
 import ViagensMercadoDark  from "../../assets/ViagensEmCasa/Mercado/MercadoDark.png";
 import PfireLoginLight from "../../assets/Pfire/LoginLight.png";
 import PfireLoginDark  from "../../assets/Pfire/LoginDark.png";
-import PsafeLoginDark  from "../../assets/Psafe365Cloud/LoginDark.png";
-import PsafeLoginLight from "../../assets/Psafe365Cloud/LoginLight.jpeg";
+import PsafeLoginDark  from "../../assets/Psafe365Cloud/HomeDark.png";
+import PsafeLoginLight from "../../assets/Psafe365Cloud/HomeLight.png";
 import "../../assets/styles/styles.css";
 
 // ── Dados: categorias de tecnologias da stack ─────────────────────────────────
