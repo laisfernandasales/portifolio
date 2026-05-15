@@ -1,22 +1,24 @@
 import { useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 
 const links = [
-  { label: "Início",    id: "inicio"   },
-  { label: "Sobre",     id: "sobre"    },
-  { label: "Stack",     id: "stack"    },
-  { label: "Projetos",  id: "projetos" },
-  { label: "Contacto",  id: "contato"  },
+  { labelKey: "navbar.home",     id: "inicio"   },
+  { labelKey: "navbar.about",    id: "sobre"    },
+  { labelKey: "navbar.stack",    id: "stack"    },
+  { labelKey: "navbar.projects", id: "projetos" },
+  { labelKey: "navbar.contact",  id: "contato"  },
 ];
 
 export default function MobileMenu() {
-  const navigate    = useNavigate();
-  const location    = useLocation();
-  const detailsRef  = useRef(null);
+  const navigate   = useNavigate();
+  const location   = useLocation();
+  const detailsRef = useRef(null);
+  const { t } = useTranslation();
 
   const handleClick = (e, id) => {
     e.preventDefault();
-    // fecha o dropdown
     if (detailsRef.current) detailsRef.current.removeAttribute("open");
 
     if (location.pathname === "/") {
@@ -42,7 +44,7 @@ export default function MobileMenu() {
             className="menu menu-sm dropdown-content rounded-box z-50 mt-3 w-52 p-2 shadow-lg"
             style={{ background: "var(--port-surface)", border: "1px solid var(--port-border)" }}
           >
-            {links.map(({ label, id }) => (
+            {links.map(({ labelKey, id }) => (
               <li key={id}>
                 <a
                   href={`/#${id}`}
@@ -58,7 +60,7 @@ export default function MobileMenu() {
                   onMouseEnter={e => e.currentTarget.style.color = "var(--port-cyan)"}
                   onMouseLeave={e => e.currentTarget.style.color = "var(--port-muted)"}
                 >
-                  {label}
+                  {t(labelKey)}
                 </a>
               </li>
             ))}
@@ -78,8 +80,10 @@ export default function MobileMenu() {
         </a>
       </div>
 
-      {/* Espaço direito vazio (mantém simetria) */}
-      <div className="navbar-end" style={{ width: 48 }} />
+      {/* Seletor de idioma */}
+      <div className="navbar-end">
+        <LanguageSwitcher />
+      </div>
     </div>
   );
 }

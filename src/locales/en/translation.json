@@ -1,0 +1,60 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "stack": "Stack",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "home": {
+    "hero": {
+      "greeting": "My name is",
+      "name": "Lais Melo",
+      "role": "Frontend Developer",
+      "description": "Specialist in building modern, fast websites focused on user experience.",
+      "downloadCV": "Download CV",
+      "viewProjects": "View Projects →",
+      "stats": {
+        "experience": "Yrs Exp.",
+        "technologies": "Technologies"
+      }
+    },
+    "about": {
+      "label": "About me",
+      "title": "Frontend\nDeveloper",
+      "paragraph1": "I am a Software Developer specialising in Frontend development, with knowledge and experience that spans the full stack. Over the years I developed a strong affinity with Frontend — it is where I have worked the most and where I feel most comfortable, both in my final-year project Viagens em Casa and in the professional project PFIRE.",
+      "paragraph2": "I am currently deepening my Backend knowledge, building a more complete view of web development. I work with technologies such as React.js, Next.js, Node.js, FastAPI and GraphQL, and for interface design I use Tailwind CSS and Material UI, with MySQL, MongoDB and Firebase databases."
+    },
+    "stack": {
+      "label": "Stack",
+      "title": "Tech Stack",
+      "categories": {
+        "database": "Databases",
+        "tools": "Services & Tools"
+      }
+    },
+    "projects": {
+      "fallback": "Project",
+      "items": {
+        "viagens": {
+          "title": "Viagens em Casa",
+          "desc": "E-commerce + ticketing with auth, transactional emails and admin panel. Real client case."
+        },
+        "pfire": {
+          "title": "Pfire",
+          "desc": "Pfire is an application for generating security inspection reports."
+        },
+        "psafe": {
+          "title": "Psafe365 Cloud",
+          "desc": "Web FTP manager on a Linux server — hierarchical permissions, JWT password recovery and transactional emails via Brevo."
+        }
+      }
+    },
+    "contact": {
+      "label": "Contact",
+      "title": "Let's work\ntogether?",
+      "description": "I am available for new projects and opportunities.\nDon't hesitate to get in touch!",
+      "cta": "Get in touch →"
+    }
+  }
+}

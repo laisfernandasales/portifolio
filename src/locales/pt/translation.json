@@ -1,0 +1,60 @@
+{
+  "navbar": {
+    "home": "Início",
+    "about": "Sobre",
+    "stack": "Stack",
+    "projects": "Projetos",
+    "contact": "Contacto"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Me chamo",
+      "name": "Lais Melo",
+      "role": "Desenvolvedora Frontend",
+      "description": "Especialista no desenvolvimento de websites modernos, rápidos e com foco na experiência do utilizador.",
+      "downloadCV": "Download CV",
+      "viewProjects": "Ver Projetos →",
+      "stats": {
+        "experience": "Anos Exp.",
+        "technologies": "Tecnologias"
+      }
+    },
+    "about": {
+      "label": "Sobre mim",
+      "title": "Desenvolvedora\nFrontend",
+      "paragraph1": "Sou Desenvolvedora de Software com especialização no desenvolvimento Frontend, mas com conhecimentos e experiência que abrangem o stack completo. Ao longo dos anos desenvolvi uma forte afinidade com o Frontend , foi onde mais trabalhei e onde me sinto mais à vontade, tanto no meu projecto de fim de curso Viagens em Casa como no projecto profissional PFIRE.",
+      "paragraph2": "Actualmente venho a aprofundar os conhecimentos no Backend, consolidando uma visão mais completa do desenvolvimento web. Trabalho com tecnologias como React.js, Next.js, Node.js, FastAPI e GraphQL, e no design de interfaces utilizo Tailwind CSS e Material UI, com bases de dados MySQL, MongoDB e Firebase."
+    },
+    "stack": {
+      "label": "Stack",
+      "title": "Stack Tecnológica",
+      "categories": {
+        "database": "Base de Dados",
+        "tools": "Serviços & Ferramentas"
+      }
+    },
+    "projects": {
+      "fallback": "Projeto",
+      "items": {
+        "viagens": {
+          "title": "Viagens em Casa",
+          "desc": "E-commerce + bilheteira com auth, emails transacionais e painel admin. Caso real de cliente."
+        },
+        "pfire": {
+          "title": "Pfire",
+          "desc": "Pfire é uma aplicação de geração de relatórios de inspeção de segurança"
+        },
+        "psafe": {
+          "title": "Psafe365 Cloud",
+          "desc": "Gestor FTP web sobre servidor Linux — permissões hierárquicas, recuperação de senha com JWT e emails transacionais via Brevo."
+        }
+      }
+    },
+    "contact": {
+      "label": "Contacto",
+      "title": "Vamos trabalhar\njuntos?",
+      "description": "Estou disponível para novos projectos e oportunidades.\nNão hesites em entrar em contacto!",
+      "cta": "Entre em contacto →"
+    }
+  }
+}
