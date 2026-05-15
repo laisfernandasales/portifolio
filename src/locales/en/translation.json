@@ -57,6 +57,31 @@
       "cta": "Get in touch →"
     }
   },
+  "contactPage": {
+    "label": "Contact",
+    "title": "Let's work together?",
+    "description": "I am available for new projects and opportunities. Fill in the form or contact me directly.",
+    "channelsLabel": "Contact channels",
+    "available": "Available",
+    "availabilityText": "Open to freelance projects, collaborations and full-time opportunities.",
+    "form": {
+      "namLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "your@email.com",
+      "subjectLabel": "Subject",
+      "subjectPlaceholder": "What is it about?",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Tell me more about your project...",
+      "submit": "Send message",
+      "sending": "Sending…",
+      "error": "An error occurred while sending. Try again or contact me directly."
+    },
+    "success": {
+      "title": "Message sent!",
+      "subtitle": "I will get back to you shortly."
+    }
+  },
   "common": {
     "backToPortfolio": "← Back to portfolio",
     "backToProjects": "← All projects",

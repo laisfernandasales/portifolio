@@ -57,6 +57,31 @@
       "cta": "Entre em contacto →"
     }
   },
+  "contactPage": {
+    "label": "Contacto",
+    "title": "Vamos trabalhar juntos?",
+    "description": "Estou disponível para novos projectos e oportunidades. Preenche o formulário ou contacta-me directamente.",
+    "channelsLabel": "Canais de contacto",
+    "available": "Disponível",
+    "availabilityText": "Aberta a projectos freelance, colaborações e oportunidades full-time.",
+    "form": {
+      "namLabel": "Nome",
+      "namePlaceholder": "O teu nome",
+      "emailLabel": "Email",
+      "emailPlaceholder": "teu@email.com",
+      "subjectLabel": "Assunto",
+      "subjectPlaceholder": "Do que se trata?",
+      "messageLabel": "Mensagem",
+      "messagePlaceholder": "Conta-me mais sobre o teu projecto...",
+      "submit": "Enviar mensagem",
+      "sending": "A enviar…",
+      "error": "Ocorreu um erro ao enviar. Tenta novamente ou contacta-me directamente."
+    },
+    "success": {
+      "title": "Mensagem enviada!",
+      "subtitle": "Entrarei em contacto em breve."
+    }
+  },
   "common": {
     "backToPortfolio": "← Voltar ao portfólio",
     "backToProjects": "← Todos os projectos",
