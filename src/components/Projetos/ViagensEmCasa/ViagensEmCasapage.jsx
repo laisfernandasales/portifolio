@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { FaPlane, FaUtensils, FaTicketAlt, FaShieldAlt, FaBell, FaStar, FaUsers, FaGlobe } from "react-icons/fa";
 import { SiNextdotjs, SiFirebase, SiTailwindcss, SiGooglecloud, SiSendgrid, SiGithubactions } from "react-icons/si";
 import { Link } from "react-router-dom";
@@ -21,45 +22,42 @@ function useDarkMode() {
 }
 
 const stack = [
-  { icon: <SiNextdotjs size={18} />, name: "Next.js" },
-  { icon: <SiFirebase size={18} style={{ color: "#FF6F00" }} />, name: "Firebase" },
-  { icon: <SiTailwindcss size={18} style={{ color: "#06B6D4" }} />, name: "Tailwind CSS" },
-  { icon: <SiSendgrid size={18} style={{ color: "#1A82E2" }} />, name: "SendGrid" },
-  { icon: <SiGooglecloud size={18} style={{ color: "#4285F4" }} />, name: "Cloud Storage" },
-  { icon: <SiGithubactions size={18} style={{ color: "#2088FF" }} />, name: "GitHub Actions" },
-];
-
-const highlights = [
-  { icon: <FaGlobe size={15} />, label: "Internacionalização", desc: "Suporte a PT, ES e EN via i18next" },
-  { icon: <FaShieldAlt size={15} />, label: "Autenticação segura", desc: "Email, Google OAuth e reCAPTCHA v3" },
-  { icon: <FaBell size={15} />, label: "Notificações em tempo real", desc: "Actualizações automáticas via Firestore" },
-  { icon: <FaStar size={15} />, label: "Avaliações e comentários", desc: "Feedback de clientes em produtos e eventos" },
-  { icon: <FaUsers size={15} />, label: "Gestão de vendedores", desc: "Painel de estatísticas e moderação de conteúdos" },
-];
-
-const modules = [
-  {
-    to: "/projetos/viagens/mercado",
-    image: MercadoLight,
-    imageDark: MercadoDark,
-    icon: <FaUtensils size={16} />,
-    tag: "E-commerce",
-    title: "Mercado Regional",
-    desc: "Produtos gastronómicos típicos de diversas regiões do país, com entrega directa ao consumidor. Carrinho, autenticação e painel de gestão.",
-  },
-  {
-    to: "/projetos/viagens/bilheteira",
-    image: BilheteiraLight,
-    imageDark: BilheteiraDark,
-    icon: <FaTicketAlt size={16} />,
-    tag: "Bilheteira",
-    title: "Museus & Eventos",
-    desc: "Venda online de bilhetes para museus, exposições e eventos culturais com envio de bilhete por email via SendGrid.",
-  },
+  { icon: <SiNextdotjs size={18} />,                                    name: "Next.js"         },
+  { icon: <SiFirebase size={18} style={{ color: "#FF6F00" }} />,        name: "Firebase"        },
+  { icon: <SiTailwindcss size={18} style={{ color: "#06B6D4" }} />,     name: "Tailwind CSS"    },
+  { icon: <SiSendgrid size={18} style={{ color: "#1A82E2" }} />,        name: "SendGrid"        },
+  { icon: <SiGooglecloud size={18} style={{ color: "#4285F4" }} />,     name: "Cloud Storage"   },
+  { icon: <SiGithubactions size={18} style={{ color: "#2088FF" }} />,   name: "GitHub Actions"  },
 ];
 
 export default function ViagensEmCasa() {
   const isDark = useDarkMode();
+  const { t } = useTranslation();
+
+  const highlights = [
+    { id: "i18n",          icon: <FaGlobe size={15} />,     labelKey: "projects.viagens.highlights.i18n.label",          descKey: "projects.viagens.highlights.i18n.desc"          },
+    { id: "auth",          icon: <FaShieldAlt size={15} />, labelKey: "projects.viagens.highlights.auth.label",          descKey: "projects.viagens.highlights.auth.desc"          },
+    { id: "notifications", icon: <FaBell size={15} />,      labelKey: "projects.viagens.highlights.notifications.label", descKey: "projects.viagens.highlights.notifications.desc" },
+    { id: "reviews",       icon: <FaStar size={15} />,      labelKey: "projects.viagens.highlights.reviews.label",       descKey: "projects.viagens.highlights.reviews.desc"       },
+    { id: "vendors",       icon: <FaUsers size={15} />,     labelKey: "projects.viagens.highlights.vendors.label",       descKey: "projects.viagens.highlights.vendors.desc"       },
+  ];
+
+  const modules = [
+    {
+      id: "mercado",
+      to: "/projetos/viagens/mercado",
+      image: MercadoLight,
+      imageDark: MercadoDark,
+      icon: <FaUtensils size={16} />,
+    },
+    {
+      id: "bilheteira",
+      to: "/projetos/viagens/bilheteira",
+      image: BilheteiraLight,
+      imageDark: BilheteiraDark,
+      icon: <FaTicketAlt size={16} />,
+    },
+  ];
 
   return (
     <div style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
@@ -76,20 +74,20 @@ export default function ViagensEmCasa() {
             onMouseEnter={e => e.currentTarget.style.color = "var(--port-cyan)"}
             onMouseLeave={e => e.currentTarget.style.color = "var(--port-muted)"}
           >
-            ← Voltar ao portfólio
+            {t("common.backToPortfolio")}
           </Link>
 
-          <p className="section-label-port">Projecto 01</p>
+          <p className="section-label-port">{t("projects.viagens.label")}</p>
           <h1 className="section-title-port" style={{ fontSize: "clamp(26px, 4vw, 48px)", display: "flex", alignItems: "center", gap: 14, marginBottom: 20, flexWrap: "wrap" }}>
             <FaPlane style={{ color: "var(--port-cyan)", fontSize: "0.8em", flexShrink: 0 }} />
             Viagens em Casa
           </h1>
 
           <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.85, maxWidth: 680, marginBottom: 16 }}>
-            Este foi o meu projecto de fim de curso, uma plataforma digital que desenvolvi com o objectivo de fomentar a economia local de regiões menos populosas, conectando pequenos produtores e comerciantes ao mercado online. Inclui um marketplace de produtos regionais e uma bilheteira virtual para eventos e atrações culturais.
+            {t("projects.viagens.desc1")}
           </p>
           <p style={{ color: "var(--port-muted)", fontSize: 14, lineHeight: 1.8, maxWidth: 680, marginBottom: 28 }}>
-            Preocupei-me em tornar a interface acessível a utilizadores com pouca experiência tecnológica, com suporte a múltiplos idiomas via i18next para alcançar também emigrantes e turistas internacionais. O projecto foi construído com Next.js e Tailwind CSS no frontend, Firebase para autenticação, base de dados em tempo real e armazenamento de ficheiros via Cloud Storage, e SendGrid para o envio de bilhetes e notificações por email. O deploy é gerido através de GitHub Actions.
+            {t("projects.viagens.desc2")}
           </p>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
@@ -105,15 +103,15 @@ export default function ViagensEmCasa() {
         {/* Funcionalidades em destaque */}
         <div style={{ marginBottom: 52 }}>
           <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 20 }}>
-            Funcionalidades em destaque
+            {t("projects.viagens.highlightsLabel")}
           </p>
           <div className="viagens-highlights-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 16 }}>
-            {highlights.map(({ icon, label, desc }) => (
-              <div key={label} style={{ padding: "16px 18px", borderRadius: 10, border: "1px solid var(--port-border)", background: "var(--port-card)", display: "flex", flexDirection: "column", gap: 8 }}>
+            {highlights.map(({ id, icon, labelKey, descKey }) => (
+              <div key={id} style={{ padding: "16px 18px", borderRadius: 10, border: "1px solid var(--port-border)", background: "var(--port-card)", display: "flex", flexDirection: "column", gap: 8 }}>
                 <span style={{ display: "inline-flex", alignItems: "center", gap: 7, color: "var(--port-cyan)", fontSize: 13, fontWeight: 600 }}>
-                  {icon} {label}
+                  {icon} {t(labelKey)}
                 </span>
-                <p style={{ fontSize: 12, color: "var(--port-muted)", lineHeight: 1.6, margin: 0 }}>{desc}</p>
+                <p style={{ fontSize: 12, color: "var(--port-muted)", lineHeight: 1.6, margin: 0 }}>{t(descKey)}</p>
               </div>
             ))}
           </div>
@@ -121,13 +119,13 @@ export default function ViagensEmCasa() {
 
         {/* Módulos */}
         <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 24 }}>
-          Módulos do projecto
+          {t("projects.viagens.modulesLabel")}
         </p>
         <div className="viagens-modules-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }}>
-          {modules.map(({ to, image, imageDark, icon, tag, title, desc }) => (
+          {modules.map(({ id, to, image, imageDark, icon }) => (
             <Link key={to} to={to} className="project-card-port" style={{ textDecoration: "none" }}>
               <div style={{ height: 200, overflow: "hidden", position: "relative" }}>
-                <img src={isDark && imageDark ? imageDark : image} alt={title}
+                <img src={isDark && imageDark ? imageDark : image} alt={t(`projects.viagens.modules.${id}.title`)}
                   style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", transition: "transform 0.4s ease" }}
                   onMouseEnter={e => e.currentTarget.style.transform = "scale(1.04)"}
                   onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
@@ -138,11 +136,15 @@ export default function ViagensEmCasa() {
               <div style={{ padding: 20 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
                   <span style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 9, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--port-cyan)", background: "var(--port-cyan-dim)", padding: "4px 10px", borderRadius: 100 }}>
-                    {icon} {tag}
+                    {icon} {t(`projects.viagens.modules.${id}.tag`)}
                   </span>
                 </div>
-                <h3 className="font-syne" style={{ fontSize: 17, fontWeight: 700, color: "var(--port-text)", marginBottom: 8 }}>{title}</h3>
-                <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7 }}>{desc}</p>
+                <h3 className="font-syne" style={{ fontSize: 17, fontWeight: 700, color: "var(--port-text)", marginBottom: 8 }}>
+                  {t(`projects.viagens.modules.${id}.title`)}
+                </h3>
+                <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7 }}>
+                  {t(`projects.viagens.modules.${id}.desc`)}
+                </p>
               </div>
             </Link>
           ))}
@@ -151,15 +153,15 @@ export default function ViagensEmCasa() {
         {/* Nota de contexto */}
         <div style={{ marginTop: 40, padding: "20px 24px", borderRadius: 10, border: "1px solid var(--port-border)", background: "var(--port-card)" }}>
           <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.75, margin: 0 }}>
-            <span style={{ color: "var(--port-cyan)", fontWeight: 600 }}>Contexto académico — </span>
-            A plataforma foi desenvolvida como projecto de demonstração, provando a viabilidade técnica de um marketplace dedicado ao comércio e turismo local. Embora não esteja em produção, representa uma solução concreta para a digitalização de regiões com menor desenvolvimento tecnológico, incentivando a adopção de tecnologia no sector turístico e comercial.
+            <span style={{ color: "var(--port-cyan)", fontWeight: 600 }}>{t("projects.viagens.contextTitle")} — </span>
+            {t("projects.viagens.contextDesc")}
           </p>
         </div>
 
         {/* Rodapé */}
         <div style={{ marginTop: 48, paddingTop: 32, borderTop: "1px solid var(--port-border)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
           <p style={{ fontSize: 12, color: "var(--port-muted)" }}>
-            Desenvolvido por <span style={{ color: "var(--port-text)" }}>Lais Melo</span> & <span style={{ color: "var(--port-text)" }}>Carlos Afonso</span>
+            {t("common.developedBy")} <span style={{ color: "var(--port-text)" }}>{t("projects.viagens.footer")}</span>
           </p>
         </div>
       </div>

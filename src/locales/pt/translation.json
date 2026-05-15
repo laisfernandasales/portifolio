@@ -56,5 +56,150 @@
       "description": "Estou disponível para novos projectos e oportunidades.\nNão hesites em entrar em contacto!",
       "cta": "Entre em contacto →"
     }
+  },
+  "common": {
+    "backToPortfolio": "← Voltar ao portfólio",
+    "backToProjects": "← Todos os projectos",
+    "developedBy": "Desenvolvido por"
+  },
+  "projects": {
+    "viagens": {
+      "label": "Projecto 01",
+      "desc1": "Este foi o meu projecto de fim de curso, uma plataforma digital que desenvolvi com o objectivo de fomentar a economia local de regiões menos populosas, conectando pequenos produtores e comerciantes ao mercado online. Inclui um marketplace de produtos regionais e uma bilheteira virtual para eventos e atrações culturais.",
+      "desc2": "Preocupei-me em tornar a interface acessível a utilizadores com pouca experiência tecnológica, com suporte a múltiplos idiomas via i18next para alcançar também emigrantes e turistas internacionais. O projecto foi construído com Next.js e Tailwind CSS no frontend, Firebase para autenticação, base de dados em tempo real e armazenamento de ficheiros via Cloud Storage, e SendGrid para o envio de bilhetes e notificações por email. O deploy é gerido através de GitHub Actions.",
+      "highlightsLabel": "Funcionalidades em destaque",
+      "modulesLabel": "Módulos do projecto",
+      "contextTitle": "Contexto académico",
+      "contextDesc": "A plataforma foi desenvolvida como projecto de demonstração, provando a viabilidade técnica de um marketplace dedicado ao comércio e turismo local. Embora não esteja em produção, representa uma solução concreta para a digitalização de regiões com menor desenvolvimento tecnológico, incentivando a adopção de tecnologia no sector turístico e comercial.",
+      "footer": "Lais Melo & Carlos Afonso",
+      "highlights": {
+        "i18n":          { "label": "Internacionalização",        "desc": "Suporte a PT, ES e EN via i18next" },
+        "auth":          { "label": "Autenticação segura",        "desc": "Email, Google OAuth e reCAPTCHA v3" },
+        "notifications": { "label": "Notificações em tempo real", "desc": "Actualizações automáticas via Firestore" },
+        "reviews":       { "label": "Avaliações e comentários",   "desc": "Feedback de clientes em produtos e eventos" },
+        "vendors":       { "label": "Gestão de vendedores",       "desc": "Painel de estatísticas e moderação de conteúdos" }
+      },
+      "modules": {
+        "mercado": {
+          "tag":   "E-commerce",
+          "title": "Mercado Regional",
+          "desc":  "Produtos gastronómicos típicos de diversas regiões do país, com entrega directa ao consumidor. Carrinho, autenticação e painel de gestão."
+        },
+        "bilheteira": {
+          "tag":   "Bilheteira",
+          "title": "Museus & Eventos",
+          "desc":  "Venda online de bilhetes para museus, exposições e eventos culturais com envio de bilhete por email via SendGrid."
+        }
+      }
+    },
+    "pfire": {
+      "label": "Projecto 02",
+      "desc1": "O Pfire foi criado para digitalizar e organizar o processo de inspeção de segurança. Empresas que gerem dispositivos de emergência, como: extintores, saídas, hidrantes e mangueiras, precisam de emitir relatórios de inspeção periódicos por cliente, de forma padronizada e rastreável. A aplicação resolve exatamente esse problema.",
+      "desc2": "Para isso, oferece um sistema baseado em modelos reutilizáveis, cada modelo define a estrutura do relatório com campos personalizados que se repetem em todas as inspeções daquele tipo. A partir de um modelo, é possível gerar múltiplos relatórios, cada um associado a um cliente.",
+      "desc3": "Cada Modelo criado também pode ser clonado, para criar variações sem partir do zero. Tecnicamente, é uma FARM Stack com backend em FastAPI (Python) e frontend em React.",
+      "featuresLabel": "Funcionalidades",
+      "workflowLabel": "Fluxo de Utilização",
+      "architectureLabel": "Arquitectura FARM Stack",
+      "features": {
+        "templates":  { "title": "Modelos de Relatório",   "desc": "Criação de templates reutilizáveis para inspeções. Cada modelo define o nome e os campos personalizados que aparecerão em todos os relatórios gerados a partir dele." },
+        "cloning":    { "title": "Clonagem de Modelos",    "desc": "Duplicação de um modelo existente com um clique — ideal para criar variações de inspeção sem reconfigurar os campos do zero." },
+        "fields":     { "title": "Campos Personalizados",  "desc": "Cada modelo aceita campos adicionais definidos pelo utilizador. Os valores são preenchidos por relatório, adaptando o formulário a qualquer tipo de inspeção." },
+        "clients":    { "title": "Relatórios por Cliente", "desc": "Cada relatório é associado a um cliente (com NIF), ao modelo base e à data de criação — permitindo filtrar e pesquisar por nome de cliente ou outros campos." },
+        "status":     { "title": "Estado dos Relatórios",  "desc": "Relatórios com controlo de estado (Ativo / Inativo) — facilita a gestão do ciclo de vida de cada inspeção e filtragem por situação atual." },
+        "export":     { "title": "Exportação de Dados",    "desc": "Exportação dos relatórios diretamente da listagem, com todos os campos — incluindo os campos personalizados do modelo — prontos para entrega formal." },
+        "devices":    { "title": "Gestão de Dispositivos", "desc": "Registo de dispositivos de emergência — extintores, saídas, hidrantes e mangueiras — com número de ID único por dispositivo inspecionado." },
+        "socialAuth": { "title": "Autenticação Social",    "desc": "Login via Google e Microsoft com Firebase Authentication — tokens JWT validados no backend FastAPI a cada requisição protegida." },
+        "nosql":      { "title": "Base de Dados NoSQL",    "desc": "MongoDB como camada de persistência: documentos flexíveis que acomodam campos opcionais e estruturas variáveis sem migrações de schema." }
+      },
+      "workflow": {
+        "step1": { "title": "Criar Modelo",     "desc": "Define o nome do template e adiciona campos personalizados. O modelo pode ser clonado a qualquer momento para gerar variações." },
+        "step2": { "title": "Gerar Relatório",  "desc": "Seleciona um modelo, associa um cliente (com NIF) e preenche os campos — incluindo os campos personalizados definidos no template." },
+        "step3": { "title": "Gerir & Exportar", "desc": "Consulta o histórico de relatórios por modelo, filtra por cliente ou estado (Ativo / Inativo), e exporta os dados para entrega formal." }
+      },
+      "architecture": {
+        "frontend": { "label": "Frontend",      "desc": "SPA em React com React Router para navegação entre relatórios, formulários dinâmicos com validação client-side e interface responsiva." },
+        "backend":  { "label": "Backend",       "desc": "API REST assíncrona em Python com FastAPI. Schemas validados via Pydantic, rotas protegidas por JWT (Firebase), e Motor como driver async para MongoDB." },
+        "database": { "label": "Base de Dados", "desc": "Documentos JSON com schema livre para suportar relatórios com campos variáveis por tipo de dispositivo ou inspeção, sem necessidade de migrações." },
+        "auth":     { "label": "Autenticação",  "desc": "OAuth 2.0 via Firebase com provedores Google e Microsoft. O token de ID é verificado pelo backend em cada chamada à API para garantir sessões seguras." }
+      },
+      "slides": {
+        "s0": { "alt": "Tela de Login",                               "desc": "Autenticação via Google ou Microsoft com Firebase — acesso seguro e rápido sem necessidade de criar conta." },
+        "s1": { "alt": "Dashboard — Lista de Modelos",                "desc": "Painel principal com todos os modelos de inspeção criados. Cada cartão mostra o nome do modelo e permite editar, clonar ou aceder aos relatórios associados." },
+        "s2": { "alt": "Criação de Modelo com Campos Personalizados", "desc": "Formulário para definir um novo modelo de inspeção: nome do template e campos personalizados que serão preenchidos em cada relatório gerado a partir dele." },
+        "s3": { "alt": "Lista de Relatórios por Cliente",             "desc": "Listagem de todos os relatórios gerados para um modelo. Cada entrada mostra o cliente (com NIF), data de criação e estado — com filtros e pesquisa integrados." },
+        "s4": { "alt": "Exportação — Relatório Final em PDF",         "desc": "Versão final do relatório exportada para PDF, com todos os campos preenchidos (incluindo campos personalizados do modelo), pronta para entrega formal ao cliente." }
+      }
+    },
+    "psafe": {
+      "label": "Projecto 03",
+      "desc1": "O principal desafio deste projeto foi a reformulação completa do frontend, originalmente desenvolvido em PHP puro. Toda a interface foi reconstruída do zero utilizando React e Tailwind CSS, com foco em componentização, reutilização de código, responsividade, navegação client-side com React Router e suporte a tema dark/light.",
+      "desc2": "O backend foi mantido em PHP puro, sem utilização de frameworks, sendo responsável pela gestão de ficheiros num servidor Linux via FTP (FileZilla). Além disso, foram implementadas funcionalidades como autenticação com JWT no processo de recuperação de palavra-passe e envio de emails transacionais através da Brevo.",
+      "featuresLabel": "Funcionalidades",
+      "userProfilesLabel": "Perfis de Utilizador",
+      "architectureLabel": "Arquitectura",
+      "resultsLabel": "Resultados & Melhorias",
+      "features": {
+        "frontendRewrite": { "title": "Reformulação Frontend: PHP → React", "desc": "O frontend existia originalmente em PHP puro, misturado com lógica de servidor. Foi reescrito de raiz em React com Tailwind CSS — separação clara entre cliente e servidor, componentes reutilizáveis, tema dark/light e design responsivo." },
+        "linuxServer":     { "title": "Servidor Partilhado Linux",          "desc": "O servidor é uma variante de Linux com credenciais de utilizador pré-configuradas. Cada perfil tem acesso definido directamente no sistema operativo." },
+        "ftpExplorer":     { "title": "Explorador de Ficheiros via FTP",    "desc": "Criar e eliminar subpastas, carregar ficheiros — toda a estrutura reflecte o que existe fisicamente no servidor Linux, gerida via FileZilla FTP." },
+        "clientCreation":  { "title": "Criação de Clientes",                "desc": "O Utilizador Empresa cria sub-utilizadores (tipo Cliente) directamente na base de dados, na tabela 'clientes', ligados ao seu perfil." },
+        "permissions":     { "title": "Permissões e Data de Activação",     "desc": "Para cada Cliente, o Utilizador Empresa configura: a pasta que pode consultar, os privilégios (criar / carregar / renomear / eliminar) e a data a partir da qual o acesso fica activo." },
+        "jwtRecovery":     { "title": "Recuperação de Senha via JWT",       "desc": "O utilizador introduz o email — se estiver registado, é gerado um token JWT guardado na base de dados (MySQL) e enviado por email via Brevo com link de recuperação." },
+        "transEmail":      { "title": "Email Transacional — Brevo",         "desc": "Integração com Brevo para envio do email de recuperação de senha. Apenas utilizadores com email registado recebem o link com o token JWT." }
+      },
+      "userRoles": {
+        "admin": {
+          "role": "Admin",
+          "desc": "Utilizador com máximo privilégio na plataforma. As credenciais são criadas directamente no servidor Linux.",
+          "points": {
+            "p0": "Visualiza todas as pastas disponíveis no servidor",
+            "p1": "Privilégios totais sobre toda a estrutura de ficheiros e subpastas",
+            "p2": "Acesso à gestão completa da aplicação"
+          }
+        },
+        "company": {
+          "role": "Utilizador Empresa",
+          "desc": "Utilizador com pasta própria predefinida no servidor Linux. Gere o seu espaço e os seus Clientes.",
+          "points": {
+            "p0": "No servidor, acesso exclusivo à sua pasta predefinida no Linux",
+            "p1": "Na aplicação, pode criar e eliminar subpastas e carregar ficheiros",
+            "p2": "Cria sub-utilizadores do tipo Cliente — registados na tabela 'clientes' da base de dados",
+            "p3": "Para cada Cliente define: qual a pasta que pode consultar, com que privilégios e a data de activação"
+          }
+        },
+        "client": {
+          "role": "Cliente",
+          "desc": "Sub-utilizador criado pelo Utilizador Empresa, com acesso configurado e restrito.",
+          "points": {
+            "p0": "Registado na base de dados e ligado ao Utilizador Empresa que o criou",
+            "p1": "Acesso apenas à pasta que o Utilizador Empresa configurou",
+            "p2": "Privilégios individuais definidos: criar subpastas / carregar ficheiros / renomear / eliminar",
+            "p3": "Acesso condicionado pela data de activação — só fica activo a partir da data configurada"
+          }
+        }
+      },
+      "architecture": {
+        "frontend": { "label": "Frontend",           "desc": "Reconstrução total da interface, que existia em PHP puro. Reescrita de raiz em React com Tailwind CSS — componentes reutilizáveis, tema dark/light persistido em localStorage, layout totalmente responsivo e navegação client-side com React Router. Separação clara entre frontend e backend com comunicação via API REST." },
+        "backend":  { "label": "Backend",            "desc": "Sem framework — PHP nativo a processar pedidos HTTP, gerir sessões, comunicar com o servidor FTP via FileZilla e executar queries MySQL." },
+        "database": { "label": "Base de Dados",      "desc": "Modelação relacional (MySQL Workbench) para utilizadores, clientes, pastas partilhadas, permissões e datas de activação." },
+        "storage":  { "label": "Armazenamento",      "desc": "Os ficheiros residem num servidor Linux. O carregamento e a estrutura de pastas são geridos via protocolo FTP com FileZilla Server." },
+        "auth":     { "label": "Autenticação",       "desc": "Na recuperação de senha é gerado um token JWT que fica guardado numa tabela dedicada no MySQL. O link de recuperação inclui o token e tem validade definida." },
+        "email":    { "label": "Email Transacional", "desc": "O email de recuperação de senha é enviado via Brevo com o link contendo o JWT. Só é enviado se o email estiver registado na base de dados." }
+      },
+      "slides": {
+        "s0": { "alt": "Home — Explorador de Ficheiros", "desc": "Vista principal do explorador de ficheiros com a estrutura de pastas e ficheiros disponíveis para o utilizador autenticado." },
+        "s1": { "alt": "Upload de Pasta",               "desc": "Interface de upload de pasta — permite transferir directórios completos para o servidor Linux, respeitando os privilégios configurados para cada utilizador." },
+        "s2": { "alt": "Upload Concluído",              "desc": "Estado de confirmação após o carregamento de ficheiro para o servidor — reflecte a actualização em tempo real da estrutura de pastas." },
+        "s3": { "alt": "Transferência Concluída",       "desc": "Confirmação visual após a transferência de um ficheiro ser concluída com sucesso no servidor Linux via FTP." }
+      },
+      "results": {
+        "performance":     { "title": "Performance",        "desc": "Tempo de carregamento do frontend reduzido ~35% após reescrita em React e otimizações de assets." },
+        "security":        { "title": "Segurança",          "desc": "Recuperação de senha segura com JWT; tokens armazenados em MySQL com validade e rotatividade." },
+        "scalability":     { "title": "Escalabilidade",     "desc": "Separação frontend/backend facilita deploys independentes e futura migração para API dedicada." },
+        "ux":              { "title": "UX / Acessibilidade","desc": "Tema dark/light persistente, navegação client-side e design responsivo — melhor experiência em dispositivos móveis." },
+        "operational":     { "title": "Operacional",        "desc": "Workflow de upload direto para servidor Linux via FTP preservado; logs e confirmações visuais implementadas." },
+        "maintainability": { "title": "Manutenibilidade",   "desc": "Código modular e componentes reutilizáveis reduzem tempo de desenvolvimento para novas funcionalidades." }
+      }
+    }
   }
 }

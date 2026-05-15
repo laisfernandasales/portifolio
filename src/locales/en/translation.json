@@ -56,5 +56,150 @@
       "description": "I am available for new projects and opportunities.\nDon't hesitate to get in touch!",
       "cta": "Get in touch →"
     }
+  },
+  "common": {
+    "backToPortfolio": "← Back to portfolio",
+    "backToProjects": "← All projects",
+    "developedBy": "Developed by"
+  },
+  "projects": {
+    "viagens": {
+      "label": "Project 01",
+      "desc1": "This was my final-year university project — a digital platform I built to promote the local economy of less-populated regions, connecting small producers and traders to the online market. It includes a regional-products marketplace and a virtual ticketing system for events and cultural attractions.",
+      "desc2": "I focused on making the interface accessible to users with limited tech experience, with multi-language support via i18next to also reach emigrants and international tourists. The project was built with Next.js and Tailwind CSS on the frontend, Firebase for authentication, real-time database and file storage via Cloud Storage, and SendGrid for sending tickets and email notifications. Deployment is managed through GitHub Actions.",
+      "highlightsLabel": "Key features",
+      "modulesLabel": "Project modules",
+      "contextTitle": "Academic context",
+      "contextDesc": "The platform was developed as a demonstration project, proving the technical feasibility of a marketplace dedicated to local commerce and tourism. Although not in production, it represents a concrete solution for the digitisation of regions with lower technological development, encouraging the adoption of technology in the tourism and commercial sectors.",
+      "footer": "Lais Melo & Carlos Afonso",
+      "highlights": {
+        "i18n":          { "label": "Internationalisation",    "desc": "PT, ES and EN support via i18next" },
+        "auth":          { "label": "Secure authentication",   "desc": "Email, Google OAuth and reCAPTCHA v3" },
+        "notifications": { "label": "Real-time notifications", "desc": "Automatic updates via Firestore" },
+        "reviews":       { "label": "Ratings & comments",      "desc": "Customer feedback on products and events" },
+        "vendors":       { "label": "Vendor management",       "desc": "Statistics panel and content moderation" }
+      },
+      "modules": {
+        "mercado": {
+          "tag":   "E-commerce",
+          "title": "Regional Market",
+          "desc":  "Typical gastronomic products from various regions of the country, with direct delivery to the consumer. Cart, authentication and management panel."
+        },
+        "bilheteira": {
+          "tag":   "Ticketing",
+          "title": "Museums & Events",
+          "desc":  "Online ticket sales for museums, exhibitions and cultural events with ticket delivery by email via SendGrid."
+        }
+      }
+    },
+    "pfire": {
+      "label": "Project 02",
+      "desc1": "Pfire was created to digitise and organise the security inspection process. Companies that manage emergency devices — such as fire extinguishers, exits, hydrants and hoses — need to issue periodic inspection reports per client, in a standardised and traceable way. The application solves exactly that problem.",
+      "desc2": "To do so, it offers a system based on reusable templates. Each template defines the report structure with custom fields that repeat across all inspections of that type. From a single template, multiple reports can be generated, each associated with a client.",
+      "desc3": "Each created template can also be cloned to create variations without starting from scratch. Technically, it is a FARM Stack with a FastAPI (Python) backend and a React frontend.",
+      "featuresLabel": "Features",
+      "workflowLabel": "Usage Flow",
+      "architectureLabel": "FARM Stack Architecture",
+      "features": {
+        "templates":  { "title": "Report Templates",     "desc": "Creation of reusable templates for inspections. Each template defines the name and custom fields that will appear in all reports generated from it." },
+        "cloning":    { "title": "Template Cloning",     "desc": "Duplicate an existing template with one click — ideal for creating inspection variations without reconfiguring fields from scratch." },
+        "fields":     { "title": "Custom Fields",        "desc": "Each template accepts additional fields defined by the user. Values are filled per report, adapting the form to any type of inspection." },
+        "clients":    { "title": "Reports per Client",   "desc": "Each report is linked to a client (with tax ID), the base template and creation date — allowing filtering and searching by client name or other fields." },
+        "status":     { "title": "Report Status",        "desc": "Reports with status control (Active / Inactive) — simplifies lifecycle management of each inspection and filtering by current status." },
+        "export":     { "title": "Data Export",          "desc": "Export reports directly from the listing, with all fields — including template custom fields — ready for formal delivery." },
+        "devices":    { "title": "Device Management",    "desc": "Registration of emergency devices — extinguishers, exits, hydrants and hoses — with a unique ID number per inspected device." },
+        "socialAuth": { "title": "Social Authentication","desc": "Login via Google and Microsoft with Firebase Authentication — JWT tokens validated by the FastAPI backend on every protected request." },
+        "nosql":      { "title": "NoSQL Database",       "desc": "MongoDB as the persistence layer: flexible documents that accommodate optional fields and variable structures without schema migrations." }
+      },
+      "workflow": {
+        "step1": { "title": "Create Template",  "desc": "Define the template name and add custom fields. The template can be cloned at any time to generate variations." },
+        "step2": { "title": "Generate Report",  "desc": "Select a template, associate a client (with tax ID) and fill in the fields — including the custom fields defined in the template." },
+        "step3": { "title": "Manage & Export",  "desc": "Browse the report history by template, filter by client or status (Active / Inactive), and export data for formal delivery." }
+      },
+      "architecture": {
+        "frontend": { "label": "Frontend",      "desc": "React SPA with React Router for navigation between reports, dynamic forms with client-side validation and a responsive interface." },
+        "backend":  { "label": "Backend",       "desc": "Asynchronous REST API in Python with FastAPI. Schemas validated via Pydantic, routes protected by JWT (Firebase), and Motor as async driver for MongoDB." },
+        "database": { "label": "Database",      "desc": "JSON documents with a free schema to support reports with variable fields per device or inspection type, without requiring migrations." },
+        "auth":     { "label": "Authentication","desc": "OAuth 2.0 via Firebase with Google and Microsoft providers. The ID token is verified by the backend on every API call to ensure secure sessions." }
+      },
+      "slides": {
+        "s0": { "alt": "Login Screen",                        "desc": "Authentication via Google or Microsoft with Firebase — secure, fast access without needing to create an account." },
+        "s1": { "alt": "Dashboard — Template List",           "desc": "Main panel with all created inspection templates. Each card shows the template name and allows editing, cloning or accessing the associated reports." },
+        "s2": { "alt": "Create Template with Custom Fields",  "desc": "Form to define a new inspection template: template name and custom fields that will be filled in each report generated from it." },
+        "s3": { "alt": "Report List by Client",              "desc": "List of all reports generated for a template. Each entry shows the client (with tax ID), creation date and status — with integrated filters and search." },
+        "s4": { "alt": "Export — Final Report in PDF",       "desc": "Final version of the report exported to PDF, with all fields filled in (including template custom fields), ready for formal delivery to the client." }
+      }
+    },
+    "psafe": {
+      "label": "Project 03",
+      "desc1": "The main challenge of this project was the complete overhaul of the frontend, originally developed in plain PHP. The entire interface was rebuilt from scratch using React and Tailwind CSS, focusing on componentisation, code reuse, responsiveness, client-side navigation with React Router and dark/light theme support.",
+      "desc2": "The backend was kept in plain PHP, without any framework, handling file management on a Linux server via FTP (FileZilla). Additionally, features such as JWT authentication for the password recovery flow and transactional emails via Brevo were implemented.",
+      "featuresLabel": "Features",
+      "userProfilesLabel": "User Profiles",
+      "architectureLabel": "Architecture",
+      "resultsLabel": "Results & Improvements",
+      "features": {
+        "frontendRewrite": { "title": "Frontend Overhaul: PHP → React",  "desc": "The frontend originally existed in plain PHP, mixed with server logic. It was rewritten from scratch in React with Tailwind CSS — clear separation between client and server, reusable components, dark/light theme and responsive design." },
+        "linuxServer":     { "title": "Shared Linux Server",             "desc": "The server is a Linux variant with pre-configured user credentials. Each profile has access defined directly in the operating system." },
+        "ftpExplorer":     { "title": "FTP File Explorer",               "desc": "Create and delete subfolders, upload files — the entire structure reflects what physically exists on the Linux server, managed via FileZilla FTP." },
+        "clientCreation":  { "title": "Client Creation",                 "desc": "The Company User creates sub-users (Client type) directly in the database, in the 'clients' table, linked to their profile." },
+        "permissions":     { "title": "Permissions & Activation Date",   "desc": "For each Client, the Company User configures: which folder they can access, the privileges (create / upload / rename / delete) and the date from which access becomes active." },
+        "jwtRecovery":     { "title": "Password Recovery via JWT",       "desc": "The user enters their email — if registered, a JWT token is generated, stored in the database (MySQL) and sent by email via Brevo with a recovery link." },
+        "transEmail":      { "title": "Transactional Email — Brevo",     "desc": "Integration with Brevo for sending the password recovery email. Only users with a registered email receive the link with the JWT token." }
+      },
+      "userRoles": {
+        "admin": {
+          "role": "Admin",
+          "desc": "User with maximum privilege on the platform. Credentials are created directly on the Linux server.",
+          "points": {
+            "p0": "Views all folders available on the server",
+            "p1": "Full privileges over the entire file and subfolder structure",
+            "p2": "Access to complete application management"
+          }
+        },
+        "company": {
+          "role": "Company User",
+          "desc": "User with a predefined personal folder on the Linux server. Manages their space and their Clients.",
+          "points": {
+            "p0": "On the server, exclusive access to their predefined Linux folder",
+            "p1": "In the app, can create and delete subfolders and upload files",
+            "p2": "Creates Client-type sub-users — registered in the 'clients' table in the database",
+            "p3": "For each Client, defines: which folder they can access, with what privileges, and the activation date"
+          }
+        },
+        "client": {
+          "role": "Client",
+          "desc": "Sub-user created by the Company User, with configured and restricted access.",
+          "points": {
+            "p0": "Registered in the database and linked to the Company User who created them",
+            "p1": "Access only to the folder configured by the Company User",
+            "p2": "Individual privileges defined: create subfolders / upload files / rename / delete",
+            "p3": "Access conditional on the activation date — only becomes active from the configured date"
+          }
+        }
+      },
+      "architecture": {
+        "frontend": { "label": "Frontend",            "desc": "Complete interface reconstruction, originally in plain PHP. Rewritten in React with Tailwind CSS — reusable components, dark/light theme persisted in localStorage, fully responsive layout and client-side navigation with React Router. Clear frontend/backend separation via REST API." },
+        "backend":  { "label": "Backend",             "desc": "No framework — native PHP processing HTTP requests, managing sessions, communicating with the FTP server via FileZilla and executing MySQL queries." },
+        "database": { "label": "Database",            "desc": "Relational modelling (MySQL Workbench) for users, clients, shared folders, permissions and activation dates." },
+        "storage":  { "label": "Storage",             "desc": "Files reside on a Linux server. Uploading and folder structure are managed via the FTP protocol with FileZilla Server." },
+        "auth":     { "label": "Authentication",      "desc": "On password recovery, a JWT token is generated and stored in a dedicated MySQL table. The recovery link includes the token and has a defined expiry." },
+        "email":    { "label": "Transactional Email", "desc": "The password recovery email is sent via Brevo with the link containing the JWT. It is only sent if the email is registered in the database." }
+      },
+      "slides": {
+        "s0": { "alt": "Home — File Explorer", "desc": "Main view of the file explorer showing the folder and file structure available to the authenticated user." },
+        "s1": { "alt": "Folder Upload",        "desc": "Folder upload interface — allows transferring complete directories to the Linux server, respecting the privileges configured for each user." },
+        "s2": { "alt": "Upload Complete",      "desc": "Confirmation state after a file has been uploaded to the server — reflects the real-time update of the folder structure." },
+        "s3": { "alt": "Transfer Complete",    "desc": "Visual confirmation after a file transfer has been completed successfully on the Linux server via FTP." }
+      },
+      "results": {
+        "performance":     { "title": "Performance",       "desc": "Frontend load time reduced by ~35% after rewrite in React and asset optimisations." },
+        "security":        { "title": "Security",          "desc": "Secure password recovery with JWT; tokens stored in MySQL with expiry and rotation." },
+        "scalability":     { "title": "Scalability",       "desc": "Frontend/backend separation facilitates independent deploys and future migration to a dedicated API." },
+        "ux":              { "title": "UX / Accessibility","desc": "Persistent dark/light theme, client-side navigation and responsive design — better experience on mobile devices." },
+        "operational":     { "title": "Operational",       "desc": "Direct upload workflow to Linux server via FTP preserved; logs and visual confirmations implemented." },
+        "maintainability": { "title": "Maintainability",   "desc": "Modular code and reusable components reduce development time for new features." }
+      }
+    }
   }
 }
