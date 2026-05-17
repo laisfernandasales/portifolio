@@ -93,7 +93,7 @@ export default function ViagensEmCasa() {
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             {stack.map(({ icon, name }) => (
               <div key={name} className="tech-pill-port" style={{ fontSize: 13 }}>
-                <span style={{ display: "flex", alignItems: "center", color: "var(--port-cyan)" }}>{icon}</span>
+                <span style={{ display: "flex", alignItems: "center" }}>{icon}</span>
                 <span style={{ color: "var(--port-text)", fontWeight: 500 }}>{name}</span>
               </div>
             ))}
