@@ -155,6 +155,56 @@
         "s4": { "alt": "Exportação — Relatório Final em PDF",         "desc": "Versão final do relatório exportada para PDF, com todos os campos preenchidos (incluindo campos personalizados do modelo), pronta para entrega formal ao cliente." }
       }
     },
+    "mercado": {
+      "moduleLabel": "Módulo 01",
+      "breadcrumbCurrent": "Mercado Regional",
+      "title": "Mercado de Comidas Regionais",
+      "desc1a": "Loja virtual concebida para dar ",
+      "desc1Highlight": "visibilidade digital a pequenos produtores locais",
+      "desc1b": ", permitindo-lhes listar e vender os seus produtos directamente ao consumidor final, sem intermediários. O catálogo reúne produtos alimentares típicos de diversas regiões do país, organizados por categoria e com filtros de pesquisa para facilitar a descoberta.",
+      "desc2": "O fluxo de compra é simples e intuitivo — pensado para utilizadores com pouca experiência tecnológica — desde a navegação no catálogo até ao preenchimento do formulário de envio, com carrinho em tempo real e cálculo automático do total.",
+      "videoLabel": "mercado-regional — demo",
+      "featuresLabel": "Funcionalidades",
+      "features": {
+        "catalog":     { "title": "Catálogo regional",      "desc": "Produtos alimentares típicos de diversas regiões do país, com imagens, nomes e preços organizados por categoria." },
+        "filter":      { "title": "Filtro & ordenação",     "desc": "Filtragem por categoria de produto e ordenação por preço ascendente ou descendente." },
+        "cart":        { "title": "Carrinho em tempo real", "desc": "Adição de produtos ao carrinho com actualização instantânea de quantidades e valor total." },
+        "calculation": { "title": "Cálculo automático",     "desc": "Soma do valor total da compra recalculada automaticamente a cada alteração no carrinho." },
+        "management":  { "title": "Gestão do carrinho",     "desc": "Remover itens individuais, ajustar quantidades e limpar o carrinho por completo." },
+        "checkout":    { "title": "Simulação de checkout",  "desc": "Formulário de envio completo com nome, morada e contacto do destinatário." },
+        "vendor":      { "title": "Painel de vendedor",     "desc": "Área reservada a vendedores para gerir produtos, consultar pedidos e acompanhar estatísticas de vendas." },
+        "responsive":  { "title": "Responsivo",             "desc": "Interface adaptada a todos os tamanhos de ecrã com suporte ao tema claro e escuro." }
+      },
+      "challengeLabel": "Desafio técnico",
+      "challengeDesc": "O principal desafio foi garantir que o fluxo de compra fosse acessível para utilizadores com pouca experiência digital — desde a descoberta do produto até à confirmação da encomenda — sem sacrificar robustez técnica. A sincronização do carrinho com o Firestore em tempo real exigiu um cuidado especial na gestão de estado para evitar inconsistências entre sessões.",
+      "backToProject": "← Voltar ao projecto"
+    },
+    "bilheteira": {
+      "moduleLabel": "Módulo 02",
+      "breadcrumbCurrent": "Bilheteira",
+      "title": "Bilheteira de Museus & Eventos",
+      "desc1a": "Sistema de venda online de bilhetes para ",
+      "desc1Highlight": "museus, exposições e eventos culturais regionais",
+      "desc1b": ", com o objectivo de promover o turismo local e facilitar o acesso a experiências culturais. O catálogo é filtrado por tipo de atracção e apresenta cada evento com imagem, localização e preço, tornando a descoberta simples e apelativa.",
+      "desc2a": "Após a selecção do evento, o utilizador preenche um formulário validado com os dados da compra. Concluído o pagamento, o bilhete é gerado em ",
+      "desc2Highlight": "PDF e enviado automaticamente por email",
+      "desc2b": " via SendGrid — eliminando a necessidade de bilheteiras físicas e aproximando organizadores de eventos ao mundo digital.",
+      "videoLabel": "bilheteira — demo",
+      "featuresLabel": "Funcionalidades",
+      "features": {
+        "catalog":      { "title": "Catálogo de eventos",  "desc": "Imagem, nome, localização e preço de cada evento apresentados de forma visual e clara." },
+        "filter":       { "title": "Filtro por categoria", "desc": "Filtragem por tipo: castelos, museus, galerias de arte e actividades culturais." },
+        "location":     { "title": "Informação local",     "desc": "Endereço e detalhes de cada atracção para ajudar o visitante a planear a visita." },
+        "form":         { "title": "Formulário validado",  "desc": "Processo de compra com validações completas: nome, email, NIF, data e número de bilhetes." },
+        "calculation":  { "title": "Cálculo automático",   "desc": "Valor total calculado dinamicamente conforme a quantidade de bilhetes seleccionados." },
+        "confirmation": { "title": "Confirmação visual",   "desc": "Ecrã de sucesso após compra com resumo detalhado do pedido e próximos passos." },
+        "email":        { "title": "Bilhete por email",    "desc": "Envio automático do bilhete em PDF para o email do comprador via SendGrid." },
+        "responsive":   { "title": "Responsivo",           "desc": "Layout adaptado a todos os tamanhos de ecrã com suporte ao tema claro e escuro." }
+      },
+      "challengeLabel": "Desafio técnico",
+      "challengeDesc": "A integração com o SendGrid para geração e envio do bilhete em PDF foi o ponto mais exigente deste módulo. Foi necessário garantir que o documento chegasse correctamente formatado independentemente do cliente de email do utilizador, e que o processo de envio fosse fiável mesmo em cenários de falha de rede — com reenvio automático e feedback visual imediato ao comprador.",
+      "backToProject": "← Voltar ao projecto"
+    },
     "psafe": {
       "label": "Projecto 03",
       "desc1": "O principal desafio deste projeto foi a reformulação completa do frontend, originalmente desenvolvido em PHP puro. Toda a interface foi reconstruída do zero utilizando React e Tailwind CSS, com foco em componentização, reutilização de código, responsividade, navegação client-side com React Router e suporte a tema dark/light.",

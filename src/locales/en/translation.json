@@ -155,6 +155,56 @@
         "s4": { "alt": "Export — Final Report in PDF",       "desc": "Final version of the report exported to PDF, with all fields filled in (including template custom fields), ready for formal delivery to the client." }
       }
     },
+    "mercado": {
+      "moduleLabel": "Module 01",
+      "breadcrumbCurrent": "Regional Market",
+      "title": "Regional Food Market",
+      "desc1a": "A virtual store designed to give ",
+      "desc1Highlight": "digital visibility to small local producers",
+      "desc1b": ", allowing them to list and sell their products directly to the end consumer, without intermediaries. The catalogue brings together typical food products from various regions of the country, organised by category and with search filters to make discovery easy.",
+      "desc2": "The purchase flow is simple and intuitive — designed for users with little tech experience — from browsing the catalogue to filling in the shipping form, with a real-time cart and automatic total calculation.",
+      "videoLabel": "regional-market — demo",
+      "featuresLabel": "Features",
+      "features": {
+        "catalog":     { "title": "Regional catalogue",    "desc": "Typical food products from various regions of the country, with images, names and prices organised by category." },
+        "filter":      { "title": "Filter & sorting",      "desc": "Filtering by product category and sorting by ascending or descending price." },
+        "cart":        { "title": "Real-time cart",        "desc": "Add products to the cart with instant updates to quantities and total value." },
+        "calculation": { "title": "Automatic calculation", "desc": "Total purchase value automatically recalculated with every cart change." },
+        "management":  { "title": "Cart management",       "desc": "Remove individual items, adjust quantities and clear the cart entirely." },
+        "checkout":    { "title": "Checkout simulation",   "desc": "Full shipping form with recipient name, address and contact details." },
+        "vendor":      { "title": "Vendor panel",          "desc": "Dedicated area for vendors to manage products, view orders and track sales statistics." },
+        "responsive":  { "title": "Responsive",            "desc": "Interface adapted to all screen sizes with support for light and dark themes." }
+      },
+      "challengeLabel": "Technical challenge",
+      "challengeDesc": "The main challenge was ensuring the purchase flow was accessible to users with little digital experience — from product discovery to order confirmation — without sacrificing technical robustness. Syncing the cart with Firestore in real time required special care in state management to avoid inconsistencies between sessions.",
+      "backToProject": "← Back to project"
+    },
+    "bilheteira": {
+      "moduleLabel": "Module 02",
+      "breadcrumbCurrent": "Ticketing",
+      "title": "Museum & Event Ticketing",
+      "desc1a": "Online ticket sales system for ",
+      "desc1Highlight": "museums, exhibitions and regional cultural events",
+      "desc1b": ", aiming to promote local tourism and facilitate access to cultural experiences. The catalogue is filtered by attraction type and presents each event with an image, location and price, making discovery simple and appealing.",
+      "desc2a": "After selecting an event, the user fills in a validated purchase form. Once payment is complete, the ticket is generated as a ",
+      "desc2Highlight": "PDF and automatically sent by email",
+      "desc2b": " via SendGrid — eliminating the need for physical box offices and bringing event organisers closer to the digital world.",
+      "videoLabel": "ticketing — demo",
+      "featuresLabel": "Features",
+      "features": {
+        "catalog":      { "title": "Event catalogue",       "desc": "Image, name, location and price of each event presented in a clear and visual way." },
+        "filter":       { "title": "Category filter",       "desc": "Filtering by type: castles, museums, art galleries and cultural activities." },
+        "location":     { "title": "Local information",     "desc": "Address and details of each attraction to help visitors plan their visit." },
+        "form":         { "title": "Validated form",        "desc": "Purchase process with full validations: name, email, tax ID, date and number of tickets." },
+        "calculation":  { "title": "Automatic calculation", "desc": "Total value calculated dynamically based on the number of tickets selected." },
+        "confirmation": { "title": "Visual confirmation",   "desc": "Success screen after purchase with a detailed order summary and next steps." },
+        "email":        { "title": "Ticket by email",       "desc": "Automatic delivery of the PDF ticket to the buyer's email via SendGrid." },
+        "responsive":   { "title": "Responsive",            "desc": "Layout adapted to all screen sizes with support for light and dark themes." }
+      },
+      "challengeLabel": "Technical challenge",
+      "challengeDesc": "The integration with SendGrid for generating and sending the ticket as a PDF was the most demanding part of this module. It was necessary to ensure the document arrived correctly formatted regardless of the user's email client, and that the sending process was reliable even in network failure scenarios — with automatic retry and immediate visual feedback to the buyer.",
+      "backToProject": "← Back to project"
+    },
     "psafe": {
       "label": "Project 03",
       "desc1": "The main challenge of this project was the complete overhaul of the frontend, originally developed in plain PHP. The entire interface was rebuilt from scratch using React and Tailwind CSS, focusing on componentisation, code reuse, responsiveness, client-side navigation with React Router and dark/light theme support.",
