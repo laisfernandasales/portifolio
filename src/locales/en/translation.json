@@ -22,7 +22,7 @@
     "about": {
       "label": "About me",
       "title": "Frontend\nDeveloper",
-      "paragraph1": "I am a Software Developer specialising in Frontend development, with knowledge and experience that spans the full stack. Over the years I developed a strong affinity with Frontend — it is where I have worked the most and where I feel most comfortable, both in my final-year project Viagens em Casa and in the professional project PFIRE.",
+      "paragraph1": "I am a Software Developer specialising in Frontend development, with knowledge and experience that spans the full stack. Over the years I developed a strong affinity with Frontend — it is where I have worked the most and where I feel most comfortable, both in my final-year project Viagens em Casa and in the professional project PFIRE and Psafe365 Cloud.",
       "paragraph2": "I am currently deepening my Backend knowledge, building a more complete view of web development. I work with technologies such as React.js, Next.js, Node.js, FastAPI and GraphQL, and for interface design I use Tailwind CSS and Material UI, with MySQL, MongoDB and Firebase databases."
     },
     "stack": {
@@ -91,7 +91,7 @@
     "viagens": {
       "label": "Project 01",
       "desc1": "This was my final-year university project — a digital platform I built to promote the local economy of less-populated regions, connecting small producers and traders to the online market. It includes a regional-products marketplace and a virtual ticketing system for events and cultural attractions.",
-      "desc2": "I focused on making the interface accessible to users with limited tech experience, with multi-language support via i18next to also reach emigrants and international tourists. The project was built with Next.js and Tailwind CSS on the frontend, Firebase for authentication, real-time database and file storage via Cloud Storage, and SendGrid for sending tickets and email notifications. Deployment is managed through GitHub Actions.",
+      "desc2": "I focused on making the interface accessible to users with limited tech experience, with multi-language support via i18next to also reach emigrants and international tourists. The project was built with Next.js and Tailwind CSS on the frontend, Firebase for authentication, real-time database and file storage via Cloud Storage, and SendGrid for sending tickets and email notifications.",
       "highlightsLabel": "Key features",
       "modulesLabel": "Project modules",
       "contextTitle": "Academic context",

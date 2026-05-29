@@ -14,7 +14,7 @@ import {
 
 // ── Assets ────────────────────────────────────────────────────────────────────
 import FotoHome from "../../assets/FotoHome.jpeg";
-import CurriculoPDF from "../../assets/lais_melo_cv_final.pdf";
+import CurriculoPDF from "../../assets/lais_melo_cv.pdf";
 import ViagensMercadoLight from "../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
 import ViagensMercadoDark  from "../../assets/ViagensEmCasa/Mercado/MercadoDark.png";
 import PfireLoginLight from "../../assets/Pfire/LoginLight.png";

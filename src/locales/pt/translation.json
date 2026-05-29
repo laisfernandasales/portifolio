@@ -22,7 +22,7 @@
     "about": {
       "label": "Sobre mim",
       "title": "Desenvolvedora\nFrontend",
-      "paragraph1": "Sou Desenvolvedora de Software com especialização no desenvolvimento Frontend, mas com conhecimentos e experiência que abrangem o stack completo. Ao longo dos anos desenvolvi uma forte afinidade com o Frontend , foi onde mais trabalhei e onde me sinto mais à vontade, tanto no meu projecto de fim de curso Viagens em Casa como no projecto profissional PFIRE.",
+      "paragraph1": "Sou Desenvolvedora de Software com especialização no desenvolvimento Frontend, mas com conhecimentos e experiência que abrangem o stack completo. Ao longo dos anos desenvolvi uma forte afinidade com o Frontend , foi onde mais trabalhei e onde me sinto mais à vontade, tanto no meu projecto de fim de curso Viagens em Casa como nos projecto profissional PFIRE e Psafe365 Cloud.",
       "paragraph2": "Actualmente venho a aprofundar os conhecimentos no Backend, consolidando uma visão mais completa do desenvolvimento web. Trabalho com tecnologias como React.js, Next.js, Node.js, FastAPI e GraphQL, e no design de interfaces utilizo Tailwind CSS e Material UI, com bases de dados MySQL, MongoDB e Firebase."
     },
     "stack": {
@@ -91,7 +91,7 @@
     "viagens": {
       "label": "Projecto 01",
       "desc1": "Este foi o meu projecto de fim de curso, uma plataforma digital que desenvolvi com o objectivo de fomentar a economia local de regiões menos populosas, conectando pequenos produtores e comerciantes ao mercado online. Inclui um marketplace de produtos regionais e uma bilheteira virtual para eventos e atrações culturais.",
-      "desc2": "Preocupei-me em tornar a interface acessível a utilizadores com pouca experiência tecnológica, com suporte a múltiplos idiomas via i18next para alcançar também emigrantes e turistas internacionais. O projecto foi construído com Next.js e Tailwind CSS no frontend, Firebase para autenticação, base de dados em tempo real e armazenamento de ficheiros via Cloud Storage, e SendGrid para o envio de bilhetes e notificações por email. O deploy é gerido através de GitHub Actions.",
+      "desc2": "Preocupei-me em tornar a interface acessível a utilizadores com pouca experiência tecnológica, com suporte a múltiplos idiomas via i18next para alcançar também emigrantes e turistas internacionais. O projecto foi construído com Next.js e Tailwind CSS no frontend, Firebase para autenticação, base de dados em tempo real e armazenamento de ficheiros via Cloud Storage, e SendGrid para o envio de bilhetes e notificações por email.",
       "highlightsLabel": "Funcionalidades em destaque",
       "modulesLabel": "Módulos do projecto",
       "contextTitle": "Contexto académico",
