@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 // ── Ícones (react-icons) ──────────────────────────────────────────────────────
-import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaPhp, FaEnvelope } from "react-icons/fa";
 import {
   SiTailwindcss, SiJavascript, SiTypescript, SiNextdotjs,
@@ -14,7 +14,6 @@ import {
 
 // ── Assets ────────────────────────────────────────────────────────────────────
 import FotoHome from "../../assets/FotoHome.jpeg";
-import CurriculoPDF from "../../assets/lais_melo_cv.pdf";
 import ViagensMercadoLight from "../../assets/ViagensEmCasa/Mercado/MercadoLight.png";
 import ViagensMercadoDark  from "../../assets/ViagensEmCasa/Mercado/MercadoDark.png";
 import PfireLoginLight from "../../assets/Pfire/LoginLight.png";
@@ -156,10 +155,7 @@ export default function HomePage() {
           </p>
 
           <div className="hero-actions-port fade-up-6">
-            <a href={CurriculoPDF} download className="btn-port-primary">
-              <FiDownload /> {t("home.hero.downloadCV")}
-            </a>
-            <button onClick={() => scrollTo("projetos")} className="btn-port-ghost">
+            <button onClick={() => scrollTo("projetos")} className="btn-port-primary">
               {t("home.hero.viewProjects")}
             </button>
           </div>
