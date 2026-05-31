@@ -13,14 +13,13 @@ import PaginaCriarModeloDark   from "../../../assets/Pfire/PaginaCriarModeloDark
 import PaginaRelatoriosLight   from "../../../assets/Pfire/PaginaRelatoriosLight.png";
 import PaginaRelatoriosDark    from "../../../assets/Pfire/PaginaRelatoriosDark.png";
 import PDFRelatorio            from "../../../assets/Pfire/PDFRelatorio.png";
-import "../../../assets/styles/styles.css";
 
 const stack = [
-  { icon: <SiReact    size={18} style={{ color: "#61DAFB" }} />, name: "React"         },
-  { icon: <SiFastapi  size={18} style={{ color: "#009688" }} />, name: "FastAPI"        },
-  { icon: <SiMongodb  size={18} style={{ color: "#47A248" }} />, name: "MongoDB"        },
-  { icon: <SiFirebase size={18} style={{ color: "#FF6F00" }} />, name: "Firebase Auth"  },
-  { icon: <SiPython   size={18} style={{ color: "#3776AB" }} />, name: "Python"         },
+  { icon: <SiReact    size={18} style={{ color: "#61DAFB" }} />, name: "React"        },
+  { icon: <SiFastapi  size={18} style={{ color: "#009688" }} />, name: "FastAPI"       },
+  { icon: <SiMongodb  size={18} style={{ color: "#47A248" }} />, name: "MongoDB"       },
+  { icon: <SiFirebase size={18} style={{ color: "#FF6F00" }} />, name: "Firebase Auth" },
+  { icon: <SiPython   size={18} style={{ color: "#3776AB" }} />, name: "Python"        },
 ];
 
 const archColors = {
@@ -31,9 +30,7 @@ const archColors = {
 };
 
 function useDarkMode() {
-  const [isDark, setIsDark] = useState(
-    () => localStorage.getItem("theme") !== "light"
-  );
+  const [isDark, setIsDark] = useState(() => localStorage.getItem("theme") !== "light");
   useEffect(() => {
     const handler = (e) => setIsDark(e.detail.isDark);
     window.addEventListener("theme-change", handler);
@@ -54,38 +51,40 @@ export default function PfirePage() {
   const isDark = useDarkMode();
   const { t } = useTranslation();
   const [current, setCurrent] = useState(0);
+  const cyan = isDark ? "#00c8ff" : "#0369a1";
 
   const features = [
-    { id: "templates",  icon: <FaClipboardList size={20} style={{ color: "var(--port-cyan)" }} /> },
-    { id: "cloning",    icon: <FaCopy          size={20} style={{ color: "var(--port-cyan)" }} /> },
-    { id: "fields",     icon: <FaSlidersH      size={20} style={{ color: "var(--port-cyan)" }} /> },
-    { id: "clients",    icon: <FaUserTie       size={20} style={{ color: "var(--port-cyan)" }} /> },
-    { id: "status",     icon: <FaToggleOn      size={20} style={{ color: "var(--port-cyan)" }} /> },
-    { id: "export",     icon: <FaFilePdf       size={20} style={{ color: "var(--port-cyan)" }} /> },
-    { id: "devices",    icon: <FaShieldAlt     size={20} style={{ color: "var(--port-cyan)" }} /> },
-    { id: "socialAuth", icon: <SiFirebase      size={20} style={{ color: "#FF6F00"          }} /> },
-    { id: "nosql",      icon: <FaDatabase      size={20} style={{ color: "var(--port-cyan)" }} /> },
+    { id: "templates",  icon: <FaClipboardList size={20} style={{ color: cyan }} /> },
+    { id: "cloning",    icon: <FaCopy          size={20} style={{ color: cyan }} /> },
+    { id: "fields",     icon: <FaSlidersH      size={20} style={{ color: cyan }} /> },
+    { id: "clients",    icon: <FaUserTie       size={20} style={{ color: cyan }} /> },
+    { id: "status",     icon: <FaToggleOn      size={20} style={{ color: cyan }} /> },
+    { id: "export",     icon: <FaFilePdf       size={20} style={{ color: cyan }} /> },
+    { id: "devices",    icon: <FaShieldAlt     size={20} style={{ color: cyan }} /> },
+    { id: "socialAuth", icon: <SiFirebase      size={20} style={{ color: "#FF6F00" }} /> },
+    { id: "nosql",      icon: <FaDatabase      size={20} style={{ color: cyan }} /> },
   ];
 
-  const workflow = ["step1", "step2", "step3"];
-  const archKeys = ["frontend", "backend", "database", "auth"];
+  const workflow  = ["step1", "step2", "step3"];
+  const archKeys  = ["frontend", "backend", "database", "auth"];
   const slideKeys = ["s0", "s1", "s2", "s3", "s4"];
 
   return (
-    <div style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
+    <div className="min-h-screen pt-[100px] pb-20 relative overflow-hidden">
 
-      <div className="glow-port" style={{ top: -120, right: -120, width: 500, height: 500, background: "radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 70%)" }} />
-      <div className="glow-port" style={{ bottom: -80, left: -80, width: 360, height: 360, background: "radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 70%)" }} />
+      <div className="absolute rounded-full pointer-events-none"
+        style={{ top: -120, right: -120, width: 500, height: 500, background: "radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 70%)" }} />
+      <div className="absolute rounded-full pointer-events-none"
+        style={{ bottom: -80, left: -80, width: 360, height: 360, background: "radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 70%)" }} />
 
-      <div className="page-inner" style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <div className="max-w-[1100px] mx-auto px-5 md:px-[60px]">
 
         {/* Cabeçalho */}
-        <div style={{ marginBottom: 48 }}>
-          <Link
-            to="/"
-            style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 12, fontWeight: 500, letterSpacing: "1px", color: "var(--port-muted)", textDecoration: "none", textTransform: "uppercase", marginBottom: 24, transition: "color 0.2s" }}
-            onMouseEnter={e => e.currentTarget.style.color = "var(--port-cyan)"}
-            onMouseLeave={e => e.currentTarget.style.color = "var(--port-muted)"}
+        <div className="mb-12">
+          <Link to="/"
+            className="inline-flex items-center gap-[6px] text-xs font-medium tracking-[1px]
+                       text-port-muted no-underline uppercase mb-6 transition-colors duration-200
+                       hover:text-port-cyan"
           >
             {t("common.backToPortfolio")}
           </Link>
@@ -96,73 +95,64 @@ export default function PfirePage() {
             Pfire
           </h1>
 
-          <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, maxWidth: 680, marginBottom: 12 }}>
-            {t("projects.pfire.desc1")}
-          </p>
-          <p style={{ color: "var(--port-muted)", fontSize: 14, lineHeight: 1.8, maxWidth: 680, marginBottom: 8 }}>
-            {t("projects.pfire.desc2")}
-          </p>
-          <p style={{ color: "var(--port-muted)", fontSize: 14, lineHeight: 1.8, maxWidth: 680, marginBottom: 28 }}>
-            {t("projects.pfire.desc3")}
-          </p>
+          <p className="text-port-muted text-[15px] leading-[1.8] max-w-[680px] mb-3">{t("projects.pfire.desc1")}</p>
+          <p className="text-port-muted text-sm leading-[1.8] max-w-[680px] mb-2">{t("projects.pfire.desc2")}</p>
+          <p className="text-port-muted text-sm leading-[1.8] max-w-[680px] mb-7">{t("projects.pfire.desc3")}</p>
 
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div className="flex gap-[10px] flex-wrap">
             {stack.map(({ icon, name }) => (
-              <div key={name} className="tech-pill-port" style={{ fontSize: 13 }}>
-                <span style={{ display: "flex", alignItems: "center" }}>{icon}</span>
-                <span style={{ color: "var(--port-text)", fontWeight: 500 }}>{name}</span>
+              <div key={name} className="tech-pill-port text-[13px]">
+                <span className="flex items-center">{icon}</span>
+                <span className="text-port-text font-medium">{name}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Vídeo demonstração */}
-        <div style={{ marginBottom: 48 }}>
-          <video
-            src={PfireVideo}
-            controls
-            style={{ width: "100%", borderRadius: 16, border: "1px solid var(--port-border)", display: "block" }}
+        {/* Vídeo */}
+        <div className="mb-12">
+          <video src={PfireVideo} controls
+            className="w-full rounded-2xl block"
+            style={{ border: "1px solid var(--port-border)" }}
           />
         </div>
 
-        {/* Carousel de screenshots */}
-        <div style={{ marginBottom: 64 }}>
-          <div style={{ position: "relative", borderRadius: 16, overflow: "hidden", border: "1px solid var(--port-border)" }}>
+        {/* Carousel */}
+        <div className="mb-16">
+          <div className="relative rounded-2xl overflow-hidden" style={{ border: "1px solid var(--port-border)" }}>
             <img
               src={isDark ? slideImages[current].dark : slideImages[current].light}
               alt={`Pfire — ${t(`projects.pfire.slides.${slideKeys[current]}.alt`)}`}
-              style={{ width: "100%", display: "block", objectFit: "cover", objectPosition: "top", transition: "opacity 0.3s ease" }}
+              className="w-full block object-cover object-top transition-opacity duration-300"
             />
-            <button
-              onClick={() => setCurrent((current - 1 + slideKeys.length) % slideKeys.length)}
-              style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", width: 36, height: 36, borderRadius: "50%", background: "rgba(0,0,0,0.45)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, zIndex: 10, backdropFilter: "blur(4px)" }}
-              aria-label="Anterior"
-            >‹</button>
-            <button
-              onClick={() => setCurrent((current + 1) % slideKeys.length)}
-              style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", width: 36, height: 36, borderRadius: "50%", background: "rgba(0,0,0,0.45)", border: "1px solid rgba(255,255,255,0.15)", color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, zIndex: 10, backdropFilter: "blur(4px)" }}
-              aria-label="Próximo"
-            >›</button>
-            <div style={{ position: "absolute", top: 14, right: 14, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)", borderRadius: 100, padding: "3px 10px", fontSize: 11, color: "rgba(255,255,255,0.7)", letterSpacing: "0.5px", zIndex: 10 }}>
+            <button onClick={() => setCurrent((current - 1 + slideKeys.length) % slideKeys.length)}
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-base text-white cursor-pointer z-10 backdrop-blur-sm"
+              style={{ background: "rgba(0,0,0,0.45)", border: "1px solid rgba(255,255,255,0.15)" }}
+              aria-label="Anterior">‹</button>
+            <button onClick={() => setCurrent((current + 1) % slideKeys.length)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full flex items-center justify-center text-base text-white cursor-pointer z-10 backdrop-blur-sm"
+              style={{ background: "rgba(0,0,0,0.45)", border: "1px solid rgba(255,255,255,0.15)" }}
+              aria-label="Próximo">›</button>
+            <div className="absolute top-[14px] right-[14px] rounded-full px-[10px] py-[3px] text-[11px] text-white/70 tracking-[0.5px] z-10 backdrop-blur-md"
+              style={{ background: "rgba(0,0,0,0.5)" }}>
               {current + 1} / {slideKeys.length}
             </div>
           </div>
 
-          <div style={{ marginTop: 20, padding: "16px 20px", background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 12 }}>
-            <p style={{ margin: 0, marginBottom: 4, fontSize: 13, fontWeight: 700, color: "var(--port-cyan)", fontFamily: "var(--font-syne, sans-serif)" }}>
+          <div className="mt-5 px-5 py-4 rounded-xl" style={{ background: "var(--port-card)", border: "1px solid var(--port-border)" }}>
+            <p className="m-0 mb-1 text-[13px] font-bold font-syne text-port-cyan">
               {t(`projects.pfire.slides.${slideKeys[current]}.alt`)}
             </p>
-            <p style={{ margin: 0, fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7 }}>
+            <p className="m-0 text-[13px] text-port-muted leading-[1.7]">
               {t(`projects.pfire.slides.${slideKeys[current]}.desc`)}
             </p>
           </div>
 
-          <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 16 }}>
+          <div className="flex justify-center gap-2 mt-4">
             {slideKeys.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                style={{ width: i === current ? 20 : 8, height: 8, borderRadius: 100, border: "none", cursor: "pointer", transition: "all 0.25s", background: i === current ? "var(--port-cyan)" : "var(--port-border)", padding: 0 }}
+              <button key={i} onClick={() => setCurrent(i)}
+                className="h-2 rounded-[100px] border-none cursor-pointer p-0 transition-all duration-[250ms]"
+                style={{ width: i === current ? 20 : 8, background: i === current ? cyan : "var(--port-border)" }}
                 aria-label={`Slide ${i + 1}`}
               />
             ))}
@@ -170,43 +160,45 @@ export default function PfirePage() {
         </div>
 
         {/* Funcionalidades */}
-        <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 24 }}>
+        <p className="text-[10px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-6">
           {t("projects.pfire.featuresLabel")}
         </p>
-        <div className="pfire-features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginBottom: 64 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
           {features.map(({ id, icon }) => (
-            <div
-              key={id}
-              style={{ background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 14, padding: 24, transition: "border-color 0.2s" }}
+            <div key={id}
+              className="bg-port-card rounded-[14px] p-6 transition-colors duration-200 cursor-default hover:border-port-cyan"
+              style={{ border: "1px solid var(--port-border)" }}
               onMouseEnter={e => e.currentTarget.style.borderColor = "var(--port-cyan)"}
               onMouseLeave={e => e.currentTarget.style.borderColor = "var(--port-border)"}
             >
-              <div style={{ marginBottom: 12 }}>{icon}</div>
-              <h3 className="font-syne" style={{ fontSize: 15, fontWeight: 700, color: "var(--port-text)", marginBottom: 8 }}>
+              <div className="mb-3">{icon}</div>
+              <h3 className="font-syne text-[15px] font-bold text-port-text mb-2">
                 {t(`projects.pfire.features.${id}.title`)}
               </h3>
-              <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7 }}>
+              <p className="text-[13px] text-port-muted leading-[1.7]">
                 {t(`projects.pfire.features.${id}.desc`)}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Fluxo de utilização */}
-        <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 24 }}>
+        {/* Fluxo */}
+        <p className="text-[10px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-6">
           {t("projects.pfire.workflowLabel")}
         </p>
-        <div style={{ display: "flex", gap: 16, marginBottom: 64, flexWrap: "wrap" }}>
+        <div className="flex gap-4 mb-16 flex-wrap">
           {workflow.map((key, i) => (
-            <div key={key} style={{ flex: "1 1 280px", background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 14, padding: "20px 24px", display: "flex", gap: 16, alignItems: "flex-start" }}>
-              <div style={{ minWidth: 36, height: 36, borderRadius: 10, background: "rgba(0,200,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 800, color: "var(--port-cyan)", flexShrink: 0 }}>
+            <div key={key} className="flex-[1_1_280px] bg-port-card rounded-[14px] px-6 py-5 flex gap-4 items-start"
+              style={{ border: "1px solid var(--port-border)" }}>
+              <div className="min-w-9 h-9 rounded-[10px] flex items-center justify-center text-[13px] font-extrabold flex-shrink-0"
+                style={{ background: "rgba(0,200,255,0.08)", color: cyan }}>
                 {String(i + 1).padStart(2, "0")}
               </div>
               <div>
-                <h3 className="font-syne" style={{ fontSize: 14, fontWeight: 700, color: "var(--port-text)", marginBottom: 6 }}>
+                <h3 className="font-syne text-sm font-bold text-port-text mb-1.5">
                   {t(`projects.pfire.workflow.${key}.title`)}
                 </h3>
-                <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7, margin: 0 }}>
+                <p className="text-[13px] text-port-muted leading-[1.7] m-0">
                   {t(`projects.pfire.workflow.${key}.desc`)}
                 </p>
               </div>
@@ -214,25 +206,25 @@ export default function PfirePage() {
           ))}
         </div>
 
-        {/* Arquitectura FARM */}
-        <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 24 }}>
+        {/* Arquitectura */}
+        <p className="text-[10px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-6">
           {t("projects.pfire.architectureLabel")}
         </p>
-        <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 64 }}>
+        <div className="flex flex-col gap-4 mb-16">
           {archKeys.map((key, i) => {
             const color = archColors[key];
             return (
-              <div key={key} style={{ display: "flex", alignItems: "flex-start", gap: 20, background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 14, padding: "20px 24px" }}>
-                <div style={{ minWidth: 36, height: 36, borderRadius: 10, background: `${color}18`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 800, color, fontFamily: "var(--font-syne, sans-serif)", flexShrink: 0 }}>
+              <div key={key} className="flex items-start gap-5 bg-port-card rounded-[14px] px-6 py-5"
+                style={{ border: "1px solid var(--port-border)" }}>
+                <div className="min-w-9 h-9 rounded-[10px] flex items-center justify-center text-[13px] font-extrabold font-syne flex-shrink-0"
+                  style={{ background: `${color}18`, color }}>
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--port-muted)" }}>
-                      {t(`projects.pfire.architecture.${key}.label`)}
-                    </span>
-                  </div>
-                  <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7, margin: 0 }}>
+                  <span className="text-[10px] font-bold tracking-[1.5px] uppercase text-port-muted block mb-1">
+                    {t(`projects.pfire.architecture.${key}.label`)}
+                  </span>
+                  <p className="text-[13px] text-port-muted leading-[1.7] m-0">
                     {t(`projects.pfire.architecture.${key}.desc`)}
                   </p>
                 </div>
@@ -242,26 +234,16 @@ export default function PfirePage() {
         </div>
 
         {/* Rodapé */}
-        <div style={{ marginTop: 60, paddingTop: 32, borderTop: "1px solid var(--port-border)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-          <p style={{ fontSize: 12, color: "var(--port-muted)" }}>
-            {t("common.developedBy")} <span style={{ color: "var(--port-text)" }}>Lais Melo</span>
+        <div className="mt-[60px] pt-8 flex items-center justify-between flex-wrap gap-3"
+          style={{ borderTop: "1px solid var(--port-border)" }}>
+          <p className="text-xs text-port-muted">
+            {t("common.developedBy")} <span className="text-port-text">Lais Melo</span>
           </p>
-          <Link to="/" style={{ fontSize: 12, fontWeight: 500, color: "var(--port-cyan)", textDecoration: "none", letterSpacing: "0.5px" }}>
+          <Link to="/" className="text-xs font-medium text-port-cyan no-underline tracking-[0.5px]">
             {t("common.backToPortfolio")}
           </Link>
         </div>
       </div>
-
-      <style>{`
-        .page-inner { padding: 0 60px; }
-        @media (max-width: 1024px) {
-          .pfire-features-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 768px) {
-          .page-inner { padding: 0 20px; }
-          .pfire-features-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </div>
   );
 }

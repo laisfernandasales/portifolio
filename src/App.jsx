@@ -14,7 +14,7 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      <div className="min-h-screen transition-colors duration-500 overflow-x-clip" style={{ background: "var(--port-bg)", color: "var(--port-text)" }}>
+      <div className="min-h-screen transition-colors duration-500 overflow-x-clip bg-port-bg text-port-text">
         <Navbar />
         <ToggleTheme />
 

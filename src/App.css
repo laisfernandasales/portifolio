@@ -2,3 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Design tokens ────────────────────────────────────────────────────────
+   Fonte única de verdade para as cores. O Tailwind config referencia
+   estas variáveis via var(), permitindo que utilities como bg-port-card
+   mudem automaticamente com o tema sem dark: variants em cada elemento.
+──────────────────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --port-bg:               #dde6f2;
+    --port-surface:          #ccd7e8;
+    --port-card:             #ffffff;
+    --port-border:           rgba(15, 30, 80, 0.13);
+    --port-cyan:             #0369a1;
+    --port-cyan-dim:         rgba(3, 105, 161, 0.10);
+    --port-cyan-glow:        rgba(3, 105, 161, 0.05);
+    --port-text:             #0f172a;
+    --port-muted:            #475569;
+    --port-nav-bg:           rgba(221, 230, 242, 0.90);
+    --port-nav-shadow:       0 1px 20px rgba(15, 30, 80, 0.07);
+    --port-nav-link:         #334155;
+    --port-dot-inactive:     #94a3b8;
+    --port-dot-line:         rgba(15, 30, 80, 0.12);
+    --port-noise-opacity:    0.06;
+    --port-btn-color:        #ffffff;
+    --port-btn-shadow:       0 4px 18px rgba(3, 105, 161, 0.30);
+    --port-btn-hover-bg:     #025880;
+    --port-btn-hover-shadow: 0 6px 24px rgba(3, 105, 161, 0.45);
+  }
+
+  .dark {
+    --port-bg:               #080d14;
+    --port-surface:          #0d1520;
+    --port-card:             #111c2b;
+    --port-border:           rgba(0, 200, 255, 0.12);
+    --port-cyan:             #00c8ff;
+    --port-cyan-dim:         rgba(0, 200, 255, 0.15);
+    --port-cyan-glow:        rgba(0, 200, 255, 0.08);
+    --port-text:             #e8f0fe;
+    --port-muted:            #6a7e99;
+    --port-nav-bg:           rgba(8, 13, 20, 0.85);
+    --port-nav-shadow:       none;
+    --port-nav-link:         #6a7e99;
+    --port-dot-inactive:     #6a7e99;
+    --port-dot-line:         rgba(0, 200, 255, 0.12);
+    --port-noise-opacity:    0.4;
+    --port-btn-color:        #080d14;
+    --port-btn-shadow:       0 0 24px rgba(0, 200, 255, 0.25);
+    --port-btn-hover-bg:     #ffffff;
+    --port-btn-hover-shadow: 0 0 32px rgba(0, 200, 255, 0.40);
+  }
+
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    touch-action: pan-y;
+  }
+
+  input, textarea {
+    background-color: #f1f5fb !important;
+    border-color: rgba(15, 30, 80, 0.16) !important;
+    color: #0f172a !important;
+    box-shadow: inset 0 1px 3px rgba(15, 30, 80, 0.06) !important;
+  }
+  .dark input, .dark textarea {
+    background-color: #0d1520 !important;
+    border-color: rgba(0, 200, 255, 0.12) !important;
+    color: #e8f0fe !important;
+    box-shadow: none !important;
+  }
+  input::placeholder, textarea::placeholder             { color: #7a8fa8; }
+  .dark input::placeholder, .dark textarea::placeholder { color: #6a7e99; }
+}
+
+/* ── Utilities ───────────────────────────────────────────────────────── */
+@layer utilities {
+  .fade-up-1     { animation: fadeUp 0.6s ease both 0.1s; }
+  .fade-up-2     { animation: fadeUp 0.6s ease both 0.2s; }
+  .fade-up-3     { animation: fadeUp 0.6s ease both 0.3s; }
+  .fade-up-4     { animation: fadeUp 0.6s ease both 0.4s; }
+  .fade-up-5     { animation: fadeUp 0.6s ease both 0.5s; }
+  .fade-up-6     { animation: fadeUp 0.6s ease both 0.6s; }
+  .fade-up-7     { animation: fadeUp 0.6s ease both 0.7s; }
+  .fade-up-photo { animation: fadeUp 0.8s ease both 0.35s; }
+
+  .badge-pulse-dot {
+    @apply w-1.5 h-1.5 rounded-full inline-block;
+    background: var(--port-cyan);
+    animation: badgePulse 1.8s ease-in-out infinite;
+  }
+
+  .noise-overlay {
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: var(--port-noise-opacity);
+  }
+
+  @media (max-width: 768px) { .scroll-dots-nav { display: none; } }
+  .scroll-dots-nav {
+    @apply fixed right-7 top-1/2 -translate-y-1/2 z-[99] flex flex-col items-center;
+  }
+  .dot-nav {
+    @apply w-2 h-2 rounded-full opacity-[0.35] transition-all duration-300
+           cursor-pointer border-none p-0 flex-shrink-0;
+    background: var(--port-dot-inactive);
+  }
+  .dot-nav.active {
+    @apply opacity-100 scale-[1.3];
+    background: var(--port-cyan);
+    box-shadow: 0 0 8px var(--port-cyan);
+  }
+  .dot-line-nav {
+    @apply w-px h-6 flex-shrink-0;
+    background: var(--port-dot-line);
+  }
+}

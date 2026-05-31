@@ -5,40 +5,43 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#eff6ff',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          900: '#1e3a8a',
-        },
-        secondary: '#f59e0b',
-        neutral: {
-          50: '#f8fafc',
-          900: '#0f172a',
-        },
         port: {
-          bg:      '#080d14',
-          surface: '#0d1520',
-          card:    '#111c2b',
-          cyan:    '#00c8ff',
-          muted:   '#6a7e99',
-          text:    '#e8f0fe',
+          bg:          "var(--port-bg)",
+          surface:     "var(--port-surface)",
+          card:        "var(--port-card)",
+          border:      "var(--port-border)",
+          cyan:        "var(--port-cyan)",
+          "cyan-dim":  "var(--port-cyan-dim)",
+          "cyan-glow": "var(--port-cyan-glow)",
+          text:        "var(--port-text)",
+          muted:       "var(--port-muted)",
+          "nav-bg":    "var(--port-nav-bg)",
+          "nav-link":  "var(--port-nav-link)",
         },
       },
       fontFamily: {
-        sans: ['DM Sans', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        syne: ['Syne', 'sans-serif'],
-      },
-      animation: {
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'portFloat 4s ease-in-out infinite',
+        sans: ["DM Sans", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+        syne: ["Syne", "sans-serif"],
       },
       keyframes: {
-        portFloat: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%':      { transform: 'translateY(-8px)' },
+        fadeUp: {
+          from: { opacity: "0", transform: "translateY(28px)" },
+          to:   { opacity: "1", transform: "translateY(0)" },
         },
+        badgePulse: {
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%":      { opacity: "0.4", transform: "scale(0.8)" },
+        },
+        portFloat: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%":      { transform: "translateY(-8px)" },
+        },
+      },
+      animation: {
+        "fade-up":    "fadeUp 0.6s ease both",
+        "badge-pulse":"badgePulse 1.8s ease-in-out infinite",
+        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        float:        "portFloat 4s ease-in-out infinite",
       },
     },
   },

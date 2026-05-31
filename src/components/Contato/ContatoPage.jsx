@@ -2,12 +2,25 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
 import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
-import "../../assets/styles/styles.css";
 
 const EMAILJS_SERVICE_ID       = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const EMAILJS_TEMPLATE_CONTACT = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT;
 const EMAILJS_TEMPLATE_REPLY   = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY;
 const EMAILJS_PUBLIC_KEY       = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+const channels = [
+  { icon: <FiMail size={18} />,     label: "Email",    value: "laismelo.dev@gmail.com",                       href: "mailto:laismelo.dev@gmail.com"                         },
+  { icon: <FiGithub size={18} />,   label: "GitHub",   value: "github.com/laisfernandasales",                 href: "https://github.com/laisfernandasales"                   },
+  { icon: <FiLinkedin size={18} />, label: "LinkedIn", value: "linkedin.com/in/lais-fernanda-sales-melo",     href: "https://www.linkedin.com/in/lais-fernanda-sales-melo/"  },
+];
+
+const inputClass = `
+  w-full box-border bg-port-surface
+  border border-port-border rounded-lg
+  px-[14px] py-3 text-sm text-port-text
+  outline-none transition-colors duration-200
+  font-[inherit]
+`.trim();
 
 function ContatoPage() {
   const formRef = useRef(null);
@@ -37,143 +50,161 @@ function ContatoPage() {
   };
 
   return (
-    <div className="contato-wrapper" style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
+    <div className="relative overflow-hidden min-h-screen
+                    pt-20 pb-12 px-4
+                    sm:px-5
+                    md:pt-[100px] md:pb-20 md:px-[60px]">
 
-      <div className="glow-port" style={{ top: "-100px", right: "-100px", width: 500, height: 500, background: "radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 70%)" }} />
-      <div className="glow-port" style={{ bottom: "-100px", left: "-100px", width: 400, height: 400, background: "radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 70%)" }} />
+      {/* Glows decorativos */}
+      <div className="absolute rounded-full pointer-events-none"
+        style={{ top: "-100px", right: "-100px", width: 500, height: 500,
+          background: "radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 70%)" }} />
+      <div className="absolute rounded-full pointer-events-none"
+        style={{ bottom: "-100px", left: "-100px", width: 400, height: 400,
+          background: "radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 70%)" }} />
 
-      <div className="page-inner" style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <div className="max-w-[1100px] mx-auto">
 
         <p className="section-label-port">{t("contactPage.label")}</p>
-        <h1 className="section-title-port" style={{ fontSize: "clamp(28px, 4vw, 48px)", marginBottom: 12 }}>
+        <h1
+          className="section-title-port"
+          style={{ fontSize: "clamp(28px, 4vw, 48px)", marginBottom: 12 }}
+        >
           {t("contactPage.title")}
         </h1>
-        <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.8, marginBottom: 48, maxWidth: "100%" }}>
+        <p className="text-port-muted text-[15px] leading-[1.8] mb-12 w-full">
           {t("contactPage.description")}
         </p>
 
-        <div className="contato-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 60, alignItems: "start" }}>
+        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-7 md:gap-[60px] items-start">
 
-          {/* ── Coluna esquerda — info ── */}
-          <div className="contato-info-col">
-            <div style={{ marginBottom: 40 }}>
-              <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 20 }}>
+          {/* ── Info ──────────────────────────────────────────────── */}
+          <div className="order-2">
+            <div className="mb-10">
+              <p className="text-[10px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-5">
                 {t("contactPage.channelsLabel")}
               </p>
-              {[
-                { icon: <FiMail size={18} />,     label: "Email",    value: "laismelo.dev@gmail.com",                          href: "mailto:laismelo.dev@gmail.com"                          },
-                { icon: <FiGithub size={18} />,   label: "GitHub",   value: "github.com/laisfernandasales",                    href: "https://github.com/laisfernandasales"                    },
-                { icon: <FiLinkedin size={18} />, label: "LinkedIn", value: "linkedin.com/in/lais-fernanda-sales-melo",        href: "https://www.linkedin.com/in/lais-fernanda-sales-melo/"  },
-              ].map(({ icon, label, value, href }) => (
-                <a key={label} href={href} target="_blank" rel="noopener noreferrer"
-                  style={{ display: "flex", alignItems: "center", gap: 16, padding: "16px 20px", marginBottom: 12, background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 12, textDecoration: "none", transition: "all 0.25s" }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--port-cyan)"; e.currentTarget.style.background = "var(--port-cyan-glow)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--port-border)"; e.currentTarget.style.background = "var(--port-card)"; }}
+
+              {channels.map(({ icon, label, value, href }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 px-5 py-4 mb-3
+                             bg-port-card border border-port-border rounded-xl
+                             no-underline transition-all duration-[250ms]
+                             hover:border-port-cyan hover:bg-port-cyan-glow"
                 >
-                  <div style={{ width: 40, height: 40, borderRadius: 10, background: "var(--port-cyan-dim)", border: "1px solid var(--port-border)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--port-cyan)", flexShrink: 0 }}>
+                  <div className="w-10 h-10 rounded-[10px] flex-shrink-0
+                                  bg-port-cyan-dim border border-port-border
+                                  flex items-center justify-center text-port-cyan">
                     {icon}
                   </div>
                   <div>
-                    <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--port-muted)", marginBottom: 2 }}>{label}</p>
-                    <p style={{ fontSize: 13, color: "var(--port-text)" }}>{value}</p>
+                    <p className="text-[10px] font-semibold tracking-[1.5px] uppercase text-port-muted mb-0.5">
+                      {label}
+                    </p>
+                    <p className="text-[13px] text-port-text">{value}</p>
                   </div>
                 </a>
               ))}
             </div>
 
-            <div style={{ padding: "20px 24px", background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 12 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <div className="px-6 py-5 bg-port-card border border-port-border rounded-xl">
+              <div className="flex items-center gap-[10px] mb-2">
                 <span className="badge-pulse-dot" />
-                <span style={{ fontSize: 12, fontWeight: 600, color: "var(--port-cyan)", letterSpacing: "1px", textTransform: "uppercase" }}>
+                <span className="text-xs font-semibold text-port-cyan tracking-[1px] uppercase">
                   {t("contactPage.available")}
                 </span>
               </div>
-              <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.7 }}>
+              <p className="text-[13px] text-port-muted leading-[1.7]">
                 {t("contactPage.availabilityText")}
               </p>
             </div>
           </div>
 
-          {/* ── Coluna direita — formulário ── */}
-          <div className="contato-form-card" style={{ background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 16, padding: 40 }}>
+          {/* ── Formulário ────────────────────────────────────────── */}
+          <div className="order-1 bg-port-card border border-port-border rounded-2xl p-5 md:p-10">
             {sent ? (
-              <div style={{ textAlign: "center", padding: "40px 0" }}>
-                <div style={{ width: 56, height: 56, borderRadius: "50%", background: "var(--port-cyan-dim)", border: "1px solid var(--port-border)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", color: "var(--port-cyan)", fontSize: 24 }}>✓</div>
-                <h3 className="section-title-port" style={{ fontSize: 22, marginBottom: 8 }}>{t("contactPage.success.title")}</h3>
-                <p style={{ color: "var(--port-muted)", fontSize: 14 }}>{t("contactPage.success.subtitle")}</p>
+              <div className="text-center py-10">
+                <div className="w-14 h-14 rounded-full mx-auto mb-5
+                                bg-port-cyan-dim border border-port-border
+                                flex items-center justify-center text-port-cyan text-2xl">
+                  ✓
+                </div>
+                <h3 className="section-title-port" style={{ fontSize: 22, marginBottom: 8 }}>
+                  {t("contactPage.success.title")}
+                </h3>
+                <p className="text-port-muted text-sm">{t("contactPage.success.subtitle")}</p>
               </div>
             ) : (
-              <form ref={formRef} onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-                <div className="form-fields-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+              <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { labelKey: "contactPage.form.namLabel",   name: "name",  type: "text",  placeholderKey: "contactPage.form.namePlaceholder"   },
-                    { labelKey: "contactPage.form.emailLabel", name: "email", type: "email", placeholderKey: "contactPage.form.emailPlaceholder"  },
+                    { labelKey: "contactPage.form.namLabel",   name: "name",  type: "text",  placeholderKey: "contactPage.form.namePlaceholder"  },
+                    { labelKey: "contactPage.form.emailLabel", name: "email", type: "email", placeholderKey: "contactPage.form.emailPlaceholder" },
                   ].map(({ labelKey, name, type, placeholderKey }) => (
                     <div key={name}>
-                      <label style={{ display: "block", fontSize: 10, fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "var(--port-muted)", marginBottom: 8 }}>
+                      <label className="block text-[10px] font-semibold tracking-[2px] uppercase text-port-muted mb-2">
                         {t(labelKey)}
                       </label>
-                      <input name={name} type={type} placeholder={t(placeholderKey)} required
-                        style={{ width: "100%", boxSizing: "border-box", background: "var(--port-surface)", border: "1px solid var(--port-border)", borderRadius: 8, padding: "12px 14px", fontSize: 14, color: "var(--port-text)", outline: "none", transition: "border-color 0.2s" }}
+                      <input
+                        name={name} type={type} required
+                        placeholder={t(placeholderKey)}
+                        className={inputClass}
                         onFocus={e => e.target.style.borderColor = "var(--port-cyan)"}
-                        onBlur={e => e.target.style.borderColor = "var(--port-border)"}
+                        onBlur={e  => e.target.style.borderColor = ""}
                       />
                     </div>
                   ))}
                 </div>
 
                 <div>
-                  <label style={{ display: "block", fontSize: 10, fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "var(--port-muted)", marginBottom: 8 }}>
+                  <label className="block text-[10px] font-semibold tracking-[2px] uppercase text-port-muted mb-2">
                     {t("contactPage.form.subjectLabel")}
                   </label>
-                  <input name="subject" type="text" placeholder={t("contactPage.form.subjectPlaceholder")} required
-                    style={{ width: "100%", boxSizing: "border-box", background: "var(--port-surface)", border: "1px solid var(--port-border)", borderRadius: 8, padding: "12px 14px", fontSize: 14, color: "var(--port-text)", outline: "none", transition: "border-color 0.2s" }}
+                  <input
+                    name="subject" type="text" required
+                    placeholder={t("contactPage.form.subjectPlaceholder")}
+                    className={inputClass}
                     onFocus={e => e.target.style.borderColor = "var(--port-cyan)"}
-                    onBlur={e => e.target.style.borderColor = "var(--port-border)"}
+                    onBlur={e  => e.target.style.borderColor = ""}
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: "block", fontSize: 10, fontWeight: 600, letterSpacing: "2px", textTransform: "uppercase", color: "var(--port-muted)", marginBottom: 8 }}>
+                  <label className="block text-[10px] font-semibold tracking-[2px] uppercase text-port-muted mb-2">
                     {t("contactPage.form.messageLabel")}
                   </label>
-                  <textarea name="message" rows={6} placeholder={t("contactPage.form.messagePlaceholder")} required
-                    style={{ width: "100%", boxSizing: "border-box", background: "var(--port-surface)", border: "1px solid var(--port-border)", borderRadius: 8, padding: "12px 14px", fontSize: 14, color: "var(--port-text)", outline: "none", resize: "vertical", transition: "border-color 0.2s", fontFamily: "inherit" }}
+                  <textarea
+                    name="message" rows={6} required
+                    placeholder={t("contactPage.form.messagePlaceholder")}
+                    className={`${inputClass} resize-y`}
                     onFocus={e => e.target.style.borderColor = "var(--port-cyan)"}
-                    onBlur={e => e.target.style.borderColor = "var(--port-border)"}
+                    onBlur={e  => e.target.style.borderColor = ""}
                   />
                 </div>
 
-                {error && <p style={{ fontSize: 13, color: "#f87171", margin: 0 }}>{error}</p>}
+                {error && (
+                  <p className="text-[13px] text-red-400 m-0">{error}</p>
+                )}
 
-                <button type="submit" disabled={sending} className="btn-port-primary" style={{ width: "100%", justifyContent: "center", opacity: sending ? 0.6 : 1, cursor: sending ? "not-allowed" : "pointer" }}>
-                  <FiSend size={15} /> {sending ? t("contactPage.form.sending") : t("contactPage.form.submit")}
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className={`btn-port-primary w-full justify-center ${sending ? "opacity-60 cursor-not-allowed" : ""}`}
+                >
+                  <FiSend size={15} />
+                  {sending ? t("contactPage.form.sending") : t("contactPage.form.submit")}
                 </button>
               </form>
             )}
           </div>
+
         </div>
       </div>
-
-      <style>{`
-        .page-inner        { padding: 0 60px; }
-        .contato-info-col  { order: 2; }
-        .contato-form-card { order: 1; }
-
-        @media (max-width: 768px) {
-          .contato-wrapper   { padding-top: 80px !important; padding-bottom: 48px !important; }
-          .page-inner        { padding: 0 20px; }
-          .contato-grid      { grid-template-columns: 1fr !important; gap: 28px !important; }
-          .contato-info-col  { order: 2; }
-          .contato-form-card { order: 1; padding: 20px !important; }
-          .form-fields-grid  { grid-template-columns: 1fr !important; }
-        }
-
-        @media (max-width: 480px) {
-          .contato-wrapper { padding-top: 72px !important; }
-          .page-inner      { padding: 0 16px; }
-        }
-      `}</style>
     </div>
   );
 }

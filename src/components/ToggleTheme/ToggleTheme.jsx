@@ -33,26 +33,16 @@ export default function ToggleTheme() {
     <button
       onClick={toggleTheme}
       aria-label="Alternar Tema"
-      style={{
-        position: "fixed",
-        bottom: 28,
-        right: 28,
-        zIndex: 200,
-        width: 44,
-        height: 44,
-        borderRadius: "50%",
-        background: "var(--port-card)",
-        border: "1px solid var(--port-border)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        cursor: "pointer",
-        color: "var(--port-cyan)",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
-        transition: "all 0.25s",
-      }}
-      onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--port-cyan)"; e.currentTarget.style.background = "var(--port-cyan-dim)"; }}
-      onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--port-border)"; e.currentTarget.style.background = "var(--port-card)"; }}
+      className="fixed bottom-7 right-7 z-[200]
+                 w-11 h-11 rounded-full cursor-pointer
+                 bg-port-card text-port-cyan
+                 shadow-[0_4px_20px_rgba(0,0,0,0.3)]
+                 flex items-center justify-center
+                 transition-all duration-[250ms]
+                 hover:bg-port-cyan-dim"
+      style={{ border: "1px solid var(--port-border)" }}
+      onMouseEnter={e => e.currentTarget.style.borderColor = "var(--port-cyan)"}
+      onMouseLeave={e => e.currentTarget.style.borderColor = "var(--port-border)"}
     >
       {isDark ? <FaSun size={18} /> : <FaMoon size={18} />}
     </button>

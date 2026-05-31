@@ -20,7 +20,6 @@ export default function MobileMenu() {
   const handleClick = (e, id) => {
     e.preventDefault();
     if (detailsRef.current) detailsRef.current.removeAttribute("open");
-
     if (location.pathname === "/") {
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     } else {
@@ -30,35 +29,29 @@ export default function MobileMenu() {
   };
 
   return (
-    <div className="navbar mobile-navbar-port">
-      {/* Hambúrguer */}
+    <div className="navbar fixed top-0 left-0 right-0 z-[100]
+                    backdrop-blur-xl bg-[var(--port-nav-bg)]
+                    border-b border-port-border px-4">
+
       <div className="navbar-start">
         <details ref={detailsRef} className="dropdown">
-          <summary className="btn btn-ghost btn-circle" style={{ color: "var(--port-text)" }}>
+          <summary className="btn btn-ghost btn-circle text-port-text">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" />
             </svg>
           </summary>
           <ul
             tabIndex={-1}
-            className="menu menu-sm dropdown-content rounded-box z-50 mt-3 w-52 p-2 shadow-lg"
-            style={{ background: "var(--port-surface)", border: "1px solid var(--port-border)" }}
+            className="menu menu-sm dropdown-content rounded-box z-50 mt-3 w-52 p-2 shadow-lg
+                       bg-port-surface border border-port-border"
           >
             {links.map(({ labelKey, id }) => (
               <li key={id}>
                 <a
                   href={`/#${id}`}
                   onClick={(e) => handleClick(e, id)}
-                  style={{
-                    color: "var(--port-muted)",
-                    fontSize: 13,
-                    fontWeight: 500,
-                    letterSpacing: "0.5px",
-                    textTransform: "uppercase",
-                    borderRadius: 8,
-                  }}
-                  onMouseEnter={e => e.currentTarget.style.color = "var(--port-cyan)"}
-                  onMouseLeave={e => e.currentTarget.style.color = "var(--port-muted)"}
+                  className="text-port-muted text-[13px] font-medium tracking-[0.5px] uppercase
+                             hover:text-port-cyan"
                 >
                   {t(labelKey)}
                 </a>
@@ -68,19 +61,16 @@ export default function MobileMenu() {
         </details>
       </div>
 
-      {/* Logo centro */}
       <div className="navbar-center">
         <a
           href="/#inicio"
           onClick={(e) => handleClick(e, "inicio")}
-          className="nav-logo-port"
-          style={{ fontSize: 16 }}
+          className="font-syne font-extrabold text-[16px] text-port-text tracking-[-0.5px] no-underline"
         >
-          Laismelo<span style={{ color: "var(--port-cyan)" }}>.</span>dev
+          Laismelo<span className="text-port-cyan">.</span>dev
         </a>
       </div>
 
-      {/* Seletor de idioma */}
       <div className="navbar-end">
         <LanguageSwitcher />
       </div>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   FiImage, FiFilter, FiCheckCircle,
@@ -5,138 +6,140 @@ import {
 } from "react-icons/fi";
 import { SiNextdotjs, SiFirebase, SiTailwindcss, SiSendgrid } from "react-icons/si";
 import { Link } from "react-router-dom";
-import "../../../../assets/styles/styles.css";
+
+function useDarkMode() {
+  const [isDark, setIsDark] = useState(() => localStorage.getItem("theme") !== "light");
+  useEffect(() => {
+    const handler = (e) => setIsDark(e.detail.isDark);
+    window.addEventListener("theme-change", handler);
+    return () => window.removeEventListener("theme-change", handler);
+  }, []);
+  return isDark;
+}
 
 const stack = [
-  { icon: <SiNextdotjs size={16} />, name: "Next.js" },
-  { icon: <SiFirebase size={16} style={{ color: "#FF6F00" }} />, name: "Firestore" },
-  { icon: <SiTailwindcss size={16} style={{ color: "#06B6D4" }} />, name: "Tailwind CSS" },
-  { icon: <SiSendgrid size={16} style={{ color: "#1A82E2" }} />, name: "SendGrid" },
-];
-
-const featureList = [
-  { id: "catalog",      icon: <FiImage />,       color: "#a78bfa" },
-  { id: "filter",       icon: <FiFilter />,      color: "var(--port-cyan)" },
-  { id: "location",     icon: <FiMapPin />,      color: "#34d399" },
-  { id: "form",         icon: <FiClipboard />,   color: "#fbbf24" },
-  { id: "calculation",  icon: <FiDollarSign />,  color: "#818cf8" },
-  { id: "confirmation", icon: <FiCheckCircle />, color: "#34d399" },
-  { id: "email",        icon: <FiMail />,        color: "#f87171" },
-  { id: "responsive",   icon: <FiLayout />,      color: "#f472b6" },
+  { icon: <SiNextdotjs   size={16} />,                               name: "Next.js"     },
+  { icon: <SiFirebase    size={16} style={{ color: "#FF6F00" }} />,  name: "Firestore"   },
+  { icon: <SiTailwindcss size={16} style={{ color: "#06B6D4" }} />,  name: "Tailwind CSS"},
+  { icon: <SiSendgrid    size={16} style={{ color: "#1A82E2" }} />,  name: "SendGrid"    },
 ];
 
 export default function BilheteiraPage() {
+  const isDark = useDarkMode();
   const { t } = useTranslation();
+  const cyan = isDark ? "#00c8ff" : "#0369a1";
+
+  const featureList = [
+    { id: "catalog",      icon: <FiImage />,       color: "#a78bfa" },
+    { id: "filter",       icon: <FiFilter />,      color: cyan      },
+    { id: "location",     icon: <FiMapPin />,      color: "#34d399" },
+    { id: "form",         icon: <FiClipboard />,   color: "#fbbf24" },
+    { id: "calculation",  icon: <FiDollarSign />,  color: "#818cf8" },
+    { id: "confirmation", icon: <FiCheckCircle />, color: "#34d399" },
+    { id: "email",        icon: <FiMail />,        color: "#f87171" },
+    { id: "responsive",   icon: <FiLayout />,      color: "#f472b6" },
+  ];
 
   return (
-    <div style={{ minHeight: "100vh", paddingTop: 100, paddingBottom: 80, position: "relative", overflow: "hidden" }}>
+    <div className="min-h-screen pt-[100px] pb-20 relative overflow-hidden">
 
-      <div className="glow-port" style={{ top: -100, right: -100, width: 460, height: 460, background: "radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 70%)" }} />
-      <div className="glow-port" style={{ bottom: -80, left: -80, width: 360, height: 360, background: "radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 70%)" }} />
+      <div className="absolute rounded-full pointer-events-none"
+        style={{ top: -100, right: -100, width: 460, height: 460, background: "radial-gradient(circle, rgba(0,200,255,0.06) 0%, transparent 70%)" }} />
+      <div className="absolute rounded-full pointer-events-none"
+        style={{ bottom: -80, left: -80, width: 360, height: 360, background: "radial-gradient(circle, rgba(0,200,255,0.04) 0%, transparent 70%)" }} />
 
-      <div className="page-inner" style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <div className="max-w-[1100px] mx-auto px-5 md:px-[60px]">
 
         {/* Breadcrumb */}
-        <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 28, fontSize: 12, color: "var(--port-muted)", textTransform: "uppercase", letterSpacing: "1px", flexWrap: "wrap" }}>
+        <div className="flex items-center gap-2 mb-7 text-xs text-port-muted uppercase tracking-[1px] flex-wrap">
           <Link to="/projetos/viagens"
-            style={{ color: "var(--port-muted)", textDecoration: "none", transition: "color 0.2s" }}
-            onMouseEnter={e => e.currentTarget.style.color = "var(--port-cyan)"}
-            onMouseLeave={e => e.currentTarget.style.color = "var(--port-muted)"}
+            className="text-port-muted no-underline transition-colors duration-200 hover:text-port-cyan"
           >← Viagens em Casa</Link>
-          <span style={{ opacity: 0.3 }}>/</span>
-          <span style={{ color: "var(--port-cyan)" }}>{t("projects.bilheteira.breadcrumbCurrent")}</span>
+          <span className="opacity-30">/</span>
+          <span style={{ color: cyan }}>{t("projects.bilheteira.breadcrumbCurrent")}</span>
         </div>
 
         {/* Cabeçalho */}
-        <div style={{ marginBottom: 40 }}>
+        <div className="mb-10">
           <p className="section-label-port">{t("projects.bilheteira.moduleLabel")}</p>
           <h1 className="section-title-port" style={{ fontSize: "clamp(22px, 3.5vw, 42px)", marginBottom: 18 }}>
             {t("projects.bilheteira.title")}
           </h1>
-          <p style={{ color: "var(--port-muted)", fontSize: 15, lineHeight: 1.85, maxWidth: 660, marginBottom: 14 }}>
+          <p className="text-port-muted text-[15px] leading-[1.85] max-w-[660px] mb-[14px]">
             {t("projects.bilheteira.desc1a")}
-            <span style={{ color: "var(--port-text)" }}>{t("projects.bilheteira.desc1Highlight")}</span>
+            <span className="text-port-text">{t("projects.bilheteira.desc1Highlight")}</span>
             {t("projects.bilheteira.desc1b")}
           </p>
-          <p style={{ color: "var(--port-muted)", fontSize: 14, lineHeight: 1.8, maxWidth: 660, marginBottom: 24 }}>
+          <p className="text-port-muted text-sm leading-[1.8] max-w-[660px] mb-6">
             {t("projects.bilheteira.desc2a")}
-            <span style={{ color: "var(--port-text)" }}>{t("projects.bilheteira.desc2Highlight")}</span>
+            <span className="text-port-text">{t("projects.bilheteira.desc2Highlight")}</span>
             {t("projects.bilheteira.desc2b")}
           </p>
 
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div className="flex gap-[10px] flex-wrap">
             {stack.map(({ icon, name }) => (
-              <div key={name} className="tech-pill-port" style={{ fontSize: 12 }}>
-                <span style={{ display: "flex", alignItems: "center", color: "var(--port-cyan)" }}>{icon}</span>
-                <span style={{ color: "var(--port-text)", fontWeight: 500 }}>{name}</span>
+              <div key={name} className="tech-pill-port text-xs">
+                <span className="flex items-center" style={{ color: cyan }}>{icon}</span>
+                <span className="text-port-text font-medium">{name}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Vídeo */}
-        <div style={{ marginBottom: 48, borderRadius: 16, overflow: "hidden", border: "1px solid var(--port-border)", boxShadow: "0 24px 60px rgba(0,0,0,0.4)" }}>
-          <div style={{ background: "var(--port-surface)", padding: "10px 16px", display: "flex", alignItems: "center", gap: 8, borderBottom: "1px solid var(--port-border)" }}>
+        <div className="mb-12 rounded-2xl overflow-hidden" style={{ border: "1px solid var(--port-border)", boxShadow: "0 24px 60px rgba(0,0,0,0.4)" }}>
+          <div className="bg-port-surface px-4 py-[10px] flex items-center gap-2" style={{ borderBottom: "1px solid var(--port-border)" }}>
             {["#f87171", "#fbbf24", "#34d399"].map(c => (
-              <div key={c} style={{ width: 10, height: 10, borderRadius: "50%", background: c, opacity: 0.8 }} />
+              <div key={c} className="w-[10px] h-[10px] rounded-full opacity-80" style={{ background: c }} />
             ))}
-            <span style={{ fontSize: 11, color: "var(--port-muted)", marginLeft: 8, letterSpacing: "0.5px" }}>{t("projects.bilheteira.videoLabel")}</span>
+            <span className="text-[11px] text-port-muted ml-2 tracking-[0.5px]">{t("projects.bilheteira.videoLabel")}</span>
           </div>
           <video
             src={new URL("../../../../assets/ViagensEmCasa/Bilheteria/Bilheteira.mp4", import.meta.url).href}
             controls
-            style={{ width: "100%", display: "block", background: "#000" }}
+            className="w-full block bg-black"
           />
         </div>
 
         {/* Funcionalidades */}
-        <p style={{ fontSize: 10, fontWeight: 600, letterSpacing: "2.5px", color: "var(--port-muted)", textTransform: "uppercase", marginBottom: 20 }}>
+        <p className="text-[10px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-5">
           {t("projects.bilheteira.featuresLabel")}
         </p>
-        <div className="features-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 16, marginBottom: 40 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:[grid-template-columns:repeat(auto-fill,minmax(220px,1fr))] gap-4 mb-10">
           {featureList.map(({ id, icon, color }) => (
-            <div key={id} style={{ background: "var(--port-card)", border: "1px solid var(--port-border)", borderRadius: 14, padding: 20, transition: "all 0.25s", cursor: "default" }}
+            <div key={id}
+              className="bg-port-card rounded-[14px] p-5 transition-all duration-[250ms] cursor-default"
+              style={{ border: "1px solid var(--port-border)" }}
               onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--port-cyan)"; e.currentTarget.style.background = "var(--port-cyan-glow)"; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = "var(--port-border)"; e.currentTarget.style.background = "var(--port-card)"; }}
             >
-              <div style={{ width: 36, height: 36, borderRadius: 9, background: "rgba(255,255,255,0.04)", border: "1px solid var(--port-border)", display: "flex", alignItems: "center", justifyContent: "center", color, fontSize: 16, marginBottom: 12 }}>
+              <div className="w-9 h-9 rounded-[9px] flex items-center justify-center text-base mb-3"
+                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid var(--port-border)", color }}>
                 {icon}
               </div>
-              <p style={{ fontWeight: 600, fontSize: 14, color: "var(--port-text)", marginBottom: 6 }}>{t(`projects.bilheteira.features.${id}.title`)}</p>
-              <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.6 }}>{t(`projects.bilheteira.features.${id}.desc`)}</p>
+              <p className="font-semibold text-sm text-port-text mb-1.5">{t(`projects.bilheteira.features.${id}.title`)}</p>
+              <p className="text-[13px] text-port-muted leading-[1.6]">{t(`projects.bilheteira.features.${id}.desc`)}</p>
             </div>
           ))}
         </div>
 
         {/* Desafio técnico */}
-        <div style={{ marginBottom: 48, padding: "20px 24px", borderRadius: 10, border: "1px solid var(--port-border)", background: "var(--port-card)" }}>
-          <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: "1.5px", textTransform: "uppercase", color: "var(--port-cyan)", marginBottom: 8 }}>{t("projects.bilheteira.challengeLabel")}</p>
-          <p style={{ fontSize: 13, color: "var(--port-muted)", lineHeight: 1.75, margin: 0 }}>
-            {t("projects.bilheteira.challengeDesc")}
-          </p>
+        <div className="mb-12 px-6 py-5 rounded-[10px] bg-port-card" style={{ border: "1px solid var(--port-border)" }}>
+          <p className="text-xs font-bold tracking-[1.5px] uppercase mb-2" style={{ color: cyan }}>{t("projects.bilheteira.challengeLabel")}</p>
+          <p className="text-[13px] text-port-muted leading-[1.75] m-0">{t("projects.bilheteira.challengeDesc")}</p>
         </div>
 
         {/* Rodapé */}
-        <div style={{ paddingTop: 32, borderTop: "1px solid var(--port-border)", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-          <p style={{ fontSize: 12, color: "var(--port-muted)" }}>
-            {t("common.developedBy")} <span style={{ color: "var(--port-text)" }}>Lais Melo</span> & <span style={{ color: "var(--port-text)" }}>Carlos Afonso</span>
+        <div className="pt-8 flex items-center justify-between flex-wrap gap-3"
+          style={{ borderTop: "1px solid var(--port-border)" }}>
+          <p className="text-xs text-port-muted">
+            {t("common.developedBy")} <span className="text-port-text">Lais Melo</span> & <span className="text-port-text">Carlos Afonso</span>
           </p>
           <Link to="/projetos/viagens" className="btn-port-ghost" style={{ fontSize: 12, padding: "8px 18px" }}>
             {t("projects.bilheteira.backToProject")}
           </Link>
         </div>
       </div>
-
-      <style>{`
-        .page-inner { padding: 0 60px; }
-        @media (max-width: 768px) {
-          .page-inner { padding: 0 20px; }
-          .features-grid { grid-template-columns: 1fr 1fr !important; }
-        }
-        @media (max-width: 480px) {
-          .features-grid { grid-template-columns: 1fr !important; }
-        }
-      `}</style>
     </div>
   );
 }
