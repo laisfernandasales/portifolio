@@ -44,7 +44,9 @@ function ContatoPage() {
       (err) => {
         setError(t("contactPage.form.error"));
         setSending(false);
-        console.error("EmailJS error:", err.text);
+        console.error("EmailJS error:", err);
+        console.error("EmailJS status:", err?.status);
+        console.error("EmailJS text:", err?.text);
       }
     );
   };

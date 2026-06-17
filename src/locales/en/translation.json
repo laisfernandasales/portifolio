@@ -122,6 +122,7 @@
       "desc1": "Pfire was created to digitise and organise the security inspection process. Companies that manage emergency devices — such as fire extinguishers, exits, hydrants and hoses — need to issue periodic inspection reports per client, in a standardised and traceable way. The application solves exactly that problem.",
       "desc2": "To do so, it offers a system based on reusable templates. Each template defines the report structure with custom fields that repeat across all inspections of that type. From a single template, multiple reports can be generated, each associated with a client.",
       "desc3": "Each created template can also be cloned to create variations without starting from scratch. Technically, it is a FARM Stack with a FastAPI (Python) backend and a React frontend.",
+      "desc4": "All search filters in the application were implemented using Apollo Client integrated with the GraphQL API, enabling efficient and reactive queries directly within the React components.",
       "featuresLabel": "Features",
       "workflowLabel": "Usage Flow",
       "architectureLabel": "FARM Stack Architecture",

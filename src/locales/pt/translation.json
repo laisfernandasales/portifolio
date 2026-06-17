@@ -122,6 +122,7 @@
       "desc1": "O Pfire foi criado para digitalizar e organizar o processo de inspeção de segurança. Empresas que gerem dispositivos de emergência, como: extintores, saídas, hidrantes e mangueiras, precisam de emitir relatórios de inspeção periódicos por cliente, de forma padronizada e rastreável. A aplicação resolve exatamente esse problema.",
       "desc2": "Para isso, oferece um sistema baseado em modelos reutilizáveis, cada modelo define a estrutura do relatório com campos personalizados que se repetem em todas as inspeções daquele tipo. A partir de um modelo, é possível gerar múltiplos relatórios, cada um associado a um cliente.",
       "desc3": "Cada Modelo criado também pode ser clonado, para criar variações sem partir do zero. Tecnicamente, é uma FARM Stack com backend em FastAPI (Python) e frontend em React.",
+      "desc4": "Todos os filtros de pesquisa da aplicação foram implementados com Apollo Client integrado com a API GraphQL, permitindo consultas eficientes e reativas diretamente nos componentes React.",
       "featuresLabel": "Funcionalidades",
       "workflowLabel": "Fluxo de Utilização",
       "architectureLabel": "Arquitectura FARM Stack",

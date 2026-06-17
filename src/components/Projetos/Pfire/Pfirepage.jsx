@@ -97,7 +97,8 @@ export default function PfirePage() {
 
           <p className="text-port-muted text-[15px] leading-[1.8] max-w-[680px] mb-3">{t("projects.pfire.desc1")}</p>
           <p className="text-port-muted text-sm leading-[1.8] max-w-[680px] mb-2">{t("projects.pfire.desc2")}</p>
-          <p className="text-port-muted text-sm leading-[1.8] max-w-[680px] mb-7">{t("projects.pfire.desc3")}</p>
+          <p className="text-port-muted text-sm leading-[1.8] max-w-[680px] mb-2">{t("projects.pfire.desc3")}</p>
+          <p className="text-port-muted text-sm leading-[1.8] max-w-[680px] mb-7">{t("projects.pfire.desc4")}</p>
 
           <div className="flex gap-[10px] flex-wrap">
             {stack.map(({ icon, name }) => (
