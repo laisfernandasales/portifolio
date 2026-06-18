@@ -8,6 +8,8 @@ const EMAILJS_TEMPLATE_CONTACT = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT;
 const EMAILJS_TEMPLATE_REPLY   = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY;
 const EMAILJS_PUBLIC_KEY       = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
 const channels = [
   { icon: <FiMail size={18} />,     label: "Email",    value: "laismelo.dev@gmail.com",                       href: "mailto:laismelo.dev@gmail.com"                         },
   { icon: <FiGithub size={18} />,   label: "GitHub",   value: "github.com/laisfernandasales",                 href: "https://github.com/laisfernandasales"                   },
@@ -34,19 +36,15 @@ function ContatoPage() {
     setSending(true);
     setError(null);
 
-    const opts = { publicKey: EMAILJS_PUBLIC_KEY };
-
     Promise.all([
-      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONTACT, formRef.current, opts),
-      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_REPLY,   formRef.current, opts),
+      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONTACT, formRef.current),
+      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_REPLY,   formRef.current),
     ]).then(
       () => { setSent(true); setSending(false); },
       (err) => {
         setError(t("contactPage.form.error"));
         setSending(false);
-        console.error("EmailJS error:", err);
-        console.error("EmailJS status:", err?.status);
-        console.error("EmailJS text:", err?.text);
+        console.error("EmailJS error — status:", err?.status, "text:", err?.text, "full:", err);
       }
     );
   };

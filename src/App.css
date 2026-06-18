@@ -74,6 +74,83 @@
   .dark input::placeholder, .dark textarea::placeholder { color: #6a7e99; }
 }
 
+/* ── Componentes partilhados ─────────────────────────────────────────── */
+@layer components {
+  .section-label-port {
+    @apply text-[11px] font-semibold tracking-[3px] uppercase mb-3 text-port-cyan;
+  }
+
+  .section-title-port {
+    @apply font-syne font-bold tracking-[-0.5px] leading-[1.15] mb-5 max-w-[520px] text-port-text;
+    font-size: clamp(26px, 3vw, 34px);
+  }
+
+  .btn-port-primary {
+    @apply inline-flex items-center gap-[10px] px-7 py-[14px] rounded-lg
+           font-bold text-[13px] no-underline tracking-[0.5px] uppercase
+           transition-all duration-[250ms] bg-port-cyan;
+    color: var(--port-btn-color);
+    box-shadow: var(--port-btn-shadow);
+  }
+  .btn-port-primary:hover {
+    background: var(--port-btn-hover-bg);
+    box-shadow: var(--port-btn-hover-shadow);
+    transform: translateY(-2px);
+  }
+
+  .btn-port-ghost {
+    @apply inline-flex items-center gap-[10px] px-7 py-[14px] rounded-lg
+           font-medium text-[13px] no-underline tracking-[0.5px] uppercase
+           transition-all duration-[250ms] text-port-text;
+    border: 1.5px solid var(--port-border);
+  }
+  .btn-port-ghost:hover {
+    border-color: var(--port-cyan);
+    color: var(--port-cyan);
+    transform: translateY(-2px);
+  }
+
+  .tech-pill-port {
+    @apply inline-flex items-center gap-[10px] bg-port-card
+           rounded-[10px] px-4 py-[10px] cursor-default
+           transition-all duration-[250ms];
+    border: 1px solid var(--port-border);
+    box-shadow: 0 2px 14px rgba(15, 30, 80, 0.10);
+  }
+  .dark .tech-pill-port { box-shadow: none; }
+  .tech-pill-port:hover {
+    border-color: var(--port-cyan);
+    background: var(--port-cyan-glow);
+    transform: translateY(-2px);
+  }
+
+  .project-card-port {
+    @apply bg-port-card rounded-2xl overflow-hidden
+           transition-all duration-300 no-underline block;
+    border: 1px solid var(--port-border);
+    box-shadow: 0 2px 14px rgba(15, 30, 80, 0.10);
+  }
+  .dark .project-card-port { box-shadow: none; }
+  .project-card-port:hover {
+    border-color: var(--port-cyan);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--port-cyan-dim);
+  }
+
+  .project-arrow-port {
+    @apply absolute top-[14px] right-[14px] w-8 h-8 rounded-full
+           flex items-center justify-center text-xs
+           opacity-0 transition-[opacity,transform] duration-200;
+    background: var(--port-cyan-dim);
+    border: 1px solid var(--port-border);
+    color: var(--port-cyan);
+  }
+  .project-card-port:hover .project-arrow-port {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+}
+
 /* ── Utilities ───────────────────────────────────────────────────────── */
 @layer utilities {
   .fade-up-1     { animation: fadeUp 0.6s ease both 0.1s; }
