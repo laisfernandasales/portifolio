@@ -36,15 +36,17 @@ function ContatoPage() {
     setSending(true);
     setError(null);
 
+    const data = Object.fromEntries(new FormData(formRef.current));
+
     Promise.all([
-      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONTACT, formRef.current),
-      emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_REPLY,   formRef.current),
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONTACT, data),
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_REPLY,   data),
     ]).then(
       () => { setSent(true); setSending(false); },
       (err) => {
         setError(t("contactPage.form.error"));
         setSending(false);
-        console.error("EmailJS error — status:", err?.status, "text:", err?.text, "full:", err);
+        console.error("EmailJS error — status:", err?.status, "text:", err?.text);
       }
     );
   };
