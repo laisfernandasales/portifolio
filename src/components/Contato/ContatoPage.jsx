@@ -18,31 +18,151 @@ const brevoSend = (payload) =>
     if (!res.ok) return res.text().then((t) => Promise.reject({ status: res.status, text: t }));
   });
 
+const notificationTemplate = (data) => `
+<!DOCTYPE html>
+<html>
+<body style="margin:0;padding:0;background:#f0f2f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.12);">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:#0d1117;padding:32px 40px;">
+            <p style="color:#00c8ff;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin:0 0 6px 0;">Portfolio</p>
+            <h1 style="color:#ffffff;font-size:20px;font-weight:600;margin:0;">Nova mensagem recebida</h1>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="background:#ffffff;padding:32px 40px;">
+
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="padding:12px 0;border-bottom:1px solid #f0f2f5;">
+                  <p style="color:#6c757d;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin:0 0 4px 0;">Nome</p>
+                  <p style="color:#0d1117;font-size:15px;margin:0;font-weight:500;">${esc(data.name)}</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:12px 0;border-bottom:1px solid #f0f2f5;">
+                  <p style="color:#6c757d;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin:0 0 4px 0;">Email</p>
+                  <p style="color:#00c8ff;font-size:15px;margin:0;">${esc(data.email)}</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:12px 0;border-bottom:1px solid #f0f2f5;">
+                  <p style="color:#6c757d;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin:0 0 4px 0;">Assunto</p>
+                  <p style="color:#0d1117;font-size:15px;margin:0;font-weight:500;">${esc(data.subject)}</p>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:16px 0;">
+                  <p style="color:#6c757d;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin:0 0 12px 0;">Mensagem</p>
+                  <div style="background:#f8f9fa;border-left:3px solid #00c8ff;border-radius:0 8px 8px 0;padding:16px 20px;">
+                    <p style="color:#0d1117;font-size:15px;line-height:1.7;margin:0;">${esc(data.message).replace(/\n/g, "<br>")}</p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:24px;">
+              <tr>
+                <td>
+                  <a href="mailto:${esc(data.email)}" style="display:inline-block;background:#0d1117;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;">Responder</a>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#0d1117;padding:20px 40px;text-align:center;">
+            <p style="color:#4a5568;font-size:12px;margin:0;">laismelodev.com</p>
+          </td>
+        </tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+
+const replyTemplate = (data) => `
+<!DOCTYPE html>
+<html>
+<body style="margin:0;padding:0;background:#f0f2f5;font-family:'Segoe UI',Arial,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="padding:40px 16px;">
+    <tr><td align="center">
+      <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.12);">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:#0d1117;padding:40px;text-align:center;">
+            <p style="color:#00c8ff;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;margin:0 0 20px 0;">laismelodev.com</p>
+            <table cellpadding="0" cellspacing="0" align="center">
+              <tr>
+                <td style="width:52px;height:52px;background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.3);border-radius:50%;text-align:center;vertical-align:middle;">
+                  <span style="color:#00c8ff;font-size:24px;line-height:52px;">✓</span>
+                </td>
+              </tr>
+            </table>
+            <h1 style="color:#ffffff;font-size:22px;font-weight:600;margin:16px 0 0 0;">Mensagem recebida!</h1>
+          </td>
+        </tr>
+
+        <!-- Body -->
+        <tr>
+          <td style="background:#ffffff;padding:36px 40px;">
+            <p style="color:#0d1117;font-size:15px;line-height:1.7;margin:0 0 16px 0;">Olá <strong>${esc(data.name)}</strong>,</p>
+            <p style="color:#495057;font-size:15px;line-height:1.7;margin:0 0 16px 0;">Obrigada pelo contacto! Recebi a sua mensagem sobre <strong style="color:#0d1117;">"${esc(data.subject)}"</strong> e entrarei em contacto em breve.</p>
+            <p style="color:#495057;font-size:15px;line-height:1.7;margin:0;">Até breve,<br><strong style="color:#0d1117;">Laís Melo</strong></p>
+          </td>
+        </tr>
+
+        <!-- Divider -->
+        <tr>
+          <td style="background:#ffffff;padding:0 40px 32px 40px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="border-top:1px solid #f0f2f5;padding-top:24px;text-align:center;">
+                  <p style="color:#adb5bd;font-size:12px;margin:0;">Esta é uma resposta automática — não é necessário responder a este email.</p>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#0d1117;padding:20px 40px;text-align:center;">
+            <p style="color:#4a5568;font-size:12px;margin:0;">laismelodev.com</p>
+          </td>
+        </tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+
 const sendEmail = (data) =>
   Promise.all([
     brevoSend({
-      sender:    { name: "Portfolio Contact", email: SENDER_EMAIL },
-      to:        [{ email: MY_EMAIL }],
-      replyTo:   { email: data.email, name: data.name },
-      subject:   `[Portfolio] ${esc(data.subject)}`,
-      htmlContent: `
-        <p><strong>Nome:</strong> ${esc(data.name)}</p>
-        <p><strong>Email:</strong> ${esc(data.email)}</p>
-        <p><strong>Assunto:</strong> ${esc(data.subject)}</p>
-        <p><strong>Mensagem:</strong></p>
-        <p>${esc(data.message).replace(/\n/g, "<br>")}</p>
-      `,
+      sender:      { name: "Laís Melo", email: SENDER_EMAIL },
+      to:          [{ email: MY_EMAIL }],
+      replyTo:     { email: data.email, name: data.name },
+      subject:     `[Portfolio] ${esc(data.subject)}`,
+      htmlContent: notificationTemplate(data),
     }),
     brevoSend({
-      sender:    { name: "Laís Melo", email: SENDER_EMAIL },
-      to:        [{ email: data.email, name: data.name }],
-      subject:   `Re: ${esc(data.subject)}`,
-      htmlContent: `
-        <p>Olá ${esc(data.name)},</p>
-        <p>Obrigada pelo contato! Recebi sua mensagem e retornarei em breve.</p>
-        <br>
-        <p>Atenciosamente,<br><strong>Laís Melo</strong></p>
-      `,
+      sender:      { name: "Laís Melo", email: SENDER_EMAIL },
+      to:          [{ email: data.email, name: data.name }],
+      subject:     `Re: ${esc(data.subject)}`,
+      htmlContent: replyTemplate(data),
     }),
   ]);
 
@@ -80,7 +200,7 @@ function ContatoPage() {
       (err) => {
         setError(t("contactPage.form.error"));
         setSending(false);
-        console.error("EmailJS error — status:", err?.status, "text:", err?.text);
+        console.error("Brevo error — status:", err?.status, "text:", err?.text);
       }
     );
   };
