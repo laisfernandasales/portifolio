@@ -1,14 +1,51 @@
 import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
 import { useTranslation } from "react-i18next";
 import { FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
 
-const EMAILJS_SERVICE_ID       = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EMAILJS_TEMPLATE_CONTACT = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT;
-const EMAILJS_TEMPLATE_REPLY   = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY;
-const EMAILJS_PUBLIC_KEY       = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const BREVO_API_KEY = import.meta.env.VITE_BREVO_API_KEY;
+const MY_EMAIL      = "laismelo.dev@gmail.com";
+const SENDER_EMAIL  = "noreply@laismelodev.com";
 
-emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+const esc = (s) =>
+  String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+const brevoSend = (payload) =>
+  fetch("https://api.brevo.com/v3/smtp/email", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "api-key": BREVO_API_KEY },
+    body: JSON.stringify(payload),
+  }).then((res) => {
+    if (!res.ok) return res.text().then((t) => Promise.reject({ status: res.status, text: t }));
+  });
+
+const sendEmail = (data) =>
+  Promise.all([
+    brevoSend({
+      sender:    { name: "Portfolio Contact", email: SENDER_EMAIL },
+      to:        [{ email: MY_EMAIL }],
+      replyTo:   { email: data.email, name: data.name },
+      subject:   `[Portfolio] ${esc(data.subject)}`,
+      htmlContent: `
+        <p><strong>Nome:</strong> ${esc(data.name)}</p>
+        <p><strong>Email:</strong> ${esc(data.email)}</p>
+        <p><strong>Assunto:</strong> ${esc(data.subject)}</p>
+        <p><strong>Mensagem:</strong></p>
+        <p>${esc(data.message).replace(/\n/g, "<br>")}</p>
+      `,
+    }),
+    brevoSend({
+      sender:    { name: "Laís Melo", email: SENDER_EMAIL },
+      to:        [{ email: data.email, name: data.name }],
+      subject:   `Re: ${esc(data.subject)}`,
+      htmlContent: `
+        <p>Olá ${esc(data.name)},</p>
+        <p>Obrigada pelo contato! Recebi sua mensagem e retornarei em breve.</p>
+        <br>
+        <p>Atenciosamente,<br><strong>Laís Melo</strong></p>
+      `,
+    }),
+  ]);
+
 
 const channels = [
   { icon: <FiMail size={18} />,     label: "Email",    value: "laismelo.dev@gmail.com",                       href: "mailto:laismelo.dev@gmail.com"                         },
@@ -38,10 +75,7 @@ function ContatoPage() {
 
     const data = Object.fromEntries(new FormData(formRef.current));
 
-    Promise.all([
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CONTACT, data),
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_REPLY,   data),
-    ]).then(
+    sendEmail(data).then(
       () => { setSent(true); setSending(false); },
       (err) => {
         setError(t("contactPage.form.error"));
