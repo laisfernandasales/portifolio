@@ -11,6 +11,7 @@
       "greeting": "My name is",
       "name": "Lais Melo",
       "role": "Frontend Developer",
+      "roles": ["Frontend Developer", "React Developer", "UI Enthusiast"],
       "description": "Specialist in building modern, fast websites focused on user experience.",
       "downloadCV": "Download CV",
       "viewProjects": "View Projects →",
@@ -23,7 +24,13 @@
       "label": "About me",
       "title": "Frontend\nDeveloper",
       "paragraph1": "I am a Software Developer specialising in Frontend development, with knowledge and experience that spans the full stack. Over the years I developed a strong affinity with Frontend — it is where I have worked the most and where I feel most comfortable, both in my final-year project Viagens em Casa and in the professional project PFIRE and Psafe365 Cloud.",
-      "paragraph2": "I am currently deepening my Backend knowledge, building a more complete view of web development. I work with technologies such as React.js, Next.js, Node.js, FastAPI and GraphQL, and for interface design I use Tailwind CSS and Material UI, with MySQL, MongoDB and Firebase databases."
+      "paragraph2": "I am currently deepening my Backend knowledge, building a more complete view of web development. I work with technologies such as React.js, Next.js, Node.js, FastAPI and GraphQL, and for interface design I use Tailwind CSS and Material UI, with MySQL, MongoDB and Firebase databases.",
+      "highlights": [
+        { "title": "Frontend Focus", "desc": "Fast, accessible UIs with React, Next.js and Tailwind." },
+        { "title": "Full-Stack Vision", "desc": "Backend with Node.js, FastAPI and PHP for a complete product." },
+        { "title": "3 Real Projects", "desc": "1 academic project and 2 professional projects delivered." },
+        { "title": "Always Learning", "desc": "TypeScript, GraphQL and architecture best practices." }
+      ]
     },
     "stack": {
       "label": "Stack",
@@ -31,6 +38,25 @@
       "categories": {
         "database": "Databases",
         "tools": "Services & Tools"
+      },
+      "tips": {
+        "html5":      "Foundation of every project",
+        "css3":       "Responsive layouts and animations",
+        "javascript": "Primary language — 3+ years",
+        "typescript": "Used in Pfire and Psafe365 Cloud",
+        "react":      "Main framework — 2+ years",
+        "nextjs":     "Used in Viagens em Casa",
+        "tailwind":   "Preferred CSS framework",
+        "nodejs":     "REST APIs and server-side logic",
+        "php":        "Backend of Psafe365 Cloud",
+        "fastapi":    "Python API for Pfire",
+        "mysql":      "Relational DB in Psafe365 Cloud",
+        "mongodb":    "NoSQL DB in Pfire",
+        "firebase":   "Auth and Firestore in Viagens em Casa",
+        "jwt":        "Secure auth in Psafe365 Cloud",
+        "brevo":      "Transactional emails in 2 projects",
+        "figma":      "UI prototyping and design",
+        "git":        "Version control in every project"
       }
     },
     "projects": {
@@ -38,15 +64,15 @@
       "items": {
         "viagens": {
           "title": "Viagens em Casa",
-          "desc": "E-commerce + ticketing with auth, transactional emails and admin panel. Real client case."
+          "desc": "Academic project with a regional marketplace and event ticketing. Authentication, transactional emails via SendGrid, admin panel and multilingual support (PT, EN, ES)."
         },
         "pfire": {
           "title": "Pfire",
-          "desc": "Pfire is an application for generating security inspection reports."
+          "desc": "Professional app built in a real company context to generate security inspection PDF reports, with reusable templates and client management."
         },
         "psafe": {
           "title": "Psafe365 Cloud",
-          "desc": "Web FTP manager on a Linux server — hierarchical permissions, JWT password recovery and transactional emails via Brevo."
+          "desc": "Full overhaul of a professional product: frontend migration from PHP to React, Linux server file management via FTP and JWT authentication with Brevo emails."
         }
       }
     },
@@ -90,12 +116,20 @@
   "projects": {
     "viagens": {
       "label": "Project 01",
-      "desc1": "This was my final-year university project — a digital platform I built to promote the local economy of less-populated regions, connecting small producers and traders to the online market. It includes a regional-products marketplace and a virtual ticketing system for events and cultural attractions.",
-      "desc2": "I focused on making the interface accessible to users with limited tech experience, with multi-language support via i18next to also reach emigrants and international tourists. The project was built with Next.js and Tailwind CSS on the frontend, Firebase for authentication, real-time database and file storage via Cloud Storage, and SendGrid for sending tickets and email notifications.",
+      "aboutLabel": "About the project",
+      "desc1": "Digital platform built as a final-year university project to digitalise the local economy of less-populated regions, connecting small producers and artisans to the online market. Integrates a regional marketplace and a virtual ticketing system for events and cultural attractions.",
+      "roleLabel": "My role",
+      "role": "Responsible for the full frontend development: component architecture in Next.js, Firebase integration and implementation of the internationalisation system (PT, ES, EN) with i18next. Worked alongside Carlos Afonso on backend integrations with Cloud Storage and SendGrid.",
+      "challengesLabel": "Technical challenges",
+      "challenges": "The biggest challenge was ensuring accessibility for users with limited digital experience. We implemented a simplified purchase flow, Google OAuth authentication to reduce friction, and real-time Firestore notifications to keep users informed without page reloads.",
+      "viewCodeLabel": "View code on GitHub",
+      "sourceCodeLabel": "Source code",
+      "projectTypeLabel": "Project type",
+      "projectType": "Academic / Final Year Project",
       "highlightsLabel": "Key features",
       "modulesLabel": "Project modules",
       "contextTitle": "Academic context",
-      "contextDesc": "The platform was developed as a demonstration project, proving the technical feasibility of a marketplace dedicated to local commerce and tourism. Although not in production, it represents a concrete solution for the digitisation of regions with lower technological development, encouraging the adoption of technology in the tourism and commercial sectors.",
+      "contextDesc": "The platform was developed as a demonstration project, proving the technical feasibility of a marketplace dedicated to local commerce and tourism. Although not in production, it represents a concrete solution for the digitisation of regions with lower technological development.",
       "footer": "Lais Melo & Carlos Afonso",
       "highlights": {
         "i18n":          { "label": "Internationalisation",    "desc": "PT, ES and EN support via i18next" },
@@ -160,11 +194,19 @@
       "moduleLabel": "Module 01",
       "breadcrumbCurrent": "Regional Market",
       "title": "Regional Food Market",
+      "aboutLabel": "The project",
       "desc1a": "A virtual store designed to give ",
       "desc1Highlight": "digital visibility to small local producers",
       "desc1b": ", allowing them to list and sell their products directly to the end consumer, without intermediaries. The catalogue brings together typical food products from various regions of the country, organised by category and with search filters to make discovery easy.",
       "desc2": "The purchase flow is simple and intuitive — designed for users with little tech experience — from browsing the catalogue to filling in the shipping form, with a real-time cart and automatic total calculation.",
+      "roleLabel": "My contribution",
+      "role": "I built the complete frontend of this module in Next.js with Tailwind CSS — from component architecture to the checkout flow. Implemented the real-time cart with Firestore sync, ensuring state consistency across sessions and devices.",
+      "viewCodeLabel": "View code on GitHub",
+      "sourceCodeLabel": "Source code",
+      "projectTypeLabel": "Project type",
+      "projectType": "Academic / Final Year Project",
       "videoLabel": "regional-market — demo",
+      "videoCaption": "Live demo — Regional Market",
       "featuresLabel": "Features",
       "features": {
         "catalog":     { "title": "Regional catalogue",    "desc": "Typical food products from various regions of the country, with images, names and prices organised by category." },
@@ -177,7 +219,7 @@
         "responsive":  { "title": "Responsive",            "desc": "Interface adapted to all screen sizes with support for light and dark themes." }
       },
       "challengeLabel": "Technical challenge",
-      "challengeDesc": "The main challenge was ensuring the purchase flow was accessible to users with little digital experience — from product discovery to order confirmation — without sacrificing technical robustness. Syncing the cart with Firestore in real time required special care in state management to avoid inconsistencies between sessions.",
+      "challengeDesc": "The biggest challenge was balancing ease of use with technical robustness. The purchase flow was designed with users with limited digital experience in mind, requiring special attention to error handling, visual feedback and loading states — without compromising application performance.",
       "backToProject": "← Back to project"
     },
     "bilheteira": {

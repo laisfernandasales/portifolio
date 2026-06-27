@@ -11,6 +11,7 @@
       "greeting": "Me chamo",
       "name": "Lais Melo",
       "role": "Desenvolvedora Frontend",
+      "roles": ["Desenvolvedora Frontend", "Desenvolvedora React", "UI Enthusiast"],
       "description": "Especialista no desenvolvimento de websites modernos, rápidos e com foco na experiência do utilizador.",
       "downloadCV": "Download CV",
       "viewProjects": "Ver Projetos →",
@@ -23,7 +24,13 @@
       "label": "Sobre mim",
       "title": "Desenvolvedora\nFrontend",
       "paragraph1": "Sou Desenvolvedora de Software com especialização no desenvolvimento Frontend, mas com conhecimentos e experiência que abrangem o stack completo. Ao longo dos anos desenvolvi uma forte afinidade com o Frontend , foi onde mais trabalhei e onde me sinto mais à vontade, tanto no meu projecto de fim de curso Viagens em Casa como nos projecto profissional PFIRE e Psafe365 Cloud.",
-      "paragraph2": "Actualmente venho a aprofundar os conhecimentos no Backend, consolidando uma visão mais completa do desenvolvimento web. Trabalho com tecnologias como React.js, Next.js, Node.js, FastAPI e GraphQL, e no design de interfaces utilizo Tailwind CSS e Material UI, com bases de dados MySQL, MongoDB e Firebase."
+      "paragraph2": "Actualmente venho a aprofundar os conhecimentos no Backend, consolidando uma visão mais completa do desenvolvimento web. Trabalho com tecnologias como React.js, Next.js, Node.js, FastAPI e GraphQL, e no design de interfaces utilizo Tailwind CSS e Material UI, com bases de dados MySQL, MongoDB e Firebase.",
+      "highlights": [
+        { "title": "Frontend em Foco", "desc": "Interfaces rápidas e acessíveis com React, Next.js e Tailwind." },
+        { "title": "Visão Full-Stack", "desc": "Backend com Node.js, FastAPI e PHP para um produto completo." },
+        { "title": "3 Projectos Reais", "desc": "1 projecto académico e 2 profissionais entregues com sucesso." },
+        { "title": "Em Constante Evolução", "desc": "TypeScript, GraphQL e boas práticas de arquitectura web." }
+      ]
     },
     "stack": {
       "label": "Stack",
@@ -31,6 +38,25 @@
       "categories": {
         "database": "Base de Dados",
         "tools": "Serviços & Ferramentas"
+      },
+      "tips": {
+        "html5":      "Base de todos os projectos",
+        "css3":       "Layouts e animações responsivas",
+        "javascript": "Linguagem principal — 3+ anos",
+        "typescript": "Utilizado no Pfire e Psafe365 Cloud",
+        "react":      "Framework principal — 2+ anos",
+        "nextjs":     "Utilizado no Viagens em Casa",
+        "tailwind":   "CSS framework preferencial",
+        "nodejs":     "APIs REST e lógica de servidor",
+        "php":        "Backend do Psafe365 Cloud",
+        "fastapi":    "API Python do projecto Pfire",
+        "mysql":      "Base de dados relacional no Psafe365 Cloud",
+        "mongodb":    "Base de dados NoSQL no Pfire",
+        "firebase":   "Auth e Firestore no Viagens em Casa",
+        "jwt":        "Autenticação segura no Psafe365 Cloud",
+        "brevo":      "Emails transacionais em 2 projectos",
+        "figma":      "Prototipagem e design de interfaces",
+        "git":        "Controlo de versões em todos os projectos"
       }
     },
     "projects": {
@@ -38,15 +64,15 @@
       "items": {
         "viagens": {
           "title": "Viagens em Casa",
-          "desc": "E-commerce + bilheteira com auth, emails transacionais e painel admin. Caso real de cliente."
+          "desc": "Projecto académico com mercado regional e bilheteira de eventos. Autenticação, emails transacionais via SendGrid, painel admin e suporte multilingue (PT, EN, ES)."
         },
         "pfire": {
           "title": "Pfire",
-          "desc": "Pfire é uma aplicação de geração de relatórios de inspeção de segurança"
+          "desc": "Aplicação profissional desenvolvida em ambiente real de empresa para gerar relatórios de inspeção de segurança em PDF, com templates reutilizáveis e gestão de clientes."
         },
         "psafe": {
           "title": "Psafe365 Cloud",
-          "desc": "Gestor FTP web sobre servidor Linux — permissões hierárquicas, recuperação de senha com JWT e emails transacionais via Brevo."
+          "desc": "Reformulação de um produto profissional: migração do frontend de PHP para React, gestão de ficheiros via FTP em servidor Linux e autenticação JWT com emails via Brevo."
         }
       }
     },
@@ -90,12 +116,20 @@
   "projects": {
     "viagens": {
       "label": "Projecto 01",
-      "desc1": "Este foi o meu projecto de fim de curso, uma plataforma digital que desenvolvi com o objectivo de fomentar a economia local de regiões menos populosas, conectando pequenos produtores e comerciantes ao mercado online. Inclui um marketplace de produtos regionais e uma bilheteira virtual para eventos e atrações culturais.",
-      "desc2": "Preocupei-me em tornar a interface acessível a utilizadores com pouca experiência tecnológica, com suporte a múltiplos idiomas via i18next para alcançar também emigrantes e turistas internacionais. O projecto foi construído com Next.js e Tailwind CSS no frontend, Firebase para autenticação, base de dados em tempo real e armazenamento de ficheiros via Cloud Storage, e SendGrid para o envio de bilhetes e notificações por email.",
+      "aboutLabel": "Sobre o projecto",
+      "desc1": "Plataforma digital desenvolvida como projecto de fim de curso com o objectivo de digitalizar a economia local de regiões menos populosas, conectando pequenos produtores e artesãos ao mercado online. Integra um marketplace de produtos regionais e uma bilheteira virtual para eventos e atrações culturais.",
+      "roleLabel": "O meu papel",
+      "role": "Responsável pelo desenvolvimento frontend completo: arquitectura de componentes em Next.js, integração com Firebase e implementação do sistema de internacionalização (PT, ES, EN) com i18next. Trabalhei em equipa com Carlos Afonso no backend e nas integrações com Cloud Storage e SendGrid.",
+      "challengesLabel": "Desafios técnicos",
+      "challenges": "O maior desafio foi garantir acessibilidade a utilizadores com pouca experiência digital. Implementámos um fluxo de compra simplificado, autenticação com Google OAuth para reduzir fricção, e notificações em tempo real via Firestore para manter o utilizador informado sem necessidade de recarregar a página.",
+      "viewCodeLabel": "Ver código no GitHub",
+      "sourceCodeLabel": "Código fonte",
+      "projectTypeLabel": "Tipo de projecto",
+      "projectType": "Projecto Académico / Fim de Curso",
       "highlightsLabel": "Funcionalidades em destaque",
       "modulesLabel": "Módulos do projecto",
       "contextTitle": "Contexto académico",
-      "contextDesc": "A plataforma foi desenvolvida como projecto de demonstração, provando a viabilidade técnica de um marketplace dedicado ao comércio e turismo local. Embora não esteja em produção, representa uma solução concreta para a digitalização de regiões com menor desenvolvimento tecnológico, incentivando a adopção de tecnologia no sector turístico e comercial.",
+      "contextDesc": "A plataforma foi desenvolvida como projecto de demonstração, provando a viabilidade técnica de um marketplace dedicado ao comércio e turismo local. Embora não esteja em produção, representa uma solução concreta para a digitalização de regiões com menor desenvolvimento tecnológico.",
       "footer": "Lais Melo & Carlos Afonso",
       "highlights": {
         "i18n":          { "label": "Internacionalização",        "desc": "Suporte a PT, ES e EN via i18next" },
@@ -160,11 +194,19 @@
       "moduleLabel": "Módulo 01",
       "breadcrumbCurrent": "Mercado Regional",
       "title": "Mercado de Comidas Regionais",
+      "aboutLabel": "O projecto",
       "desc1a": "Loja virtual concebida para dar ",
       "desc1Highlight": "visibilidade digital a pequenos produtores locais",
       "desc1b": ", permitindo-lhes listar e vender os seus produtos directamente ao consumidor final, sem intermediários. O catálogo reúne produtos alimentares típicos de diversas regiões do país, organizados por categoria e com filtros de pesquisa para facilitar a descoberta.",
       "desc2": "O fluxo de compra é simples e intuitivo — pensado para utilizadores com pouca experiência tecnológica — desde a navegação no catálogo até ao preenchimento do formulário de envio, com carrinho em tempo real e cálculo automático do total.",
+      "roleLabel": "O meu contributo",
+      "role": "Desenvolvi o frontend completo deste módulo em Next.js com Tailwind CSS — desde a arquitectura de componentes ao fluxo de checkout. Implementei o carrinho em tempo real com sincronização via Firestore, garantindo consistência de estado entre sessões e dispositivos.",
+      "viewCodeLabel": "Ver código no GitHub",
+      "sourceCodeLabel": "Código fonte",
+      "projectTypeLabel": "Tipo de projecto",
+      "projectType": "Projecto Académico / Fim de Curso",
       "videoLabel": "mercado-regional — demo",
+      "videoCaption": "Demonstração ao vivo — Mercado Regional",
       "featuresLabel": "Funcionalidades",
       "features": {
         "catalog":     { "title": "Catálogo regional",      "desc": "Produtos alimentares típicos de diversas regiões do país, com imagens, nomes e preços organizados por categoria." },
@@ -177,7 +219,7 @@
         "responsive":  { "title": "Responsivo",             "desc": "Interface adaptada a todos os tamanhos de ecrã com suporte ao tema claro e escuro." }
       },
       "challengeLabel": "Desafio técnico",
-      "challengeDesc": "O principal desafio foi garantir que o fluxo de compra fosse acessível para utilizadores com pouca experiência digital — desde a descoberta do produto até à confirmação da encomenda — sem sacrificar robustez técnica. A sincronização do carrinho com o Firestore em tempo real exigiu um cuidado especial na gestão de estado para evitar inconsistências entre sessões.",
+      "challengeDesc": "O maior desafio foi equilibrar simplicidade de uso com robustez técnica. O fluxo de compra foi desenhado a pensar em utilizadores com pouca experiência digital, o que exigiu atenção especial à gestão de erros, feedback visual e estados de loading — sem comprometer a performance da aplicação.",
       "backToProject": "← Voltar ao projecto"
     },
     "bilheteira": {

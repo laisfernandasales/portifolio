@@ -94,7 +94,7 @@
   }
   .btn-port-primary:hover {
     background: var(--port-btn-hover-bg);
-    box-shadow: var(--port-btn-hover-shadow);
+    box-shadow: var(--port-btn-hover-shadow), 0 0 0 2px var(--port-cyan);
     transform: translateY(-2px);
   }
 
@@ -153,6 +153,15 @@
 
 /* ── Utilities ───────────────────────────────────────────────────────── */
 @layer utilities {
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+  .typewriter-cursor {
+    display: inline-block;
+    margin-left: 2px;
+    color: var(--port-cyan);
+    animation: blink 0.8s ease infinite;
+    font-weight: 300;
+  }
+
   .fade-up-1     { animation: fadeUp 0.6s ease both 0.1s; }
   .fade-up-2     { animation: fadeUp 0.6s ease both 0.2s; }
   .fade-up-3     { animation: fadeUp 0.6s ease both 0.3s; }
