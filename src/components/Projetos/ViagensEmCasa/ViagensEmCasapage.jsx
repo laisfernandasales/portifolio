@@ -36,11 +36,11 @@ export default function ViagensEmCasa() {
   const cyanDim = isDark ? "rgba(0,200,255,0.15)" : "rgba(3,105,161,0.10)";
 
   const highlights = [
-    { id: "i18n",          icon: <FaGlobe     size={14} />, labelKey: "projects.viagens.highlights.i18n.label",          descKey: "projects.viagens.highlights.i18n.desc"          },
-    { id: "auth",          icon: <FaShieldAlt size={14} />, labelKey: "projects.viagens.highlights.auth.label",          descKey: "projects.viagens.highlights.auth.desc"          },
-    { id: "notifications", icon: <FaBell      size={14} />, labelKey: "projects.viagens.highlights.notifications.label", descKey: "projects.viagens.highlights.notifications.desc" },
-    { id: "reviews",       icon: <FaStar      size={14} />, labelKey: "projects.viagens.highlights.reviews.label",       descKey: "projects.viagens.highlights.reviews.desc"       },
-    { id: "vendors",       icon: <FaUsers     size={14} />, labelKey: "projects.viagens.highlights.vendors.label",       descKey: "projects.viagens.highlights.vendors.desc"       },
+    { id: "i18n",          icon: <FaGlobe     size={16} />, labelKey: "projects.viagens.highlights.i18n.label",          descKey: "projects.viagens.highlights.i18n.desc"          },
+    { id: "auth",          icon: <FaShieldAlt size={16} />, labelKey: "projects.viagens.highlights.auth.label",          descKey: "projects.viagens.highlights.auth.desc"          },
+    { id: "notifications", icon: <FaBell      size={16} />, labelKey: "projects.viagens.highlights.notifications.label", descKey: "projects.viagens.highlights.notifications.desc" },
+    { id: "reviews",       icon: <FaStar      size={16} />, labelKey: "projects.viagens.highlights.reviews.label",       descKey: "projects.viagens.highlights.reviews.desc"       },
+    { id: "vendors",       icon: <FaUsers     size={16} />, labelKey: "projects.viagens.highlights.vendors.label",       descKey: "projects.viagens.highlights.vendors.desc"       },
   ];
 
   const modules = [
@@ -54,14 +54,15 @@ export default function ViagensEmCasa() {
       {/* ── HERO BANNER ─────────────────────────────────────────── */}
       <div className="relative w-full h-[380px] md:h-[480px] overflow-hidden">
         <img
-          src={isDark ? MercadoDark : MercadoLight}
+          src={MercadoDark}
           alt="Viagens em Casa — screenshot"
           className="w-full h-full object-cover object-top"
         />
+        <div className="absolute inset-0" style={{ background: "rgba(0,0,0,0.22)" }} />
         <div className="absolute inset-0"
-          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.28) 0%, transparent 38%, var(--port-bg) 100%)" }} />
+          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.40) 0%, transparent 38%, var(--port-bg) 100%)" }} />
         <div className="absolute inset-0"
-          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.52) 0%, transparent 58%)" }} />
+          style={{ background: "linear-gradient(to right, rgba(0,0,0,0.65) 0%, transparent 62%)" }} />
 
         {/* Back link — abaixo da navbar */}
         <div className="absolute left-0 right-0 max-w-[1100px] mx-auto px-5 md:px-[60px]"
@@ -78,14 +79,14 @@ export default function ViagensEmCasa() {
 
         {/* Título sobreposto no fundo do hero */}
         <div className="absolute bottom-0 left-0 right-0 max-w-[1100px] mx-auto px-5 md:px-[60px] pb-8">
-          <p className="text-[10px] font-semibold tracking-[3px] uppercase mb-2 text-white/55">
+          <p className="text-[12px] font-semibold tracking-[3px] uppercase mb-2 text-white/55">
             {t("projects.viagens.label")}
           </p>
           <h1
             className="font-syne font-bold text-white flex items-center gap-3 flex-wrap m-0"
             style={{ fontSize: "clamp(26px, 4vw, 50px)", letterSpacing: "-1.5px", lineHeight: 1.1 }}
           >
-            <FaPlane style={{ color: cyan, fontSize: "0.78em", flexShrink: 0 }} />
+            <FaPlane style={{ color: cyan, fontSize: "0.78em", flexShrink: 0, filter: isDark ? "drop-shadow(0 0 6px rgba(0,200,255,0.7))" : "none" }} />
             Viagens em Casa
           </h1>
         </div>
@@ -100,21 +101,21 @@ export default function ViagensEmCasa() {
           {/* Esquerda: blocos de texto */}
           <div className="flex flex-col gap-8">
             <div>
-              <p className="text-[10px] font-semibold tracking-[2.5px] uppercase mb-3" style={{ color: cyan }}>
+              <p className="text-[12px] font-semibold tracking-[2.5px] uppercase mb-3" style={{ color: cyan }}>
                 {t("projects.viagens.aboutLabel")}
               </p>
               <p className="text-port-muted text-[15px] leading-[1.85]">{t("projects.viagens.desc1")}</p>
             </div>
 
             <div>
-              <p className="text-[10px] font-semibold tracking-[2.5px] uppercase mb-3" style={{ color: cyan }}>
+              <p className="text-[12px] font-semibold tracking-[2.5px] uppercase mb-3" style={{ color: cyan }}>
                 {t("projects.viagens.roleLabel")}
               </p>
               <p className="text-port-muted text-[15px] leading-[1.85]">{t("projects.viagens.role")}</p>
             </div>
 
             <div>
-              <p className="text-[10px] font-semibold tracking-[2.5px] uppercase mb-3" style={{ color: cyan }}>
+              <p className="text-[12px] font-semibold tracking-[2.5px] uppercase mb-3" style={{ color: cyan }}>
                 {t("projects.viagens.challengesLabel")}
               </p>
               <p className="text-port-muted text-[15px] leading-[1.85]">{t("projects.viagens.challenges")}</p>
@@ -135,7 +136,7 @@ export default function ViagensEmCasa() {
               >
                 <FiGithub size={15} className="text-port-muted shrink-0 group-hover:text-port-cyan transition-colors duration-200" />
                 <div className="flex flex-col flex-1 min-w-0">
-                  <span className="text-[9px] font-semibold tracking-[2px] uppercase text-port-muted mb-[3px]">
+                  <span className="text-[11px] font-semibold tracking-[2px] uppercase text-port-muted mb-[3px]">
                     {t("projects.viagens.sourceCodeLabel")}
                   </span>
                   <span className="text-[11px] font-medium text-port-text truncate group-hover:text-port-cyan transition-colors duration-200">
@@ -147,7 +148,7 @@ export default function ViagensEmCasa() {
               <div className="flex items-center gap-3 px-4 py-[13px]">
                 <FiFolder size={15} className="text-port-muted shrink-0" />
                 <div className="flex flex-col">
-                  <span className="text-[9px] font-semibold tracking-[2px] uppercase text-port-muted mb-[3px]">
+                  <span className="text-[11px] font-semibold tracking-[2px] uppercase text-port-muted mb-[3px]">
                     {t("projects.viagens.projectTypeLabel")}
                   </span>
                   <span className="text-[11px] font-medium text-port-text">
@@ -159,10 +160,10 @@ export default function ViagensEmCasa() {
 
             {/* Stack */}
             <div>
-              <p className="text-[10px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-3">Stack</p>
-              <div className="flex flex-wrap gap-2">
+              <p className="text-[12px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-3">Stack</p>
+              <div className="grid grid-cols-2 gap-2">
                 {stack.map(({ icon, name }) => (
-                  <div key={name} className="tech-pill-port text-[12px]">
+                  <div key={name} className="tech-pill-port text-[12px] w-full min-h-[52px]">
                     <span className="flex items-center">{icon}</span>
                     <span className="text-port-text font-medium text-[11px]">{name}</span>
                   </div>
@@ -184,28 +185,36 @@ export default function ViagensEmCasa() {
 
         {/* ── FUNCIONALIDADES ─────────────────────────────────────── */}
         <div className="mb-12">
-          <p className="text-[10px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-5">
+          <p className="text-[12px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-5">
             {t("projects.viagens.highlightsLabel")}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {highlights.map(({ id, icon, labelKey, descKey }) => (
-              <div
-                key={id}
-                className="px-[18px] py-4 rounded-[10px] flex flex-col gap-2 bg-port-card"
-                style={{ border: "1px solid var(--port-border)", minHeight: "88px" }}
-              >
-                <span className="inline-flex items-center gap-[7px] text-[12px] font-semibold" style={{ color: cyan }}>
-                  {icon} {t(labelKey)}
-                </span>
-                <p className="text-xs text-port-muted leading-[1.6] m-0">{t(descKey)}</p>
-              </div>
-            ))}
+            {highlights.map(({ id, icon, labelKey, descKey }, index) => {
+              const lastRowStart = highlights.length % 3 !== 0
+                ? highlights.length - (highlights.length % 3)
+                : -1;
+              const centerClass = index === lastRowStart && highlights.length % 3 === 1
+                ? "md:col-start-2"
+                : "";
+              return (
+                <div
+                  key={id}
+                  className={`px-5 py-5 rounded-[10px] flex flex-col gap-3 bg-port-card ${centerClass}`}
+                  style={{ border: "1px solid var(--port-border)", minHeight: "108px" }}
+                >
+                  <span className="inline-flex items-center gap-[8px] text-[13px] font-semibold" style={{ color: cyan }}>
+                    {icon} {t(labelKey)}
+                  </span>
+                  <p className="text-[13px] text-port-muted leading-[1.65] m-0">{t(descKey)}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
 
         {/* ── MÓDULOS ─────────────────────────────────────────────── */}
         <div className="mb-12">
-          <p className="text-[10px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-6">
+          <p className="text-[12px] font-semibold tracking-[2.5px] text-port-muted uppercase mb-6">
             {t("projects.viagens.modulesLabel")}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -227,7 +236,7 @@ export default function ViagensEmCasa() {
                 <div className="p-5">
                   <div className="flex items-center gap-2 mb-[10px]">
                     <span
-                      className="inline-flex items-center gap-[6px] text-[9px] font-bold tracking-[1.5px] uppercase rounded-full px-[10px] py-1"
+                      className="inline-flex items-center gap-[6px] text-[11px] font-bold tracking-[1.5px] uppercase rounded-full px-[10px] py-1"
                       style={{ color: cyan, background: cyanDim }}
                     >
                       {icon} {t(`projects.viagens.modules.${id}.tag`)}

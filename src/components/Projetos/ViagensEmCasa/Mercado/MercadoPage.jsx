@@ -4,7 +4,7 @@ import {
   FaShoppingCart, FaSearch, FaPlusCircle,
   FaCalculator, FaTrashAlt, FaBox, FaMobileAlt, FaStore,
 } from "react-icons/fa";
-import { FiGithub, FiExternalLink, FiFolder } from "react-icons/fi";
+import { FiFolder } from "react-icons/fi";
 import { SiNextdotjs, SiFirebase, SiTailwindcss } from "react-icons/si";
 import { MdAdminPanelSettings } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -103,24 +103,6 @@ export default function MercadoPage() {
 
             {/* Links / Metadata */}
             <div className="rounded-[10px] overflow-hidden mb-7" style={{ border: "1px solid var(--port-border)" }}>
-              <a
-                href="https://github.com/laisfernandasales/ViagensEmCasa"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-[13px] no-underline transition-colors duration-200 group hover:bg-port-surface"
-                style={{ borderBottom: "1px solid var(--port-border)" }}
-              >
-                <FiGithub size={15} className="text-port-muted shrink-0 group-hover:text-port-cyan transition-colors duration-200" />
-                <div className="flex flex-col flex-1 min-w-0">
-                  <span className="text-[9px] font-semibold tracking-[2px] uppercase text-port-muted mb-[3px]">
-                    {t("projects.mercado.sourceCodeLabel")}
-                  </span>
-                  <span className="text-[11px] font-medium text-port-text truncate group-hover:text-port-cyan transition-colors duration-200">
-                    github.com/laisfernandasales/…
-                  </span>
-                </div>
-                <FiExternalLink size={11} className="text-port-muted shrink-0 group-hover:text-port-cyan transition-colors duration-200" />
-              </a>
               <div className="flex items-center gap-3 px-4 py-[13px]">
                 <FiFolder size={15} className="text-port-muted shrink-0" />
                 <div className="flex flex-col">

@@ -1,0 +1,26 @@
+[
+  {
+    "key": "viagens",
+    "num": "01",
+    "tags": ["Next.js", "Firebase", "Tailwind"],
+    "route": "/projetos/viagens",
+    "gradient": "linear-gradient(135deg, #0d2340, #091830)",
+    "imageKey": "viagens"
+  },
+  {
+    "key": "pfire",
+    "num": "02",
+    "tags": ["React", "FastAPI", "MongoDB"],
+    "route": "/projetos/Pfire",
+    "gradient": "linear-gradient(135deg, #0d2035, #061228)",
+    "imageKey": "pfire"
+  },
+  {
+    "key": "psafe",
+    "num": "03",
+    "tags": ["React", "PHP", "MySQL", "JWT"],
+    "route": "/projetos/psafe365",
+    "gradient": "linear-gradient(135deg, #0a1828, #060e1c)",
+    "imageKey": "psafe"
+  }
+]
